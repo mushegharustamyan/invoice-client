@@ -1,0 +1,65 @@
+.card {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #063970;
+  border: 1px solid #063970;
+}
+
+.card:hover {
+  background-color: #f3f4f6;
+}
+
+.wrapper {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrow_icon {
+  width: 16px;
+  height: auto;
+}
+
+.wrapper a{
+  color: #063970;
+  transition: 0.5s;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.wrapper a:hover {
+  letter-spacing: 3px;
+}
+
+.info {
+  width: 90%;
+  height: 60%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.signed {
+  width: 24px;
+  height: auto;
+}
+
+.code {
+  font-size: 20px;
+}
+
+.company_name {
+  font-size: 14px;
+}
