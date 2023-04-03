@@ -3,6 +3,11 @@ export interface IDocument {
   invoiceCode: string;
   company: string;
   price: number;
-  status: "matched" | "not-matched" | "under-clarification";
+  status:
+    | "matched"
+    | "not-matched"
+    | "under-clarification"
+    | "signed"
+    | "error";
   department?: string;
 }
