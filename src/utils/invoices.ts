@@ -18,86 +18,6 @@ export const invoices: IDocument[] = [
     department: "Department",
   },
   {
-    id: 2,
-    invoiceCode: "C45",
-    price: 5000,
-    company: "Company Name",
-    status: "matched",
-    department: "Department",
-  },
-  {
-    id: 2,
-    invoiceCode: "C45",
-    price: 5000,
-    company: "Company Name",
-    status: "matched",
-    department: "Department",
-  },
-  {
-    id: 2,
-    invoiceCode: "C45",
-    price: 5000,
-    company: "Company Name",
-    status: "matched",
-    department: "Department",
-  },
-  {
-    id: 2,
-    invoiceCode: "C45",
-    price: 5000,
-    company: "Company Name",
-    status: "matched",
-    department: "Department",
-  },
-  {
-    id: 2,
-    invoiceCode: "C45",
-    price: 5000,
-    company: "Company Name",
-    status: "matched",
-    department: "Department",
-  },
-  {
-    id: 2,
-    invoiceCode: "C45",
-    price: 5000,
-    company: "Company Name",
-    status: "matched",
-    department: "Department",
-  },
-  {
-    id: 2,
-    invoiceCode: "C45",
-    price: 5000,
-    company: "Company Name",
-    status: "matched",
-    department: "Department",
-  },
-  {
-    id: 2,
-    invoiceCode: "C45",
-    price: 5000,
-    company: "Company Name",
-    status: "matched",
-    department: "Department",
-  },
-  {
-    id: 2,
-    invoiceCode: "C45",
-    price: 5000,
-    company: "Company Name",
-    status: "matched",
-    department: "Department",
-  },
-  {
-    id: 2,
-    invoiceCode: "C45",
-    price: 5000,
-    company: "Company Name",
-    status: "matched",
-    department: "Department",
-  },
-  {
     id: 3,
     invoiceCode: "C45",
     price: 5000,
@@ -116,5 +36,12 @@ export const invoices: IDocument[] = [
 export const getAllInvoices = () => {
   return new Promise((resolve, reject) => {
     resolve(invoices);
+  });
+};
+
+export const filterInvoices = (target: string) => {
+  return new Promise((resolve, reject) => {
+    const result = invoices.filter((value) => value.status === target);
+    resolve(result);
   });
 };

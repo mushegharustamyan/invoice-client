@@ -12,7 +12,7 @@ export const AppRouter = () => {
     <BrowserRouter>
       <Routes>
 
-        {/* Invoices Pages */}
+        {/* Invoice Pages */}
 
         <Route element={<LeftMenu />}>
           <Route path="/invoices" element={

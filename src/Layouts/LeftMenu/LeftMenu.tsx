@@ -2,11 +2,21 @@ import { useState } from "react"
 import { Outlet } from "react-router"
 import styles from "./styles.module.css"
 import down from "../../assets/img/down-sign.png"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+
+interface IRoute {
+  title: string,
+  path: string,
+  action?: () => void
+  getInvoices?: () => void
+  subMenu?: IRoute[]
+}
+
+
 export const LeftMenu = () => {
-
+  const dispatch = useDispatch()
   const [showSubMenu,setShowSubMenu]= useState(false)
-
+  
   const handleDropDown = () => {
     setShowSubMenu(!showSubMenu)
   }
@@ -15,10 +25,8 @@ export const LeftMenu = () => {
       <div className={styles.layout}>
         <div className={styles.menu}>
           <div className={styles.wrapper}>
-
             <nav className={styles.navigation}>
               <ul>
-                
                 <li className={styles.nested}>
                   <a href="/invoices">Imported Innvoices</a>
                   <img className={showSubMenu ?styles.icon : styles.icon_open} src={down} onClick={() => handleDropDown()} />

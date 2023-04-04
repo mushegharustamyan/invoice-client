@@ -4,12 +4,11 @@ import styles from "./styles.module.css"
 interface IProps {
   data: IDocument
   columnsCount: number
-  columns: string[]
   showDepartment: boolean
   showStatus: boolean
 } 
 
-export const InvoiceCard:React.FC<IProps> = ({data , columnsCount, columns, showStatus, showDepartment}) => {
+export const Card:React.FC<IProps> = ({data , columnsCount, showStatus, showDepartment}) => {
   const {invoiceCode , company , department , status , price} = data  
 
   let width = 100 / columnsCount + 1
