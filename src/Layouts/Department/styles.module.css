@@ -1,0 +1,84 @@
+.layout {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.menu {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #063970;
+}
+
+.wrapper {
+  width: 80%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.navigation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.navigation ul{
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.navigation ul li {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.navigation a {
+  font-size: 20px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.nested_list {
+  margin-left: 10px;
+}
+
+.icon {
+  width: 24px;
+  height: auto;
+  rotate: 180deg;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.icon_open {
+  width: 24px;
+  height: fit-content;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.nested {
+  display: flex;
+  gap: 10px;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+}

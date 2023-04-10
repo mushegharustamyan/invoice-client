@@ -12,7 +12,7 @@ export function* invoiceWorker(): Generator<unknown> {
 }
 
 export function* filterInvoicesWorker(action: {
-  payload: { action: { payload: string } };
+  payload: { action: { payload: string[] } };
   type: string;
 }): Generator<any> {
   const target = action.payload.action.payload;

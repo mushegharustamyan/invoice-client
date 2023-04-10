@@ -1,0 +1,15 @@
+.list {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.list a {
+  font-size: 20px;
+  text-decoration: none;
+  color: #fff;
+}

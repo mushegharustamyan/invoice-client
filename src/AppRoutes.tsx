@@ -1,5 +1,6 @@
 import { BrowserRouter , Routes , Route } from "react-router-dom";
 import { LeftMenu } from "./Layouts/LeftMenu/LeftMenu";
+import { Menu } from "./Layouts/Department/Menu";
 import { InvoicesPage } from "./Pages/Documents/InvoicesPage";
 
 export const AppRouter = () => {
@@ -8,13 +9,15 @@ export const AppRouter = () => {
   const notMatchedInvoicesColumns = ["Invoice Code" , "Price" , "Company"]
   const underClarficationInvoicesColumns = ["Invoice Code" , "Price" , "Company"]
 
+  const departmentPageColumns = ["Invoice Code" , "Price" , "Company" , "Status"]
+
   return (
     <BrowserRouter>
       <Routes>
 
         {/* Invoice Pages */}
 
-        <Route element={<LeftMenu />}>
+        <Route element={<LeftMenu/>}>
           <Route path="/invoices" element={
             <InvoicesPage 
               showDepartment={true} 
@@ -27,7 +30,7 @@ export const AppRouter = () => {
               showDepartment={true} 
               showStatus={true} 
               columns={matchedInvoicesColumns} 
-              filterBy="error"
+              filterBy={["error"]}
               title="Error Invoices"/>}
             />
           <Route path="/invoices/signed" element={
@@ -35,7 +38,7 @@ export const AppRouter = () => {
               showDepartment={true} 
               showStatus={true} 
               columns={matchedInvoicesColumns} 
-              filterBy="signed"
+              filterBy={["signed"]}
               title="Signed Invoices"/>}
             />
           <Route path="/invoices/not-matched" element={
@@ -43,7 +46,7 @@ export const AppRouter = () => {
               showDepartment={false} 
               showStatus={false} 
               title="Not Matched Invoices" 
-              filterBy="not-matched"
+              filterBy={["not-matched"]}
               columns={notMatchedInvoicesColumns}/>}
             />
           <Route path="/invoices/matched" element={
@@ -51,17 +54,53 @@ export const AppRouter = () => {
               showDepartment={true} 
               showStatus={false} 
               title="Matched Invoices" 
-              filterBy="matched"
+              filterBy={["matched"]}
               columns={matchedInvoicesColumns}/>} />
           <Route path="/invoices/under-clarification" element={
             <InvoicesPage 
               showDepartment={false}
               showStatus={false} 
               title="Under Clarificiation Invoices"
-              filterBy="under-clarification" 
+              filterBy={["under-clarification" ]}
               columns={underClarficationInvoicesColumns}/>} 
             />
         </Route> 
+
+        
+        <Route element={<Menu />}>
+            <Route path="/department" element={
+              <InvoicesPage 
+              showDepartment={false}
+              showStatus={true} 
+              title="All Invoices"
+              filterBy={["matched" , "signed"]}
+              columns={departmentPageColumns}/>
+            }/>
+            <Route path="/department/approved" element={
+              <InvoicesPage 
+              showDepartment={false}
+              showStatus={false} 
+              title="Approved"
+              filterBy={["signed"]}
+              columns={underClarficationInvoicesColumns}/>
+            }/>
+            <Route path="/department/in-progress" element={
+              <InvoicesPage 
+              showDepartment={false}
+              showStatus={false} 
+              title="In Progress"
+              filterBy={["matched"]}
+              columns={underClarficationInvoicesColumns}/>
+            }/>
+            <Route path="/department/tickets" element={
+              <InvoicesPage 
+              showDepartment={false}
+              showStatus={false} 
+              title="In Progress"
+              filterBy={["matched"]}
+              columns={underClarficationInvoicesColumns}/>
+            }/>
+        </Route>
       </Routes>
     </BrowserRouter>
   )

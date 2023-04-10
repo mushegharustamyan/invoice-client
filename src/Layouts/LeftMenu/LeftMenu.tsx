@@ -2,19 +2,21 @@ import { useState } from "react"
 import { Outlet } from "react-router"
 import styles from "./styles.module.css"
 import down from "../../assets/img/down-sign.png"
-import { useDispatch } from "react-redux"
 
-interface IRoute {
-  title: string,
-  path: string,
-  action?: () => void
-  getInvoices?: () => void
-  subMenu?: IRoute[]
-}
+// interface IRoute {
+//   title: string,
+//   path: string,
+//   action?: () => void
+//   getInvoices?: () => void
+//   subMenu?: IRoute[]
+// }
+
+// interface IProps {
+//   routes: IRoute[]
+// }
 
 
 export const LeftMenu = () => {
-  const dispatch = useDispatch()
   const [showSubMenu,setShowSubMenu]= useState(false)
   
   const handleDropDown = () => {
@@ -29,7 +31,7 @@ export const LeftMenu = () => {
               <ul>
                 <li className={styles.nested}>
                   <a href="/invoices">Imported Innvoices</a>
-                  <img className={showSubMenu ?styles.icon : styles.icon_open} src={down} onClick={() => handleDropDown()} />
+                  <img className={showSubMenu ?styles.icon : styles.icon_open} alt="dropdown" src={down} onClick={() => handleDropDown()} />
                 </li>
                 {showSubMenu? 
                 <ul className={styles.nested_list}>
@@ -52,6 +54,7 @@ export const LeftMenu = () => {
                   <a href="/invoices/signed">Signed Invoices</a>
                 </li>
               </ul>
+            
             </nav>
           </div>
         </div>

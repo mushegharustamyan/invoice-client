@@ -19,8 +19,8 @@ export const Card:React.FC<IProps> = ({data , columnsCount, showStatus, showDepa
           <p style={{width: `${width}%`}}>{invoiceCode}</p>
           <p style={{width: `${width}%`}}>{price}</p>
           <p style={{width: `${width}%`}}>{company}</p>
-          {showStatus? <p style={{width: `${width}%`}}>{status}</p>: null}
-          {showDepartment? <p style={{width: `${width}%`}}>{department}</p>: null}
+          {showStatus && <p style={{width: `${width}%`}}>{status}</p>}
+          {showDepartment && <p style={{width: `${width}%`}}>{department}</p>}
           <a href="#" className={styles.details} style={{width: `${width}%`}}>Details</a>
       </div>
     </div> 

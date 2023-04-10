@@ -31,6 +31,13 @@ export const invoices: IDocument[] = [
     company: "Company Name",
     status: "under-clarification",
   },
+  {
+    id: 5,
+    invoiceCode: "C45",
+    price: 5000,
+    company: "Company Name",
+    status: "signed",
+  },
 ];
 
 export const getAllInvoices = () => {
@@ -39,9 +46,15 @@ export const getAllInvoices = () => {
   });
 };
 
-export const filterInvoices = (target: string) => {
+export const filterInvoices = (target: string[]) => {
   return new Promise((resolve, reject) => {
-    const result = invoices.filter((value) => value.status === target);
+    let result: IDocument[] = [];
+
+    target.forEach((val) => {
+      let data = invoices.filter((value) => value.status === val);
+      result = [...result, ...data];
+    });
+
     resolve(result);
   });
 };
