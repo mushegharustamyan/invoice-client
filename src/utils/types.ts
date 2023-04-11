@@ -13,6 +13,12 @@ export interface IDocument {
   department?: string;
 }
 
+export interface ITicket {
+  [key: string]: any;
+  id: number;
+  description: string;
+}
+
 export interface IRawData {
   title: string;
   field: string;

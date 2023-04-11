@@ -3,6 +3,7 @@ import { LeftMenu } from "./Layouts/LeftMenu/LeftMenu";
 import { Menu } from "./Layouts/Department/Menu";
 import { InvoicesPage } from "./Pages/Documents/InvoicesPage";
 import { invoicesRoutes , departmentInvoicesRoutes } from "./routes";
+import { TicketsPage } from "./Pages/Tickets/TicketsPage";
 
 export const AppRouter = () => {
   return (
@@ -31,6 +32,7 @@ export const AppRouter = () => {
               )
             })
           }
+          <Route path="/department/tickets" element={<TicketsPage title="Tickets"/>} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,30 @@
+.cards {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  padding-left: 40px;
+  padding-bottom: 40px;
+  overflow-y: scroll;
+}
+
+.page_title {
+  font-size: 36px;
+  color: #063970;
+}
+
+.wrapper {
+  margin-top: 50px;
+  width: 70%;
+  height: fit-content;
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  flex-direction: column;
+}
+
+.make {
+  display: flex;
+  gap: 40px;
+}
+
+

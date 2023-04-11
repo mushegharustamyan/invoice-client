@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { stat } from "fs";
 import { IDocument } from "../../utils/types";
 
 interface IState {

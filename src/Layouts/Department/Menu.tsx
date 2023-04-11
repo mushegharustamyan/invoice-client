@@ -1,5 +1,6 @@
 import { Outlet } from "react-router"
 import styles from "./styles.module.css"
+import { Link } from "react-router-dom"
 
 export const Menu = () => {
   return (
@@ -9,19 +10,19 @@ export const Menu = () => {
             <nav className={styles.navigation}>
               <ul>
                 <li>
-                  <a href="/department">Imported Invoices</a>
+                  <Link to="/department">Imported Invoices</Link>
                 </li>
                 <li>
-                  <a href="/department/approved">Approved Invoices</a>
+                  <Link to="/department/approved">Approved Invoices</Link>
                 </li>
                 <li>
-                  <a href="/department/in-progress">In Progress Invoices</a>
+                  <Link to="/department/in-progress">In Progress Invoices</Link>
                 </li>
               </ul>
               <div className={styles.line}></div>
               <ul>
                 <li>
-                  <a href="/department/tickets">Tickets</a>
+                  <Link to="/department/tickets">Tickets</Link>
                 </li>
               </ul>
             </nav>

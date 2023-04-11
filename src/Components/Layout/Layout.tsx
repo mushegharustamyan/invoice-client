@@ -4,7 +4,7 @@ import styles from "./styles.module.css"
 
 interface IProps {
   columns: IRawData[]
-  data: IDocument[]
+  data: any[]
 }
 
 export const Layout = ({columns , data }: IProps) => {
@@ -18,8 +18,6 @@ export const Layout = ({columns , data }: IProps) => {
       }
     })
   })
-
-  console.log(columns)
 
   return <div className={styles.layout}>
     <div className={styles.wrapper}>
@@ -38,7 +36,7 @@ export const Layout = ({columns , data }: IProps) => {
             return <Card data={value} columnsCount={columns.length}/>
           })
         }
-      </div> : <p className={styles.message}>There is no Invoices</p>
+      </div> : <p className={styles.message}>There is no Data</p>
       }
     </div>
   </div>
