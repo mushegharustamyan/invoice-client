@@ -1,27 +1,27 @@
-import { IDocument } from "../../utils/types"
+import { Link } from "react-router-dom";
+import { IDocument, IRawData } from "../../utils/types"
 import styles from "./styles.module.css"
 
 interface IProps {
-  data: IDocument
+  data: {
+    field: string;
+    data: any;
+  }[]
   columnsCount: number
-  showDepartment: boolean
-  showStatus: boolean
 } 
 
-export const Card:React.FC<IProps> = ({data , columnsCount, showStatus, showDepartment}) => {
-  const {invoiceCode , company , department , status , price} = data  
-
+export const Card:React.FC<IProps> = ({data , columnsCount}) => { 
   let width = 100 / columnsCount + 1
-
+  console.log(data)
   return (
     <div className={styles.card}>
       <div className={styles.wrapper}>
-          <p style={{width: `${width}%`}}>{invoiceCode}</p>
-          <p style={{width: `${width}%`}}>{price}</p>
-          <p style={{width: `${width}%`}}>{company}</p>
-          {showStatus && <p style={{width: `${width}%`}}>{status}</p>}
-          {showDepartment && <p style={{width: `${width}%`}}>{department}</p>}
-          <a href="#" className={styles.details} style={{width: `${width}%`}}>Details</a>
+          {
+            data.map((value) => {
+              return <p style={{width:`${width}%`}}>{value.data}</p>
+            }) 
+          }
+          <Link to="/" style={{width:`${width}%`}}>Details</Link>
       </div>
     </div> 
   )

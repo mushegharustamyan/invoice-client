@@ -2,19 +2,7 @@ import { useState } from "react"
 import { Outlet } from "react-router"
 import styles from "./styles.module.css"
 import down from "../../assets/img/down-sign.png"
-
-// interface IRoute {
-//   title: string,
-//   path: string,
-//   action?: () => void
-//   getInvoices?: () => void
-//   subMenu?: IRoute[]
-// }
-
-// interface IProps {
-//   routes: IRoute[]
-// }
-
+import { Link } from "react-router-dom"
 
 export const LeftMenu = () => {
   const [showSubMenu,setShowSubMenu]= useState(false)
@@ -30,31 +18,30 @@ export const LeftMenu = () => {
             <nav className={styles.navigation}>
               <ul>
                 <li className={styles.nested}>
-                  <a href="/invoices">Imported Innvoices</a>
+                  <Link to="/invoices">Imported Innvoices</Link>
                   <img className={showSubMenu ?styles.icon : styles.icon_open} alt="dropdown" src={down} onClick={() => handleDropDown()} />
                 </li>
                 {showSubMenu? 
                 <ul className={styles.nested_list}>
                   <li>
-                    <a href="/invoices/matched">Matched</a>
+                    <Link to="/invoices/matched">Matched</Link>
                   </li>
                   <li>
-                    <a href="/invoices/not-matched">Not Matched</a>
+                    <Link to="/invoices/not-matched">Not Matched</Link>
                   </li>
                   <li>
-                    <a href="/invoices/under-clarification">Under Clarification</a>
+                    <Link to="/invoices/under-clarification">Under Clarification</Link>
                   </li>
                 </ul>
                 : null
                 }
                 <li>
-                  <a href="/invoices/errors">Error Invoices</a>
+                  <Link to="/invoices/errors">Error Invoices</Link>
                 </li>
                 <li>
-                  <a href="/invoices/signed">Signed Invoices</a>
+                  <Link to="/invoices/signed">Signed Invoices</Link>
                 </li>
               </ul>
-            
             </nav>
           </div>
         </div>

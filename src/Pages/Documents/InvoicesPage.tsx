@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import { IDocument } from "../../utils/types"
+import { IDocument, IRawData } from "../../utils/types"
 
 import { SearchPanel } from "../../Components/SearchPanel/SearchPanel"
 
@@ -14,13 +14,11 @@ import { Layout } from "../../Components/Layout/Layout"
 
 interface IProps {
   title: string
-  columns: string[]
-  showDepartment: boolean
-  showStatus: boolean
+  columns: IRawData[]
   filterBy?: string[]
 }
 
-export const InvoicesPage = ({title , columns , showDepartment , showStatus, filterBy}: IProps) => {
+export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
   const dispatch = useDispatch()
   
   useEffect(() => {
@@ -40,7 +38,7 @@ export const InvoicesPage = ({title , columns , showDepartment , showStatus, fil
         <div className={styles.panel}>
           <SearchPanel  icon={down}/>
         </div>
-        <Layout data={data} showDepartment={showDepartment} showStatus={showStatus} columns={columns}/>
+        <Layout data={data} columns={columns}/>
       </div>
     </div>
   )

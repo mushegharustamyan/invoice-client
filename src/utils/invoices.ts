@@ -40,6 +40,12 @@ export const invoices: IDocument[] = [
   },
 ];
 
+const invoicesRoutes = [
+  {
+    title: "Imported Invoices",
+  },
+];
+
 export const getAllInvoices = () => {
   return new Promise((resolve, reject) => {
     resolve(invoices);
