@@ -31,3 +31,9 @@ export interface IInvoicesRoutes {
   columns: IRawData[];
   filterBy?: string[];
 }
+
+export interface INavigation {
+  title: string;
+  path: string;
+  subMenu?: INavigation[];
+}

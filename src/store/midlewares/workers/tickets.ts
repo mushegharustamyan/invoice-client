@@ -1,5 +1,5 @@
-import { takeEvery, call, put } from "redux-saga/effects";
-import { addTicket, getAllTickets } from "../../../utils/ticket";
+import { call, put } from "redux-saga/effects";
+import { addTicket, getAllTickets } from "../../../utils/tickets/service";
 import { getTicketsSuccessed } from "../../reducers/ticketSlice";
 
 export function* ticketWorker(): Generator<unknown> {

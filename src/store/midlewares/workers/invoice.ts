@@ -1,6 +1,6 @@
-import { filterInvoices } from "../../../utils/invoices";
+import { filterInvoices } from "../../../utils/invoices/service";
 import { call, put } from "redux-saga/effects";
-import { getAllInvoices } from "../../../utils/invoices";
+import { getAllInvoices } from "../../../utils/invoices/service";
 import {
   filterInvoicesSuccessed,
   getAllInvoicesSuccessed,

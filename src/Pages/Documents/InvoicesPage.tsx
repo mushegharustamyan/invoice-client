@@ -23,11 +23,15 @@ export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
   
   useEffect(() => {
     dispatch(getInvoices())
+  } , [])
+
+  useEffect(() => {
+    dispatch(getInvoices())
 
     if(filterBy) {
       dispatch(filterInvoices({action:{ payload: filterBy}}))
     }
-  } , [])
+  } , [title])
 
   let data = useSelector<RootState>(state => state.invoiceReducer.data) as IDocument[]
 

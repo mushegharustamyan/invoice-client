@@ -1,77 +1,11 @@
-import { IRawData } from "./utils/types";
-import { IInvoicesRoutes } from "./utils/types";
-
-const allInvoicesColumns: IRawData[] = [
-  {
-    title: "Invoice Code",
-    field: "invoiceCode",
-  },
-  {
-    title: "Price",
-    field: "price",
-  },
-  {
-    title: "Company",
-    field: "company",
-  },
-  {
-    title: "Status",
-    field: "status",
-  },
-  {
-    title: "Department",
-    field: "department",
-  },
-];
-
-const matchedInvoicesColumns: IRawData[] = [
-  {
-    title: "Invoice Code",
-    field: "invoiceCode",
-  },
-  {
-    title: "Price",
-    field: "price",
-  },
-  {
-    title: "Company",
-    field: "company",
-  },
-  {
-    title: "Department",
-    field: "department",
-  },
-];
-
-const notMatchedInvoicesColumns = [
-  {
-    title: "Invoice Code",
-    field: "invoiceCode",
-  },
-  {
-    title: "Price",
-    field: "price",
-  },
-  {
-    title: "Company",
-    field: "company",
-  },
-];
-
-const underClarficationInvoicesColumns = [
-  {
-    title: "Invoice Code",
-    field: "invoiceCode",
-  },
-  {
-    title: "Price",
-    field: "price",
-  },
-  {
-    title: "Company",
-    field: "company",
-  },
-];
+import { IRawData } from "../utils/types";
+import { IInvoicesRoutes } from "../utils/types";
+import {
+  allInvoicesColumns,
+  matchedInvoicesColumns,
+  notMatchedInvoicesColumns,
+  underClarficationInvoicesColumns,
+} from "../utils/invoices/data";
 
 export const invoicesRoutes: IInvoicesRoutes[] = [
   {

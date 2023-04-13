@@ -12,13 +12,12 @@ interface IProps {
 
 export const Card:React.FC<IProps> = ({data , columnsCount}) => { 
   let width = 100 / columnsCount + 1
-  console.log(data)
   return (
     <div className={styles.card}>
       <div className={styles.wrapper}>
           {
-            data.map((value) => {
-              return <p style={{width:`${width}%`}}>{value.data}</p>
+            data.map((value , index) => {
+              return <p key={index} style={{width:`${width}%`}}>{value.data}</p>
             }) 
           }
           <Link to="/" style={{width:`${width}%`}}>Details</Link>

@@ -24,7 +24,7 @@ export const Layout = ({columns , data }: IProps) => {
       <div className={styles.head}>
         <div className={styles.head_wrapper}>
           {
-            columns.map((value) => <p style={{width: `${columnWidth}%`}}>{value.title}</p>)
+            columns.map((value , index) => <p key={index} style={{width: `${columnWidth}%`}}>{value.title}</p>)
           }
           <p style={{width: `${columnWidth}%`}}></p>
         </div>
@@ -32,8 +32,8 @@ export const Layout = ({columns , data }: IProps) => {
       {
         data[0] ? <div className={styles.body}>
         {
-          shownData.map((value) => {
-            return <Card data={value} columnsCount={columns.length}/>
+          shownData.map((value, index) => {
+            return <Card data={value} columnsCount={columns.length} key={index}/>
           })
         }
       </div> : <p className={styles.message}>There is no Data</p>
