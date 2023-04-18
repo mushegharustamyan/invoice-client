@@ -1,10 +1,13 @@
-import React, { ChangeEvent , useState } from "react"
+import React, { useState } from "react"
 import { Input } from "../TextInput/TextInput"
 import styles from "./styles.module.css"
 import { DatePicker } from "../DatePicker/DatePicker"
 import { Button } from "../Button/Button"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { getInvoices } from "../../store/reducers/invoiceSlice"
+import { Select } from "../Select/Select"
+import { RootState } from "../.."
+import { IDocument } from "../../utils/types"
 
 interface IProps {
   icon: string,
@@ -28,6 +31,19 @@ export const SearchPanel = ({icon , startDate , endDate , changeEndDate , change
     dispatch(getInvoices({action:{ payload: {dates: {startDate , endDate}}}}))
   }
 
+  const data = useSelector<RootState>(state => state.invoiceReducer.data) as IDocument[]
+  const companies = data.map((value) => {
+    return value.company
+  })
+
+  const optionsSet = new Set()
+
+  companies.forEach((value) => {
+    optionsSet.add(value)
+  })
+
+  const selectOptions = Array.from(optionsSet) as string[]
+
   return <div className={styles.panel}>
     <div className={styles.head}>
       <div className={styles.search_line}>
@@ -44,9 +60,10 @@ export const SearchPanel = ({icon , startDate , endDate , changeEndDate , change
             <div className={styles.filters_container}>
               <form className={styles.dates}>
                 <DatePicker changeEndDate={changeEndDate} changeStartDate={changeStartDate} resetDates={resetDates}/>
-              </form>
+              </form> 
             </div> 
             : null
         }
+      
   </div>
 }

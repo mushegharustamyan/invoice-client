@@ -30,3 +30,57 @@ export const getAllInvoices = ({ fields, dates }: IInvoiceFilters) => {
     resolve(result);
   });
 };
+
+// const filterByDate = (startDate: string , endDate: string) => {
+
+// }
+
+export const getCompanies = () => {
+  const companies = invoices.map((value) => {
+    return value.company;
+  });
+
+  const companiesSet = new Set();
+
+  companies.forEach((value) => {
+    companiesSet.add(value);
+  });
+
+  return Array.from(companiesSet);
+};
+
+export const getDepartments = () => {
+  const departments = invoices.map((value) => {
+    return value.department;
+  });
+
+  const departmentsSet = new Set();
+
+  departments.forEach((value) => {
+    if (value) departmentsSet.add(value);
+  });
+
+  return Array.from(departmentsSet);
+};
+
+export const getAmounts = () => {
+  const amounts = invoices.map((value) => {
+    return value.amount;
+  });
+
+  const amountsSet = new Set();
+
+  amounts.forEach((value) => {
+    amountsSet.add(value);
+  });
+
+  return Array.from(amountsSet);
+};
+
+export const statuses = [
+  "matched",
+  "not-matched",
+  "under-clarification",
+  "signed",
+  "error",
+];

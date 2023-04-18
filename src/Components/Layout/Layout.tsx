@@ -24,7 +24,13 @@ export const Layout = ({columns , data }: IProps) => {
       <div className={styles.head}>
         <div className={styles.head_wrapper}>
           {
-            columns.map((value , index) => <p key={index} style={{width: `${columnWidth}%`}}>{value.title}</p>)
+            columns.map((value , index) => {
+              if(value.render) {
+                return <p key={index} style={{width: `${columnWidth}%`}}>{value.render()}</p>
+              }
+
+              return <p key={index} style={{width: `${columnWidth}%`}}>{value.title}</p>
+            })
           }
           <p style={{width: `${columnWidth}%`}}></p>
         </div>
