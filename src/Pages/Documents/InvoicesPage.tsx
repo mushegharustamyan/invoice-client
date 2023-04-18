@@ -20,8 +20,6 @@ interface IProps {
 
 export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
   const dispatch = useDispatch()
-
-  console.log(filterBy)
   
   const [startDate , setStartDate] = useState("")
   const [endDate , setEndDate] = useState("")

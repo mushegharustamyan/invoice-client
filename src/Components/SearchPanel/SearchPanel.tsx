@@ -43,9 +43,7 @@ export const SearchPanel = ({icon , startDate , endDate , changeEndDate , change
             showFilters? 
             <div className={styles.filters_container}>
               <form className={styles.dates}>
-                <input type="date" onChange={(e) => changeEndDate(e)} className={styles.input}/>
-                <input type="date" onChange={(e) => changeStartDate(e)} className={styles.input}/>
-                <input type="reset" value="Reset" onClick={(e) => resetDates(e)} className={styles.reset}/>
+                <DatePicker changeEndDate={changeEndDate} changeStartDate={changeStartDate} resetDates={resetDates}/>
               </form>
             </div> 
             : null
