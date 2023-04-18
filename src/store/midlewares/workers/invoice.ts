@@ -1,21 +1,14 @@
-import { filterInvoices } from "../../../utils/invoices/service";
 import { call, put } from "redux-saga/effects";
 import { getAllInvoices } from "../../../utils/invoices/service";
-import {
-  filterInvoicesSuccessed,
-  getAllInvoicesSuccessed,
-} from "../../reducers/invoiceSlice";
+import { getAllInvoicesSuccessed } from "../../reducers/invoiceSlice";
 
-export function* invoiceWorker(): Generator<unknown> {
-  const result = yield call(() => getAllInvoices());
-  yield put(getAllInvoicesSuccessed(result));
-}
+import { IInvoiceFilters } from "../../../utils/types";
 
-export function* filterInvoicesWorker(action: {
-  payload: { action: { payload: string[] } };
+export function* invoiceWorker(action: {
+  payload: { action: { payload: IInvoiceFilters } };
   type: string;
-}): Generator<any> {
+}): Generator<unknown> {
   const target = action.payload.action.payload;
-  const result = yield call(() => filterInvoices(target));
-  yield put(filterInvoicesSuccessed(result));
+  const result = yield call(() => getAllInvoices(target));
+  yield put(getAllInvoicesSuccessed(result));
 }

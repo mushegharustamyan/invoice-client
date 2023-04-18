@@ -1,7 +1,10 @@
 /// <reference types="react-scripts" />
+
+import { Ref } from "react";
+
 declare module "*.module.css";
 declare namespace JSX {
   interface IntrinsicElements {
-    myCustomComponent: { menuItem: string };
+    t: { menuItem: string; ref?: React.RefObject<HTMLInputElement> };
   }
 }

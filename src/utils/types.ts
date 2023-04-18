@@ -1,16 +1,19 @@
+type InvoiceStatus =
+  | "matched"
+  | "not-matched"
+  | "under-clarification"
+  | "signed"
+  | "error";
+
 export interface IDocument {
   [key: string]: any;
   id: number;
   invoiceCode: string;
   company: string;
-  price: number;
-  status:
-    | "matched"
-    | "not-matched"
-    | "under-clarification"
-    | "signed"
-    | "error";
-  department?: string;
+  amount: number;
+  status: InvoiceStatus;
+  department: string | null;
+  date: string;
 }
 
 export interface ITicket {
@@ -36,4 +39,12 @@ export interface INavigation {
   title: string;
   path: string;
   subMenu?: INavigation[];
+}
+
+export interface IInvoiceFilters {
+  fields?: string[];
+  dates?: {
+    startDate: string;
+    endDate: string;
+  };
 }

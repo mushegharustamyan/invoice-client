@@ -13,12 +13,7 @@ const invoiceSlice = createSlice({
   name: "invoice",
   initialState,
   reducers: {
-    filterInvoices: (state, action) => {},
-    filterInvoicesSuccessed: (state, action) => {
-      const target = action.payload;
-      state.data = target;
-    },
-    getInvoices: () => {},
+    getInvoices: (state, action) => {},
     getAllInvoicesSuccessed: (state, action) => {
       const payload = action.payload;
       state.data = [...payload];
@@ -28,9 +23,4 @@ const invoiceSlice = createSlice({
 
 export default invoiceSlice.reducer;
 
-export const {
-  getInvoices,
-  getAllInvoicesSuccessed,
-  filterInvoices,
-  filterInvoicesSuccessed,
-} = invoiceSlice.actions;
+export const { getInvoices, getAllInvoicesSuccessed } = invoiceSlice.actions;

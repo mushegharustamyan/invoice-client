@@ -1,21 +1,39 @@
-import { useState } from "react"
+import React, { ChangeEvent , useState } from "react"
 import { Input } from "../TextInput/TextInput"
 import styles from "./styles.module.css"
+import { DatePicker } from "../DatePicker/DatePicker"
+import { Button } from "../Button/Button"
+import { useDispatch } from "react-redux"
+import { getInvoices } from "../../store/reducers/invoiceSlice"
 
 interface IProps {
-  icon: string
+  icon: string,
+  startDate : string
+  endDate: string
+  changeStartDate: (e: React.ChangeEvent<HTMLInputElement>) => void
+  changeEndDate: (e: React.ChangeEvent<HTMLInputElement>) => void
+  resetDates: (e: React.MouseEvent<HTMLInputElement>) => void
 }
 
-export const SearchPanel = ({icon} : IProps) => {
+export const SearchPanel = ({icon , startDate , endDate , changeEndDate , changeStartDate, resetDates} : IProps) => {
+  const dispatch = useDispatch()
+
   const [showFilters , setShowFilters] = useState(false)
 
   const handleDropDown = () => {
     setShowFilters(!showFilters)
   }
 
+  const searchInvoice = () => {
+    dispatch(getInvoices({action:{ payload: {dates: {startDate , endDate}}}}))
+  }
+
   return <div className={styles.panel}>
     <div className={styles.head}>
-      <Input width={600} text="Search"/>
+      <div className={styles.search_line}>
+        <Input width={600} text="Search"/>
+        <Button width={150} action={searchInvoice} text="Search"/>
+      </div>
       <div className={styles.filters}>
           <p>Filters</p>
           <img src={icon} className={showFilters ? styles.icon : styles.icon_open} onClick={() => handleDropDown()}/>
@@ -24,9 +42,11 @@ export const SearchPanel = ({icon} : IProps) => {
         {
             showFilters? 
             <div className={styles.filters_container}>
-              <div>
-                
-              </div>
+              <form className={styles.dates}>
+                <input type="date" onChange={(e) => changeEndDate(e)} className={styles.input}/>
+                <input type="date" onChange={(e) => changeStartDate(e)} className={styles.input}/>
+                <input type="reset" value="Reset" onClick={(e) => resetDates(e)} className={styles.reset}/>
+              </form>
             </div> 
             : null
         }

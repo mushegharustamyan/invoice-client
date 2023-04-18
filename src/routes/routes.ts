@@ -1,4 +1,3 @@
-import { IRawData } from "../utils/types";
 import { IInvoicesRoutes } from "../utils/types";
 import {
   allInvoicesColumns,
@@ -12,6 +11,7 @@ export const invoicesRoutes: IInvoicesRoutes[] = [
     path: "/invoices",
     title: "Imported Invoices",
     columns: allInvoicesColumns,
+    filterBy: [],
   },
   {
     path: "/invoices/matched",
@@ -42,6 +42,12 @@ export const invoicesRoutes: IInvoicesRoutes[] = [
     title: "Signed Invoices",
     columns: matchedInvoicesColumns,
     filterBy: ["signed"],
+  },
+  {
+    path: "/invoices/in-progress",
+    title: "In Progress Invoices",
+    columns: matchedInvoicesColumns,
+    filterBy: ["not-matched", "under-clarification"],
   },
 ];
 
