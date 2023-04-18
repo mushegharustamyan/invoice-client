@@ -11,6 +11,7 @@ import { RootState } from "../.."
 import styles from "./styles.module.css"
 import down from "../../assets/img/down-icon-blue.png"
 import { Layout } from "../../Components/Layout/Layout"
+import { SearchAbleSelect } from "../../Components/SearchAbleSelect/SearchAbleSelect"
 
 interface IProps {
   title: string
@@ -49,6 +50,7 @@ export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
 
   return (
     <div className={styles.cards}>
+      <SearchAbleSelect />
       <div className={styles.wrapper}>
         <p className={styles.page_title}>{title}</p>
         <div className={styles.panel}>
