@@ -47,4 +47,9 @@ export interface IInvoiceFilters {
     startDate: string;
     endDate: string;
   };
+  filteration?: {
+    field: string;
+    value: string;
+  };
+  text?: string;
 }

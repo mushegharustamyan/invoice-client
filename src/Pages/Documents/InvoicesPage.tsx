@@ -50,7 +50,6 @@ export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
 
   return (
     <div className={styles.cards}>
-      <SearchAbleSelect />
       <div className={styles.wrapper}>
         <p className={styles.page_title}>{title}</p>
         <div className={styles.panel}>

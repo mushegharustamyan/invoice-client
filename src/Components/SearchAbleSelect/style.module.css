@@ -1,0 +1,47 @@
+.select {
+  width: 80%;
+}
+
+.options {
+  width: 250px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background-color: #fff;
+  border: 1px solid #063970
+}
+
+.wrapper {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.options_list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.head {
+  display: flex;
+  gap: 10px;
+}
+
+.icon {
+  width: 24px;
+  height: auto;
+}
+
+.input {
+  height: 30px;
+  border: none;
+  border: 1px solid #063970;
+  margin: 10px 0 10px 0;
+}

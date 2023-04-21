@@ -2,8 +2,12 @@ import { invoices } from "./data";
 import { IDocument } from "../types";
 import { IInvoiceFilters } from "../types";
 
-export const getAllInvoices = ({ fields, dates }: IInvoiceFilters) => {
-  return new Promise((resolve, reject) => {
+export const getAllInvoices = ({
+  fields,
+  dates,
+  filteration,
+}: IInvoiceFilters) => {
+  return new Promise((resolve) => {
     let result: IDocument[] = [];
 
     if (fields && fields[0]) {
@@ -23,17 +27,18 @@ export const getAllInvoices = ({ fields, dates }: IInvoiceFilters) => {
         return invoiceDate >= startDate && invoiceDate <= endDate;
       });
     } else if (!(fields && fields[0])) {
-      console.log(fields);
       result = invoices;
+    }
+
+    if (filteration) {
+      result = result.filter((value) => {
+        return value[filteration.field] === filteration.value;
+      });
     }
 
     resolve(result);
   });
 };
-
-// const filterByDate = (startDate: string , endDate: string) => {
-
-// }
 
 export const getCompanies = () => {
   const companies = invoices.map((value) => {
