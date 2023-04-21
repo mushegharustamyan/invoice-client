@@ -42,9 +42,11 @@ export interface INavigation {
 }
 
 export interface IInvoiceFilters {
+  [key: string]: any;
   fields?: string[];
-  startDate?: string
-  endDate?: string
-  field?: string
-  value?: string
+  dates?: {
+    startDate?: string,
+    endDate?: string
+  }
+  filterBy?: {field: string , value: string}[]
 }

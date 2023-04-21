@@ -9,8 +9,7 @@ export const DatePicker = () => {
   const dispatch = useDispatch()
 
   const resetDates = () => {
-    dispatch(changeFillters({field: "startDate" , data: ""}))
-    dispatch(changeFillters({field: "endDate" , data: ""}))
+    dispatch(changeFillters({field: "dates" , data: {startDate: "" , endDate: ""}}))
   }
 
   return (

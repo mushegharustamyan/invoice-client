@@ -8,7 +8,7 @@ const invoisFilltersSlice = createSlice({
     initialState,
     reducers: {
      changeFillters: (state , action: {type: string , payload: {field: string, data: any}}) => {
-        state?[action.payload.field] = action.payload.data : null
+        state[action.payload.field] = action.payload.data 
      }   
     }
 })

@@ -9,8 +9,8 @@ interface IProps {
 export const DateInput = ({field}: IProps) => {
   const dispatch = useDispatch()
 
-  const changeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(changeFillters({field , data: e.target.value}))
+  const changeDate = (e: React.ChangeEvent<HTMLInputElement>) => { 
+    dispatch(changeFillters({field: "dates" , data: {`${type}`: e.target.value}}))
   }
 
   return <input type="date"  className={styles.input} onChange={(e) => changeDate(e)}/>
