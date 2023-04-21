@@ -43,13 +43,8 @@ export interface INavigation {
 
 export interface IInvoiceFilters {
   fields?: string[];
-  dates?: {
-    startDate: string;
-    endDate: string;
-  };
-  filteration?: {
-    field: string;
-    value: string;
-  };
-  text?: string;
+  startDate?: string
+  endDate?: string
+  field?: string
+  value?: string
 }

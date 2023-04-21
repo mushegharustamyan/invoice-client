@@ -1,20 +1,23 @@
 import styles from "./style.module.css"
 import { DateInput } from "../DateInput/DateInput";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { changeFillters } from "../../store/reducers/inVoicesFillterts";
 
-interface IProps {
-  changeStartDate: (e: React.ChangeEvent<HTMLInputElement>) => void
-  changeEndDate: (e: React.ChangeEvent<HTMLInputElement>) => void
-  resetDates: (e: React.MouseEvent<HTMLInputElement>) => void
-}
 
-export const DatePicker = ({changeStartDate, changeEndDate, resetDates}: IProps) => {
+export const DatePicker = () => {
+  const dispatch = useDispatch()
+
+  const resetDates = () => {
+    dispatch(changeFillters({field: "startDate" , data: ""}))
+    dispatch(changeFillters({field: "endDate" , data: ""}))
+  }
 
   return (
     <div className={styles.date}>
-      <DateInput handleChange={changeStartDate}/>
-      <DateInput handleChange={changeEndDate}/>
-      <input type="reset" value="Reset" onClick={(e) => resetDates(e)} className={styles.reset}/>
+      <DateInput field="startDate"/>
+      <DateInput field="endDate"/>
+      <input type="reset" value="Reset"  className={styles.reset} onClick={() => resetDates()}/>
     </div>
   )
 };

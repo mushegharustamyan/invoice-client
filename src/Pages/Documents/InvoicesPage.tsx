@@ -21,22 +21,6 @@ interface IProps {
 
 export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
   const dispatch = useDispatch()
-  
-  const [startDate , setStartDate] = useState("")
-  const [endDate , setEndDate] = useState("")
-
-  const handleChangeStartDate = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setStartDate(e.target.value)
-  }
-  
-  const handleChangeEndDate = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setEndDate(e.target.value)
-  }
-
-  const handleResetDates = (e:React.MouseEvent<HTMLInputElement>) => {
-    setEndDate("")
-    setStartDate("")
-  }
 
   useEffect(() => {
     dispatch(getInvoices({action:{ payload: {fields: {filterBy}}}}))
@@ -53,7 +37,7 @@ export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
       <div className={styles.wrapper}>
         <p className={styles.page_title}>{title}</p>
         <div className={styles.panel}>
-          <SearchPanel  icon={down} startDate={startDate} endDate={endDate} changeEndDate={handleChangeEndDate} changeStartDate={handleChangeStartDate} resetDates={handleResetDates}/>
+          <SearchPanel />
         </div>
         <Layout data={data} columns={columns}/>
       </div>

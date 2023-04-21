@@ -21,7 +21,6 @@ export const SearchAbleSelect = ({title , options} : IProps) => {
   }
 
   const filterOptions = (e:React.ChangeEvent<HTMLInputElement>) => {
-
     let newOptions: string[] = localOptions
 
     if (e.target.value !== "") {
@@ -38,7 +37,7 @@ export const SearchAbleSelect = ({title , options} : IProps) => {
   const dispatch = useDispatch()
 
   const searchInvoices = (field: string , value: string) => {
-    dispatch(getInvoices({action:{payload: {filteration:{field , value}}}}))
+    
   }
 
   return <div className={styles.select}>

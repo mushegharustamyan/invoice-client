@@ -1,9 +1,17 @@
+import { useDispatch } from "react-redux"
+import { changeFillters} from "../../store/reducers/inVoicesFillterts"
 import styles from "./style.module.css"
 
 interface IProps {
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  field: string
 }
 
-export const DateInput = ({handleChange} : IProps) => {
-  return <input type="date" onChange={(e) => handleChange(e)} className={styles.input}/>
+export const DateInput = ({field}: IProps) => {
+  const dispatch = useDispatch()
+
+  const changeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(changeFillters({field , data: e.target.value}))
+  }
+
+  return <input type="date"  className={styles.input} onChange={(e) => changeDate(e)}/>
 }

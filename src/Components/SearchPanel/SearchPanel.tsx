@@ -8,17 +8,9 @@ import { getInvoices } from "../../store/reducers/invoiceSlice"
 import { Select } from "../Select/Select"
 import { RootState } from "../.."
 import { IDocument } from "../../utils/types"
+import down from "../../assets/img/down-icon-blue.png"
 
-interface IProps {
-  icon: string,
-  startDate : string
-  endDate: string
-  changeStartDate: (e: React.ChangeEvent<HTMLInputElement>) => void
-  changeEndDate: (e: React.ChangeEvent<HTMLInputElement>) => void
-  resetDates: (e: React.MouseEvent<HTMLInputElement>) => void
-}
-
-export const SearchPanel = ({icon , startDate , endDate , changeEndDate , changeStartDate, resetDates} : IProps) => {
+export const SearchPanel = () => {
   const dispatch = useDispatch()
 
   const [showFilters , setShowFilters] = useState(false)
@@ -27,9 +19,9 @@ export const SearchPanel = ({icon , startDate , endDate , changeEndDate , change
     setShowFilters(!showFilters)
   }
 
-  const searchInvoice = () => {
-    dispatch(getInvoices({action:{ payload: {dates: {startDate , endDate}}}}))
-  }
+  // const searchInvoice = () => {
+  //   dispatch(getInvoices({action:{ payload: {dates: {startDate , endDate}}}}))
+  // }
 
   const data = useSelector<RootState>(state => state.invoiceReducer.data) as IDocument[]
   const companies = data.map((value) => {
@@ -42,24 +34,27 @@ export const SearchPanel = ({icon , startDate , endDate , changeEndDate , change
     optionsSet.add(value)
   })
 
+  const fillterations = useSelector<RootState>(state => state.invoiceFilltersReducer)
+  console.log(fillterations)
+
   const selectOptions = Array.from(optionsSet) as string[]
 
   return <div className={styles.panel}>
     <div className={styles.head}>
       <div className={styles.search_line}>
         <Input width={600} text="Search"/>
-        <Button width={150} action={searchInvoice} text="Search"/>
+        {/* <Button width={150} action={searchInvoice} text="Search"/> */}
       </div>
       <div className={styles.filters}>
           <p>Filters</p>
-          <img src={icon} className={showFilters ? styles.icon : styles.icon_open} onClick={() => handleDropDown()}/>
+          <img src={down} className={showFilters ? styles.icon : styles.icon_open} onClick={() => handleDropDown()}/>
       </div>
     </div>
         {
             showFilters? 
             <div className={styles.filters_container}>
               <form className={styles.dates}>
-                <DatePicker changeEndDate={changeEndDate} changeStartDate={changeStartDate} resetDates={resetDates}/>
+                <DatePicker />
               </form> 
             </div> 
             : null

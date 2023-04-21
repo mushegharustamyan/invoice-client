@@ -9,7 +9,6 @@ export function* invoiceWorker(action: {
   type: string;
 }): Generator<unknown> {
   const target = action.payload.action.payload;
-  console.log(target);
   const result = yield call(() => getAllInvoices(target));
   yield put(getAllInvoicesSuccessed(result));
 }

@@ -4,8 +4,10 @@ import { IInvoiceFilters } from "../types";
 
 export const getAllInvoices = ({
   fields,
-  dates,
-  filteration,
+  startDate,
+  endDate,
+  field,
+  value
 }: IInvoiceFilters) => {
   return new Promise((resolve) => {
     let result: IDocument[] = [];
@@ -13,32 +15,49 @@ export const getAllInvoices = ({
     if (fields && fields[0]) {
       fields?.forEach((val) => {
         let data = invoices.filter((value) => value.status === val);
-        result = [...result, ...data];
+        result = [...result ,...data]
       });
     } else {
-      result = invoices;
+      result = invoices
     }
 
-    if (dates?.endDate && dates?.startDate) {
-      const startDate = new Date(dates.startDate).getTime();
-      const endDate = new Date(dates.endDate).getTime();
-      result = result.filter((value) => {
-        const invoiceDate = new Date(value.date).getTime();
-        return invoiceDate >= startDate && invoiceDate <= endDate;
-      });
-    } else if (!(fields && fields[0])) {
-      result = invoices;
-    }
+    // if(fillters) {
+    //   if (fillters?.dates?.endDate && fillters?.dates?.startDate) {
+    //     const startDate = new Date(fillters.dates.startDate).getTime();
+    //     const endDate = new Date(fillters.dates.endDate).getTime();
+    //     result = filterInvoicesByDate(startDate , endDate , result)
+    //   }
+    // }
 
-    if (filteration) {
-      result = result.filter((value) => {
-        return value[filteration.field] === filteration.value;
-      });
-    }
+    // if (dates?.endDate && dates?.startDate) {
+      // const startDate = new Date(dates.startDate).getTime();
+      // const endDate = new Date(dates.endDate).getTime();
+      // result = result.filter((value) => {
+      //   const invoiceDate = new Date(value.date).getTime();
+      //   return invoiceDate >= startDate && invoiceDate <= endDate;
+      // });
+    // } else if (!(fields && fields[0])) {
+    //   result = invoices;
+    // }
+
+    // if (filteration) {
+    //   result = result.filter((value) => {
+    //     return value[filteration.field] === filteration.value;
+    //   });
+    // }
 
     resolve(result);
   });
 };
+
+const filterInvoicesByDate = (startDate: number , endDate: number , data: IDocument[]) => {
+  data = data.filter((value) => {
+    const invoiceDate = new Date(value.date).getTime();
+    return invoiceDate >= startDate && invoiceDate <= endDate;
+  });
+
+  return data
+}
 
 export const getCompanies = () => {
   const companies = invoices.map((value) => {
