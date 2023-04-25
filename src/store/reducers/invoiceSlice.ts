@@ -18,9 +18,19 @@ const invoiceSlice = createSlice({
       const payload = action.payload;
       state.data = [...payload];
     },
+    filterInvoices: (state, action) => {},
+    filterInvoicesSuccessed: (state, action) => {
+      const payload = action.payload;
+      state.data = [...payload];
+    },
   },
 });
 
 export default invoiceSlice.reducer;
 
-export const { getInvoices, getAllInvoicesSuccessed } = invoiceSlice.actions;
+export const {
+  getInvoices,
+  getAllInvoicesSuccessed,
+  filterInvoices,
+  filterInvoicesSuccessed,
+} = invoiceSlice.actions;

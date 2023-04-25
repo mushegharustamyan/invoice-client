@@ -4,11 +4,12 @@ import styles from "./styles.module.css"
 import { DatePicker } from "../DatePicker/DatePicker"
 import { Button } from "../Button/Button"
 import { useDispatch, useSelector } from "react-redux"
-import { getInvoices } from "../../store/reducers/invoiceSlice"
+import { filterInvoices, getInvoices } from "../../store/reducers/invoiceSlice"
 import { Select } from "../Select/Select"
 import { RootState } from "../.."
 import { IDocument } from "../../utils/types"
 import down from "../../assets/img/down-icon-blue.png"
+import { ChevronDownIcon, FilterIcon } from "@fluentui/react-icons-mdl2"
 
 export const SearchPanel = () => {
   const dispatch = useDispatch()
@@ -19,9 +20,15 @@ export const SearchPanel = () => {
     setShowFilters(!showFilters)
   }
 
-  // const searchInvoice = () => {
-  //   dispatch(getInvoices({action:{ payload: {dates: {startDate , endDate}}}}))
-  // }
+  const filters = useSelector<RootState>(state => state.invoiceFilltersReducer)
+
+  const searchInvoice = () => {
+    dispatch(filterInvoices(filters))
+  }
+
+  const invoiceFilters = useSelector<RootState>(state => state.invoiceFilltersReducer.filterBy)
+
+  console.log(invoiceFilters)
 
   const data = useSelector<RootState>(state => state.invoiceReducer.data) as IDocument[]
   const companies = data.map((value) => {
@@ -34,20 +41,16 @@ export const SearchPanel = () => {
     optionsSet.add(value)
   })
 
-  const fillterations = useSelector<RootState>(state => state.invoiceFilltersReducer)
-  console.log(fillterations)
-
-  const selectOptions = Array.from(optionsSet) as string[]
-
   return <div className={styles.panel}>
     <div className={styles.head}>
       <div className={styles.search_line}>
         <Input width={600} text="Search"/>
-        {/* <Button width={150} action={searchInvoice} text="Search"/> */}
+        <Button width={150} action={searchInvoice} text="Search"/>
       </div>
       <div className={styles.filters}>
           <p>Filters</p>
-          <img src={down} className={showFilters ? styles.icon : styles.icon_open} onClick={() => handleDropDown()}/>
+          {/* <img src={down} className={showFilters ? styles.icon : styles.icon_open} onClick={() => handleDropDown()}/> */}
+          <FilterIcon onClick={() => handleDropDown()} className={styles.icon} style={{color: "#2b579a"}}/>
       </div>
     </div>
         {

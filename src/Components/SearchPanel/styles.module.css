@@ -15,27 +15,25 @@
 
 .filters {
   background-color: #fff;
-  width: 150px;
-  color: #063970;
-  border: 1px solid #063970;
+  color: #2b579a;
+  width: fit-content;
+  border-bottom: 1px solid #2b579a;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 15px;
   height: 40px;
   padding: 0px 10px 0 10px;
 }
 
 .icon {
-  width: 24px;
+  width: 20px;
   height: auto;
   cursor: pointer;
-  rotate: 180deg;
   transition: 0.5s;
 }
 
 .icon_open {
-  width: 24px;
+  width: 20px;
   height: auto;
   cursor: pointer;
   transition: 0.5s;
@@ -63,21 +61,11 @@
   gap: 15px
 }
 
-.input {
-  width: 150px;
-  height: 40px;
-  border: none;
-  border: 1px solid #063970;
-  color: #063970;
-  padding: 0 15px 0 15px;
-  font-size: 16px;
-}
-
 .reset {
   width: 100px;
   height: 40px;
   border: none;
-  background-color: #063970;
+  background-color: #2b579a;
   color: #fff;
   font-size: 20px;
   cursor: pointer;
@@ -86,7 +74,7 @@
 
 .reset:hover {
   background-color: #f3f4f6;
-  color: #063970;
+  color: #2b579a;
   letter-spacing: 3px;
-  border-bottom: 2px solid #063970;
+  border-bottom: 2px solid #2b579a;
 }

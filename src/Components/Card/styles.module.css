@@ -5,8 +5,8 @@
   align-items: center;
   justify-content: center;
   background-color: #fff;
-  color: #063970;
-  border: 1px solid #063970;
+  color: #2b579a;
+  border-bottom: 1px solid #2b579a;
 }
 
 .card:hover {
@@ -19,6 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px
 }
 
 .details {
@@ -33,7 +34,7 @@
 }
 
 .wrapper a{
-  color: #063970;
+  color: #2b579a;
   transition: 0.5s;
   display: flex;
   justify-content: flex-end;

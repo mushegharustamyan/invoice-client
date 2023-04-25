@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #063970;
+  background-color: #2b579a;
 }
 
 .wrapper {
@@ -50,10 +50,6 @@
   color: #fff;
 }
 
-.nested_list a{
-  /* margin-left: 20px; */
-}
-
 .nested_list {
   display: flex;
   gap: 10px;
@@ -65,6 +61,7 @@
   rotate: 180deg;
   transition: 0.5s;
   cursor: pointer;
+  fill: #fff;
 }
 
 .icon_open {
@@ -87,4 +84,8 @@
 
 .bold {
   font-weight: 900;
+}
+
+.border {
+  border-bottom: 1px solid #fff;
 }

@@ -2,62 +2,85 @@ import { invoices } from "./data";
 import { IDocument } from "../types";
 import { IInvoiceFilters } from "../types";
 
-export const getAllInvoices = ({
-  fields,
-  startDate,
-  endDate,
-  field,
-  value
-}: IInvoiceFilters) => {
+export const getAllInvoices = ({ fields }: { fields: string[] }) => {
   return new Promise((resolve) => {
     let result: IDocument[] = [];
 
     if (fields && fields[0]) {
       fields?.forEach((val) => {
         let data = invoices.filter((value) => value.status === val);
-        result = [...result ,...data]
+        result = [...result, ...data];
       });
     } else {
-      result = invoices
+      result = invoices;
     }
-
-    // if(fillters) {
-    //   if (fillters?.dates?.endDate && fillters?.dates?.startDate) {
-    //     const startDate = new Date(fillters.dates.startDate).getTime();
-    //     const endDate = new Date(fillters.dates.endDate).getTime();
-    //     result = filterInvoicesByDate(startDate , endDate , result)
-    //   }
-    // }
-
-    // if (dates?.endDate && dates?.startDate) {
-      // const startDate = new Date(dates.startDate).getTime();
-      // const endDate = new Date(dates.endDate).getTime();
-      // result = result.filter((value) => {
-      //   const invoiceDate = new Date(value.date).getTime();
-      //   return invoiceDate >= startDate && invoiceDate <= endDate;
-      // });
-    // } else if (!(fields && fields[0])) {
-    //   result = invoices;
-    // }
-
-    // if (filteration) {
-    //   result = result.filter((value) => {
-    //     return value[filteration.field] === filteration.value;
-    //   });
-    // }
 
     resolve(result);
   });
 };
 
-const filterInvoicesByDate = (startDate: number , endDate: number , data: IDocument[]) => {
+export const filterInvoices = (options: IInvoiceFilters) => {
+  return new Promise((resolve, reject) => {
+    const { startDate, endDate } = options.dates;
+
+    let result: IDocument[] = invoices;
+
+    if (startDate && endDate) {
+      const data = filterInvoicesByDate(
+        new Date(startDate).getTime(),
+        new Date(endDate).getTime(),
+        result
+      );
+      result = [...data];
+    }
+
+    if (options.filterBy.length) {
+      options.filterBy.forEach((value) => {
+        const data = filterInvoicesBySelectedFields(value, result);
+        result = [...data];
+      });
+    }
+
+    resolve(result);
+  });
+};
+
+const filterInvoicesByDate = (
+  startDate: number,
+  endDate: number,
+  data: IDocument[]
+) => {
   data = data.filter((value) => {
     const invoiceDate = new Date(value.date).getTime();
     return invoiceDate >= startDate && invoiceDate <= endDate;
   });
 
-  return data
-}
+  return data;
+};
+
+export const filterInvoicesBySelectedFields = (
+  options: { field: string; value: any },
+  data: IDocument[]
+) => {
+  const result = data.filter((value) => {
+    if (value[options.field] && value[options.field] === options.value)
+      return value;
+  });
+
+  return result;
+};
+
+export const isExist = (
+  { field, value }: { field: string; value: any },
+  data: { field: string; value: any }[]
+) => {
+  let result = false;
+  data.forEach((val) => {
+    if (val.field === field && val.value === value) result = true;
+  });
+
+  return result;
+};
 
 export const getCompanies = () => {
   const companies = invoices.map((value) => {

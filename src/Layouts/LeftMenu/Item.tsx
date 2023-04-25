@@ -4,6 +4,7 @@ import styles from "./styles.module.css"
 import { useState } from "react"
 import down from "../../assets/img/down-sign.png"
 import { Items } from "./Items"
+import { ChevronDownIcon } from "@fluentui/react-icons-mdl2"
 
 
 interface Iprops {
@@ -19,13 +20,18 @@ export const Item = ({data} : Iprops) => {
     setShowSubMenu(!showSubMenu)
   }
 
+  const iconStyles = {
+    color: "#fff"
+  };
+
   return <>
-    <li className={styles.nested_list}>
-      <Link to={path}>{title}</Link>
+    <li className={subMenu? `${styles.nested_list} ${styles.border}` : styles.nested_list}>
       {
         subMenu &&
-        <img className={showSubMenu ?styles.icon : styles.icon_open} alt="dropdown" src={down} onClick={() => handleDropDown()} />
+        // <img className={showSubMenu ?styles.icon : styles.icon_open} alt="dropdown" src={down} onClick={() => handleDropDown()} />
+        <ChevronDownIcon className={showSubMenu ?styles.icon : styles.icon_open} style={iconStyles}  onClick={() => handleDropDown()}/>
       }
+      <Link to={path}>{title}</Link>
     </li>
     {
       showSubMenu && subMenu && <Items data={subMenu} />

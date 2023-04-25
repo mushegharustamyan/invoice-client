@@ -8,12 +8,12 @@
 
 .page_title {
   font-size: 36px;
-  color: #063970;
+  color: #2b579a;
 }
 
 .wrapper {
   margin-top: 50px;
-  width: 80%;
+  width: 90%;
   height: fit-content;
   display: flex;
   align-items: flex-start;

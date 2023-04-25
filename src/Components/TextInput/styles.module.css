@@ -4,22 +4,18 @@
   padding-left: 10px;
   display: flex;
   align-items: center;
-  border: 1px solid #063970;
-  color: #063970;
+  border-bottom: 1px solid #2b579a;
+  color: #2b579a;
   gap: 15px;
   transition:all 0.5s ease;
   background-color: #fff;
-}
-
-.container:hover {
-  letter-spacing: 3px;
 }
 
 .input {
   height: 40px;
   border: none;
   font-size: 16px;
-  color: #063970;
+  color: #2b579a;
 }
 
 .input:focus-visible {

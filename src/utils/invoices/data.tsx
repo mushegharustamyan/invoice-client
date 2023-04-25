@@ -69,12 +69,12 @@ export const allInvoicesColumns: IRawData[] = [
   {
     title: "Amount",
     field: "amount",
-    render: () => <SearchAbleSelect options={getAmounts() as string[]} title="amount"/> 
+    render: () => <SearchAbleSelect options={getAmounts() as string[]} title="Amount"/> 
   },
   {
     title: "Company",
     field: "company",
-    render: () => <SearchAbleSelect options={getCompanies() as string[]} title="company"/>
+    render: () => <SearchAbleSelect options={getCompanies() as string[]} title="Company"/>
   },
   {
     title: "Status",
@@ -84,7 +84,7 @@ export const allInvoicesColumns: IRawData[] = [
   {
     title: "Department",
     field: "department",
-    render: () => <SearchAbleSelect options={getDepartments() as string[]} title="department" />
+    render: () => <SearchAbleSelect options={getDepartments() as string[]} title="Department" />
   },
   {
     title: "Date",
@@ -100,14 +100,17 @@ export const matchedInvoicesColumns: IRawData[] = [
   {
     title: "Amount",
     field: "amount",
+    render: () => <SearchAbleSelect options={getAmounts() as string[]} title="Amount"/>
   },
   {
     title: "Company",
     field: "company",
+    render: () => <SearchAbleSelect options={getCompanies() as string[]} title="Company"/>
   },
   {
     title: "Department",
     field: "department",
+    render: () => <SearchAbleSelect options={getDepartments() as string[]} title="Department" />
   },
   {
     title: "Date",
@@ -123,10 +126,12 @@ export const notMatchedInvoicesColumns: IRawData[] = [
   {
     title: "Amount",
     field: "amount",
+    render: () => <SearchAbleSelect options={getAmounts() as string[]} title="Amount"/>
   },
   {
     title: "Company",
     field: "company",
+    render: () => <SearchAbleSelect options={getCompanies() as string[]} title="Company"/>
   },
   {
     title: "Date",
@@ -142,10 +147,12 @@ export const underClarficationInvoicesColumns: IRawData[] = [
   {
     title: "Amount",
     field: "amount",
+    render: () => <SearchAbleSelect options={getAmounts() as string[]} title="Amount"/>
   },
   {
     title: "Company",
     field: "company",
+    render: () => <SearchAbleSelect options={getCompanies() as string[]} title="Company"/>
   },
   {
     title: "Date",
