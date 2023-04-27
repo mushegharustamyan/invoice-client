@@ -1,4 +1,4 @@
-import { BadgeIcon, ChevronDownIcon, FiltersIcon } from '@fluentui/react-icons-mdl2'
+import { AddIcon, BadgeIcon, ChevronDownIcon, CreateMailRuleIcon, FiltersIcon } from '@fluentui/react-icons-mdl2'
 
 import { unregisterIcons, registerIcons } from '@fluentui/react/lib/Styling';
 
@@ -8,6 +8,7 @@ registerIcons({
   icons: {
     ChevronDown: <ChevronDownIcon />,
     ANewIconName: <BadgeIcon />,
-    Filter: <FiltersIcon />
+    Filter: <FiltersIcon />,
+    Add: <AddIcon />
   },
 });

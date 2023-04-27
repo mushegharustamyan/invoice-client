@@ -8,8 +8,7 @@ import { filterInvoices, getInvoices } from "../../store/reducers/invoiceSlice"
 import { Select } from "../Select/Select"
 import { RootState } from "../.."
 import { IDocument } from "../../utils/types"
-import down from "../../assets/img/down-icon-blue.png"
-import { ChevronDownIcon, FilterIcon } from "@fluentui/react-icons-mdl2"
+import { ChevronDownIcon, FilterIcon, SearchIcon } from "@fluentui/react-icons-mdl2"
 
 export const SearchPanel = () => {
   const dispatch = useDispatch()
@@ -44,12 +43,11 @@ export const SearchPanel = () => {
   return <div className={styles.panel}>
     <div className={styles.head}>
       <div className={styles.search_line}>
-        <Input width={600} text="Search"/>
+        <Input width={600} text="Search" render={() => <SearchIcon />}/>
         <Button width={150} action={searchInvoice} text="Search"/>
       </div>
       <div className={styles.filters}>
           <p>Filters</p>
-          {/* <img src={down} className={showFilters ? styles.icon : styles.icon_open} onClick={() => handleDropDown()}/> */}
           <FilterIcon onClick={() => handleDropDown()} className={styles.icon} style={{color: "#2b579a"}}/>
       </div>
     </div>

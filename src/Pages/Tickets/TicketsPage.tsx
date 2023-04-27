@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import styles from "./styles.module.css"
 import { useDispatch, useSelector } from "react-redux"
-import { getTickets } from "../../store/reducers/ticketSlice"
+import { addTicket, getTickets } from "../../store/reducers/ticketSlice"
 import { RootState } from "../.."
 import { Layout } from "../../Components/Layout/Layout"
 import { ticketsColumns } from "../../utils/tickets/data"
 import { ITicket } from "../../utils/types"
 import { Button } from "../../Components/Button/Button"
 import { Input } from "../../Components/TextInput/TextInput"
+import { AddIcon, CreateMailRuleIcon } from "@fluentui/react-icons-mdl2"
 
 interface IProps {
   title: string
@@ -20,8 +21,8 @@ export const TicketsPage = ({title}: IProps) => {
 
   const [description , setDescription] = useState("")
 
-  const handleSetDescription = (description:string) => {
-    setDescription(description)
+  const handleSetDescription = (e:React.ChangeEvent<HTMLInputElement>) => {
+    setDescription(e.target.value)
   }
 
   const handleShowField = () => {
@@ -32,18 +33,20 @@ export const TicketsPage = ({title}: IProps) => {
     dispatch(getTickets())
   } , [])
 
-  const data = useSelector<RootState>(state => state.ticketsReducer.data) as ITicket[]
+  const handleAddTicket = () => {
+    dispatch(addTicket(description))
+  }
 
-  console.log(data)
+  const data = useSelector<RootState>(state => state.ticketsReducer.data) as ITicket[]
 
   return <div className={styles.cards}>
     <div className={styles.wrapper}>
       <p className={styles.page_title}>{title}</p>
-      <Button text={"Make a Ticket"} width={250} action={handleShowField}/>
+      <Button width={150} text="Make" action={handleShowField} render={() => <AddIcon />}/>
       {
         showField && <div className={styles.make}>
-          <Input width={800}/>
-          <Button text={"Add"} width={150} action={() => undefined}/>
+          <Input width={600} placeholder="Write description here" action={handleSetDescription}/>
+          <Button text={"Apply"} width={150} action={() => handleAddTicket()}/>
         </div>
       }
       <Layout data={data} columns={ticketsColumns}/>

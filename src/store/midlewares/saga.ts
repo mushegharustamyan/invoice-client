@@ -7,5 +7,5 @@ export function* sagaWatcher() {
   yield takeEvery("invoice/filterInvoices", filterInvoicesWorker);
 
   yield takeEvery("tickets/getTickets", ticketWorker);
-  yield takeEvery("tickets/addTickets", addTicketWorker);
+  yield takeEvery("tickets/addTicket", addTicketWorker);
 }
