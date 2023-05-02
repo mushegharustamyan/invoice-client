@@ -8,12 +8,13 @@ interface IProps {
     data: any;
   }[]
   columnsCount: number
+  last?: true 
 } 
 
-export const Card:React.FC<IProps> = ({data , columnsCount}) => { 
+export const Card:React.FC<IProps> = ({data , columnsCount, last}) => { 
   let width = 100 / columnsCount + 1
   return (
-    <div className={styles.card}>
+    <div className={!last ? styles.card : styles.last} >
       <div className={styles.wrapper}>
           {
             data.map((value , index) => {

@@ -40,26 +40,28 @@ export const SearchPanel = () => {
     optionsSet.add(value)
   })
 
-  return <div className={styles.panel}>
-    <div className={styles.head}>
-      <div className={styles.search_line}>
-        <Input width={600} text="Search" render={() => <SearchIcon />}/>
-        <Button width={150} action={searchInvoice} text="Search"/>
+  return <>
+    <div className={styles.panel}>
+      <div className={styles.head}>
+        <div className={styles.search_line}>
+          <Input width={600} text="Search" render={() => <SearchIcon />}/>
+          <div className={styles.filters}>
+            <p>Filters</p>
+            <FilterIcon onClick={() => handleDropDown()} className={styles.icon} style={{color: "#2b579a"}}/>
+          </div>
+          <Button width={150} action={searchInvoice} text="Search"/>
+        </div>
       </div>
-      <div className={styles.filters}>
-          <p>Filters</p>
-          <FilterIcon onClick={() => handleDropDown()} className={styles.icon} style={{color: "#2b579a"}}/>
-      </div>
+      {
+      showFilters? 
+        <div className={styles.filters_container}>
+          <form className={styles.dates}>
+            <DatePicker />
+          </form> 
+        </div> 
+        : null
+      }
     </div>
-        {
-            showFilters? 
-            <div className={styles.filters_container}>
-              <form className={styles.dates}>
-                <DatePicker />
-              </form> 
-            </div> 
-            : null
-        }
-      
-  </div>
+   
+  </>
 }

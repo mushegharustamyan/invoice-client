@@ -21,6 +21,7 @@ interface IProps {
 }
 
 export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -33,6 +34,37 @@ export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
 
   let data = useSelector<RootState>(state => state.invoiceReducer.data) as IDocument[]
 
+  const [itemsCount , setItemsCount] = useState(3)
+  const [pagesCount, setPagesCount] = useState(0)
+  const [selectedPage, setSelectedPage] = useState(1)
+  const passingData = data.slice((selectedPage - 1) * itemsCount ,selectedPage * itemsCount)
+
+  useEffect(() => {
+    data.length / itemsCount < 1 ? setPagesCount(1) : setPagesCount(Math.ceil(data.length / itemsCount))
+  } , [data , itemsCount])
+
+  console.log(selectedPage)
+
+  const changeItemsCount = (count: number) => {
+    setItemsCount(count)
+  }
+
+  const changeSelectedPage = (page:number) => {
+    setSelectedPage(page)
+  }
+
+  const changePagesCount = (count: number) => {
+    setPagesCount(count)
+  }
+
+  const turnNextPage = () => {
+    if(selectedPage + 1 <= pagesCount) setSelectedPage(selectedPage + 1)
+  }
+
+  const turnPreviousPage = () => {
+    if(selectedPage - 1 > 0) setSelectedPage(selectedPage - 1)
+  }
+
   return (
     <div className={styles.cards}>
       <div className={styles.wrapper}>
@@ -40,7 +72,18 @@ export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
         <div className={styles.panel}>
           <SearchPanel />
         </div>
-        <Layout data={data} columns={columns}/>
+        <Layout 
+          data={passingData} 
+          columns={columns} 
+          pagesCount={pagesCount} 
+          itemsCount={itemsCount} 
+          selectedPage={selectedPage} 
+          totalInvoices={data.length}
+          setItemsCount={changeItemsCount}
+          setSelectedPage={changeSelectedPage}
+          turnNextPage={turnNextPage}
+          turnPreviousPage={turnPreviousPage}
+        />
       </div>
     </div>
   )

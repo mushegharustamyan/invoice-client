@@ -1,9 +1,13 @@
 .select {
-  width: 90%;
-  height: 80%;
-  padding: 10px;
+  height: 30px;
+  padding: 5px;
   border: none;
   color: #2b579a;
-  background-color: #f3f4f6;
-  font-size: 18px;
+  background-color: #fff;
+  border: 1px solid #2b579a;
+  font-size: 14px;
+}
+
+.select:focus-visible {
+  outline: none;
 }
