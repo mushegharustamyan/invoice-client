@@ -5,11 +5,14 @@ import { invoicesRoutes , departmentInvoicesRoutes } from "./routes";
 import { TicketsPage } from "../Pages/Tickets/TicketsPage";
 import { navList } from "../Pages/Documents/navList";
 import { ticketsNavList } from "../Pages/Tickets/navList";
+import { Login } from "../Components/Login/Login";
+import path from "path";
 
 export const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route element={<Login />} path="/"/>
         <Route element={<LeftMenu navList={navList}/>}>
           {
             invoicesRoutes.map((value , index) => {
