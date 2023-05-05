@@ -2,10 +2,15 @@ import React, { useRef, useState } from "react"
 import { Button } from "../Button/Button"
 import { Input } from "../TextInput/TextInput"
 import styles from "./styles.module.css"
+import { signIn } from "../../servieces/auth"
+import { useDispatch } from "react-redux"
+import Cookies from "js-cookie"
+import { useNavigate } from "react-router"
 
 export const Login = () => {
-  const emailRef = useRef(null)
-  const passwordRef = useRef(null)
+  const dispatch = useDispatch()
+
+  const navigate = useNavigate()
 
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState("")
@@ -18,9 +23,15 @@ export const Login = () => {
     setPassword(e.target.value)
   }
 
-  const login = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    console.log(email , password)
+    const token = await signIn(email , password)
+    try{
+      Cookies.set('token' , token)
+      navigate('/invoices')
+    } catch {
+      alert("error")
+    }
   }
 
   return (
@@ -29,7 +40,7 @@ export const Login = () => {
         <div className={styles.wrapper}>
           <Input width={350} text="Email" action={changeEmail}/>
           <Input width={350} text="Password" action={changePassword}/>
-          <Button width={350} text="Sign In" action={login}/>
+          <Button width={350} text="Sign In" action={handleLogin}/>
         </div>
       </form>
     </div>

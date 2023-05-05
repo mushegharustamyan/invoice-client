@@ -1,16 +1,26 @@
-import { useSelector } from "react-redux";
-import { IChildrenProps, IUser } from "../../utils/types";
-import { RootState } from "../..";
-import { useNavigate } from "react-router";
+import { Outlet, useNavigate } from "react-router";
+import { useEffect } from "react";
+import Cookies from 'js-cookie';
 
-export const AuthLayout = (props: IChildrenProps) => {
-  const data = useSelector<RootState>(state => state.userReducer) as IUser
+
+
+export const AuthLayout = () => {
 
   const navigate = useNavigate()
 
-  return <section>
-    {
-      data.token ? <>{navigate("/invoices")}</> : <>{props.children}</>
+  const token = Cookies.get('token')
+
+  console.log(token)
+
+  useEffect(() => {
+    if(token) {
+      navigate("/invoices")
+    } else {
+      navigate("/")
     }
-  </section>
+  } , [token])
+
+  return <>
+    <Outlet />
+  </>
 }

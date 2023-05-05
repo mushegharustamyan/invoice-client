@@ -9,10 +9,7 @@ import { getInvoices } from "../../store/reducers/invoiceSlice"
 import { RootState } from "../.."
 
 import styles from "./styles.module.css"
-import down from "../../assets/img/down-icon-blue.png"
 import { Layout } from "../../Components/Layout/Layout"
-import { SearchAbleSelect } from "../../Components/SearchAbleSelect/SearchAbleSelect"
-import { BadgeIcon, ChevronDownIcon } from "@fluentui/react-icons-mdl2"
 
 interface IProps {
   title: string
@@ -21,7 +18,6 @@ interface IProps {
 }
 
 export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
-
   const dispatch = useDispatch()
 
   useEffect(() => {

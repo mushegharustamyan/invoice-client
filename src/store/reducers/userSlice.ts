@@ -1,11 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { IUser } from "../../utils/types";
+import Cookies from "js-cookie";
 
-interface IState {
-  access_level: number | null;
-  token: string | null;
-}
-
-const initialState: IState = {
+const initialState: IUser = {
   access_level: null,
   token: null,
 };
@@ -14,12 +11,9 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    login: () => {},
+    login: (state, action) => {},
     loginSuccessed: (state, action) => {
-      const { access_level, email, password, token } = action.payload;
-
-      state.access_level = access_level;
-      state.token = token;
+      Cookies.set("token", action.payload);
     },
     logout: () => {},
     logutSuccessed: (state, action) => {

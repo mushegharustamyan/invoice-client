@@ -1,15 +1,17 @@
-import { useState } from "react"
-import { Outlet } from "react-router"
+import { Outlet, useNavigate } from "react-router"
 import styles from "./styles.module.css"
-import { Link } from "react-router-dom"
 import { INavigation } from "../../utils/types"
 import { Item } from "./Item"
+import { SignOutIcon } from "@fluentui/react-icons-mdl2"
+import Cookies from "js-cookie"
 
 interface IProps {
   navList: INavigation[] 
 }
 
 export const LeftMenu = ({navList}: IProps) => {
+
+  const navigate = useNavigate()
 
   return (
       <div className={styles.layout}>
@@ -22,6 +24,10 @@ export const LeftMenu = ({navList}: IProps) => {
                     return <Item data={value}/>
                   })
                 }
+                <li>
+                  <SignOutIcon />
+                  <p onClick={() => Cookies.remove('token')}>Sign Out</p>
+                </li>
               </ul>
             </nav>
           </div>
