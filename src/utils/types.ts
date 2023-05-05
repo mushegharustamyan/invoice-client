@@ -50,3 +50,12 @@ export interface IInvoiceFilters {
   };
   filterBy: { [key: string]: any; field: string; value: string }[];
 }
+
+export interface IChildrenProps {
+  children: React.ReactNode | React.ReactNode[];
+}
+
+export interface IUser {
+  access_level: number | null;
+  token: string | null;
+}
