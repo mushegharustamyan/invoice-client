@@ -39,6 +39,7 @@ export interface INavigation {
   title: string;
   path: string;
   subMenu?: INavigation[];
+  permissions: string[];
 }
 
 export interface IInvoiceFilters {
@@ -56,6 +57,6 @@ export interface IChildrenProps {
 }
 
 export interface IUser {
-  access_level: number | null;
+  role: string | null;
   token: string | null;
 }

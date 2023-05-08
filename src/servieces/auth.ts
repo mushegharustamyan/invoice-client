@@ -7,5 +7,5 @@ export const signIn = async (email: string, password: string) => {
 
   const response = await client.post("/auth", { email, password });
 
-  return response.data.token;
+  return response;
 };

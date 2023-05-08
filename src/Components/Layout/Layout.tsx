@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { IDocument, IRawData } from "../../utils/types"
 import { Card } from "../Card/Card"
 import { Select } from "../Select/Select"
@@ -7,17 +8,9 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@fluentui/react-icons-mdl2"
 interface IProps {
   columns: IRawData[]
   data: any[]
-  itemsCount : number
-  pagesCount : number
-  selectedPage: number
-  totalInvoices: number
-  setItemsCount: (count: number) => void
-  setSelectedPage: (page: number) => void
-  turnNextPage: () => void
-  turnPreviousPage: () => void
 }
 
-export const Layout = ({columns , data , itemsCount , pagesCount, selectedPage , totalInvoices, setItemsCount , setSelectedPage, turnNextPage , turnPreviousPage}: IProps) => {
+export const Layout = ({columns , data }: IProps) => {
   let columnWidth = 100 / columns.length + 1;
 
   const shownData = data.map((val) => {
@@ -28,6 +21,25 @@ export const Layout = ({columns , data , itemsCount , pagesCount, selectedPage ,
       }
     })
   })
+
+  console.log(data)
+
+  const [itemsCount , setItemsCount] = useState(3)
+  const [pagesCount, setPagesCount] = useState(0)
+  const [selectedPage, setSelectedPage] = useState(1)
+  const passingData = shownData.slice((selectedPage - 1) * itemsCount ,selectedPage * itemsCount)
+
+  useEffect(() => {
+    data.length / itemsCount < 1 ? setPagesCount(1) : setPagesCount(Math.ceil(data.length / itemsCount))
+  } , [data , itemsCount])
+
+  const turnNextPage = () => {
+    if(selectedPage + 1 <= pagesCount) setSelectedPage(selectedPage + 1)
+  }
+
+  const turnPreviousPage = () => {
+    if(selectedPage - 1 > 0) setSelectedPage(selectedPage - 1)
+  }
 
   const getPaginationItems = (pagesCount: number) => {
     const arr:number[] = [] 
@@ -63,7 +75,7 @@ export const Layout = ({columns , data , itemsCount , pagesCount, selectedPage ,
         {
           data[0] ? <div className={styles.body}>
           {
-            shownData.map((value, index, arr) => {
+            passingData.map((value, index, arr) => {
               if(index === arr.length - 1) {
                 return <Card data={value} columnsCount={columns.length} key={index} last={true}/>
               }
@@ -76,7 +88,7 @@ export const Layout = ({columns , data , itemsCount , pagesCount, selectedPage ,
       </div>
       <div className={styles.pagination}>
         <div className={styles.pagination_wrapper}>
-          <p>Total Invoices {totalInvoices}</p>
+          <p>Total Items {data.length}</p>
           <div className={styles.items_count}>
             <div className={styles.pages}>
               <ChevronLeftIcon onClick={() => turnPreviousPage()}/>
@@ -101,7 +113,7 @@ export const Layout = ({columns , data , itemsCount , pagesCount, selectedPage ,
               }
               <ChevronRightIcon onClick={() => turnNextPage()}/>
             </div>
-            <p>Invoices per page</p>
+            <p>Items per page</p>
             <Select itemsCount={10} width={50} selected={itemsCount} action={setItemsCount}/>
           </div>
         </div>

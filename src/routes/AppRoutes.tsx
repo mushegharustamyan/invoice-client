@@ -7,6 +7,7 @@ import { navList } from "../Pages/Documents/navList";
 import { ticketsNavList } from "../Pages/Tickets/navList";
 import { Login } from "../Components/Login/Login";
 import { AuthLayout } from "../Layouts/AuthLayout/AuthLayout";
+import { AdminPage } from "../Pages/Admin/Admin";
 
 export const AppRouter = () => {
   return (
@@ -38,10 +39,10 @@ export const AppRouter = () => {
                 )
               })
             }
-            <Route path="/department/tickets" element={<TicketsPage title="Tickets"/>} />
+            <Route path="/invoices/tickets" element={<TicketsPage title="Tickets"/>} />
           </Route>
- 
         </Route>
+        <Route path="/admin" element={<AdminPage />}/>
       </Routes>
     </BrowserRouter>
   )

@@ -1,6 +1,6 @@
 import { put, call } from "redux-saga/effects";
 import { signIn } from "../../../servieces/auth";
-import { loginSuccessed } from "../../reducers/userSlice";
+import { loginSuccessed, logoutSuccessed } from "../../reducers/userSlice";
 
 export function* signInWorker(action: {
   type: string;
@@ -11,4 +11,8 @@ export function* signInWorker(action: {
   const { email, password } = target;
   const response = yield call(() => signIn(email, password));
   yield put(loginSuccessed(response));
+}
+
+export function* singoutWorker(): Generator<unknown> {
+  yield put(logoutSuccessed());
 }

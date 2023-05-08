@@ -84,14 +84,6 @@ export const TicketsPage = ({title}: IProps) => {
       <Layout 
           data={passingData} 
           columns={ticketsColumns} 
-          pagesCount={pagesCount} 
-          itemsCount={itemsCount} 
-          selectedPage={selectedPage} 
-          totalInvoices={data.length}
-          setItemsCount={changeItemsCount}
-          setSelectedPage={changeSelectedPage}
-          turnNextPage={turnNextPage}
-          turnPreviousPage={turnPreviousPage}
         />
     </div>
   </div>

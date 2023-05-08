@@ -3,7 +3,7 @@ import { IUser } from "../../utils/types";
 import Cookies from "js-cookie";
 
 const initialState: IUser = {
-  access_level: null,
+  role: null,
   token: null,
 };
 
@@ -13,17 +13,20 @@ const userSlice = createSlice({
   reducers: {
     login: (state, action) => {},
     loginSuccessed: (state, action) => {
-      Cookies.set("token", action.payload);
+      state.role = action.payload.data.user.role.name;
+      state.token = action.payload.data.token;
+      Cookies.set("token", action.payload.data.token);
     },
     logout: () => {},
-    logutSuccessed: (state, action) => {
-      state.access_level = null;
+    logoutSuccessed: (state) => {
+      state.role = null;
       state.token = null;
+      Cookies.remove("token");
     },
   },
 });
 
 export default userSlice.reducer;
 
-export const { login, loginSuccessed, logout, logutSuccessed } =
+export const { login, loginSuccessed, logout, logoutSuccessed } =
   userSlice.actions;

@@ -1,16 +1,22 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Button } from "../Button/Button"
 import { Input } from "../TextInput/TextInput"
 import styles from "./styles.module.css"
 import { signIn } from "../../servieces/auth"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import Cookies from "js-cookie"
-import { useNavigate } from "react-router"
+// import { useNavigate } from "react-router"
+import { useCustomNavigate } from "../../common/helpers"
+import { login } from "../../store/reducers/userSlice"
+import { RootState } from "../.."
+import { IUser } from "../../utils/types"
 
 export const Login = () => {
   const dispatch = useDispatch()
 
-  const navigate = useNavigate()
+  const navigate = useCustomNavigate()
+
+  // const navigate = useNavigate()
 
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState("")
@@ -23,15 +29,17 @@ export const Login = () => {
     setPassword(e.target.value)
   }
 
+  const user = useSelector<RootState>(state => state.userReducer) as IUser
+
+  useEffect(() => {
+    console.log("use effect")
+    console.log(user.role)
+    navigate(user?.role || "")
+  } , [user?.role])
+
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    const token = await signIn(email , password)
-    try{
-      Cookies.set('token' , token)
-      navigate('/invoices')
-    } catch {
-      alert("error")
-    }
+    dispatch(login({email , password}))
   }
 
   return (

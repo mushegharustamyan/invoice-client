@@ -8,6 +8,7 @@ export const navList: INavigation[] = [
       {
         title: "Matched",
         path: "/invoices/matched",
+        permissions: ["admin"],
       },
       {
         title: "In Progress",
@@ -16,21 +17,27 @@ export const navList: INavigation[] = [
           {
             title: "Not Matched",
             path: "/invoices/not-matched",
+            permissions: ["admin"],
           },
           {
             title: "Untder Clarification",
             path: "/invoices/under-clarification",
+            permissions: ["admin"],
           },
         ],
+        permissions: ["admin"],
       },
     ],
+    permissions: ["admin"],
   },
   {
     title: "Signed Invoices",
     path: "/invoices/signed",
+    permissions: ["admin"],
   },
   {
     title: "Error Invoices",
     path: "/invoices/errors",
+    permissions: ["admin"],
   },
 ];
