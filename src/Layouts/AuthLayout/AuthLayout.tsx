@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import { useCustomNavigate } from "../../common/helpers";
 import { useSelector } from "react-redux";
 import { RootState } from "../..";
+import { IUser } from "../../utils/types";
 
 
 
@@ -13,15 +14,9 @@ export const AuthLayout = () => {
 
   const token = Cookies.get('token')
 
-  const user = useSelector<RootState>(state => state.userReducer)
+  const user = useSelector<RootState>(state => state.userReducer) as IUser
 
-  console.log(user)
-
-  console.log(token)
-
-  useEffect(() => {
-    
-  } , [token])
+  navigate(user.role || "")
 
   return <>
     <Outlet />

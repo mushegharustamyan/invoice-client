@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router";
 
 export const useCustomNavigate = () => {
@@ -11,6 +10,8 @@ export const useCustomNavigate = () => {
       case "accountant":
         navigate("/invoices");
         break;
+      default:
+        navigate("/");
     }
   };
 };
