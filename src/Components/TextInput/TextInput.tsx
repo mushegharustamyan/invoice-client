@@ -9,14 +9,15 @@ interface IProps {
   render?: () => JSX.Element
   placeholder?: string
   action?: (e:React.ChangeEvent<HTMLInputElement>) => void
+  type?: string
 }
 
-export const Input:React.FC<IProps> = ({text , width, render, placeholder, action}) => {
+export const Input:React.FC<IProps> = ({text , width, render, placeholder, action, type}) => {
   return (
     <div className={styles.container} style={{width}}>
       <>{render && render()}</>
       <label>{text}</label>
-      <input type="text" className={styles.input} style={{width: '80%'}} placeholder={placeholder} onChange={(e) => action && action(e)}/>
+      <input type={type || "text"} className={styles.input} style={{width: '80%'}} placeholder={placeholder} onChange={(e) => action && action(e)}/>
     </div>
   )
 }

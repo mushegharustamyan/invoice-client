@@ -41,7 +41,7 @@ export const Login = () => {
       <form className={styles.form}>
         <div className={styles.wrapper}>
           <Input width={350} text="Email" action={changeEmail}/>
-          <Input width={350} text="Password" action={changePassword}/>
+          <Input width={350} text="Password" action={changePassword} type="password"/>
           <Button width={350} text="Sign In" action={handleLogin}/>
         </div>
       </form>

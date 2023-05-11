@@ -1,3 +1,4 @@
+import { DownloadDocumentIcon } from "@fluentui/react-icons-mdl2";
 import { Link } from "react-router-dom";
 import { IDocument, IRawData } from "../../utils/types"
 import styles from "./styles.module.css"
@@ -21,7 +22,10 @@ export const Card:React.FC<IProps> = ({data , columnsCount, last}) => {
               return <p key={index} style={{width:`${width}%`}}>{value.data}</p>
             }) 
           }
-          <Link to="/" style={{width:`${width}%`}}>Details</Link>
+          <div style={{width:`${width}%`, display: "flex", gap: "10px", alignItems: "center", cursor: "pointer"}}>
+            <DownloadDocumentIcon />
+            <p>Download</p>
+          </div>
       </div>
     </div> 
   )

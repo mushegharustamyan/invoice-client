@@ -10,6 +10,11 @@ export const useCustomNavigate = () => {
       case "accountant":
         navigate("/invoices");
         break;
+      case "HOD":
+      case "viewer":
+      case "contributer":
+        navigate("/department")
+        break
       default:
         console.log("no user")
         navigate("/");
