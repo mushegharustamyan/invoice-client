@@ -1,7 +1,7 @@
 import { takeEvery } from "redux-saga/effects";
 import { filterInvoicesWorker, invoiceWorker } from "./workers/invoice";
 import { addTicketWorker, ticketWorker } from "./workers/tickets";
-import { signInWorker, singoutWorker } from "./workers/auth";
+import { refreshWorker, signInWorker, singoutWorker } from "./workers/auth";
 
 export function* sagaWatcher() {
   yield takeEvery("invoice/getInvoices", invoiceWorker);
@@ -12,4 +12,6 @@ export function* sagaWatcher() {
 
   yield takeEvery("user/login", signInWorker);
   yield takeEvery("user/logout", singoutWorker);
+
+  yield takeEvery("user/refresh", refreshWorker)
 }

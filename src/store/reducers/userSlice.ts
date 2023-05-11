@@ -23,10 +23,15 @@ const userSlice = createSlice({
       state.token = null;
       Cookies.remove("token");
     },
+    refresh: () => {},
+    refreshSuccessed: (state , action) => {
+      console.log(action.payload.data)
+      state.role = action.payload.data.role.name
+    }
   },
 });
 
 export default userSlice.reducer;
 
-export const { login, loginSuccessed, logout, logoutSuccessed } =
+export const { login, loginSuccessed, logout, logoutSuccessed , refresh , refreshSuccessed} =
   userSlice.actions;

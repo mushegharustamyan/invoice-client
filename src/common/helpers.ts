@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 
 export const useCustomNavigate = () => {
   const navigate = useNavigate();
-  return (role: string) => {
+  return (role: string | null) => {
     switch (role) {
       case "admin":
         navigate("/admin");
@@ -11,6 +11,7 @@ export const useCustomNavigate = () => {
         navigate("/invoices");
         break;
       default:
+        console.log("no user")
         navigate("/");
     }
   };

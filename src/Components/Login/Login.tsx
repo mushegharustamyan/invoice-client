@@ -14,12 +14,12 @@ import { IUser } from "../../utils/types"
 export const Login = () => {
   const dispatch = useDispatch()
 
-  const navigate = useCustomNavigate()
-
-  // const navigate = useNavigate()
-
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState("")
+
+  const token = Cookies.get('token')
+
+  const navigate = useCustomNavigate()
 
   const changeEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
@@ -30,12 +30,6 @@ export const Login = () => {
   }
 
   const user = useSelector<RootState>(state => state.userReducer) as IUser
-
-  useEffect(() => {
-    console.log("use effect")
-    console.log(user.role)
-    navigate(user?.role || "")
-  } , [user?.role])
 
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()

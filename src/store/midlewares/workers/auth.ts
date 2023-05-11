@@ -1,6 +1,7 @@
+import Cookies from "js-cookie";
 import { put, call } from "redux-saga/effects";
-import { signIn } from "../../../servieces/auth";
-import { loginSuccessed, logoutSuccessed } from "../../reducers/userSlice";
+import { refresh, signIn } from "../../../servieces/auth";
+import { loginSuccessed, logoutSuccessed, refreshSuccessed } from "../../reducers/userSlice";
 
 export function* signInWorker(action: {
   type: string;
@@ -15,4 +16,10 @@ export function* signInWorker(action: {
 
 export function* singoutWorker(): Generator<unknown> {
   yield put(logoutSuccessed());
+}
+
+export function* refreshWorker() : Generator<unknown> {
+  const token = Cookies.get('token')
+  const response = yield call(() => refresh())
+  yield put(refreshSuccessed(response))
 }
