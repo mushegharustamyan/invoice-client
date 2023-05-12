@@ -60,3 +60,8 @@ export interface IUser {
   role: string | null;
   token: string | null;
 }
+
+export interface IRole {
+  access_level: number
+  name : string
+}
