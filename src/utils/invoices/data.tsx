@@ -3,6 +3,7 @@ import { Select } from "../../Components/Select/Select";
 import { getAmounts, getCompanies, getDepartments } from "./service";
 import { statuses } from "./service";
 import { SearchAbleSelect } from "../../Components/SearchAbleSelect/SearchAbleSelect";
+import { Download } from "../../Components/Download/Download";
 
 export const invoices: IDocument[] = [
   {
@@ -13,6 +14,7 @@ export const invoices: IDocument[] = [
     status: "matched",
     department: "Department1",
     date: "2023-02-12",
+    render: () => <Download />
   },
   {
     id: 2,
@@ -22,6 +24,7 @@ export const invoices: IDocument[] = [
     status: "not-matched",
     department: "Department3",
     date: "2023-03-12",
+    render: () => <Download />
   },
   {
     id: 3,
@@ -31,6 +34,7 @@ export const invoices: IDocument[] = [
     status: "matched",
     department: "Department1",
     date: "2023-07-12",
+    render: () => <Download />
   },
   {
     id: 4,
@@ -40,6 +44,7 @@ export const invoices: IDocument[] = [
     status: "under-clarification",
     department: null,
     date: "2023-02-12",
+    render: () => <Download />
   },
   {
     id: 5,
@@ -49,6 +54,7 @@ export const invoices: IDocument[] = [
     status: "signed",
     department: "Department2",
     date: "2023-05-12",
+    render: () => <Download />
   },
   {
     id: 6,
@@ -58,6 +64,7 @@ export const invoices: IDocument[] = [
     status: "matched",
     department: "Department1",
     date: "2023-07-12",
+    render: () => <Download />
   },
 ];
 
@@ -90,6 +97,10 @@ export const allInvoicesColumns: IRawData[] = [
     title: "Date",
     field: "date",
   },
+  {
+    field: "",
+    title: ""
+  }
 ];
 
 export const matchedInvoicesColumns: IRawData[] = [
@@ -116,6 +127,10 @@ export const matchedInvoicesColumns: IRawData[] = [
     title: "Date",
     field: "date",
   },
+  {
+    field: "",
+    title: ""
+  }
 ];
 
 export const notMatchedInvoicesColumns: IRawData[] = [
@@ -137,6 +152,10 @@ export const notMatchedInvoicesColumns: IRawData[] = [
     title: "Date",
     field: "date",
   },
+  {
+    field: "",
+    title: ""
+  }
 ];
 
 export const underClarficationInvoicesColumns: IRawData[] = [
@@ -158,4 +177,8 @@ export const underClarficationInvoicesColumns: IRawData[] = [
     title: "Date",
     field: "date",
   },
+  {
+    field: "",
+    title: ""
+  }
 ];

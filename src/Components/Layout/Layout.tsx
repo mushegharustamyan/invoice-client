@@ -15,14 +15,20 @@ export const Layout = ({columns , data }: IProps) => {
 
   const shownData = data.map((val) => {
     return columns.map((value) => {
+      if(value.field === "" || value.title === "") {
+        return {
+          field: value.field,
+          data: val[value.field],
+          render: val.render
+        }
+      }
+
       return {
         field: value.field,
         data: val[value.field]
       }
     })
   })
-
-  console.log(data)
 
   const [itemsCount , setItemsCount] = useState(3)
   const [pagesCount, setPagesCount] = useState(0)
@@ -69,13 +75,13 @@ export const Layout = ({columns , data }: IProps) => {
                 return <p key={index} style={{width: `${columnWidth}%`}}>{value.title}</p>
               })
             }
-            <p style={{width: `${columnWidth}%`}}></p>
           </div>
         </div>
         {
           data[0] ? <div className={styles.body}>
           {
             passingData.map((value, index, arr) => {
+
               if(index === arr.length - 1) {
                 return <Card data={value} columnsCount={columns.length} key={index} last={true}/>
               }

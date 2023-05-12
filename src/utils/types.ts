@@ -14,6 +14,7 @@ export interface IDocument {
   status: InvoiceStatus;
   department: string | null;
   date: string;
+  render?: () => JSX.Element
 }
 
 export interface ITicket {
