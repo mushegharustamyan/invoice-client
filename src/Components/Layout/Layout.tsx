@@ -4,6 +4,7 @@ import { Card } from "../Card/Card"
 import { Select } from "../Select/Select"
 import styles from "./styles.module.css"
 import { ChevronLeftIcon, ChevronRightIcon } from "@fluentui/react-icons-mdl2"
+import { Download } from "../Download/Download"
 
 interface IProps {
   columns: IRawData[]
@@ -15,17 +16,17 @@ export const Layout = ({columns , data }: IProps) => {
 
   const shownData = data.map((val) => {
     return columns.map((value) => {
-      if(value.field === "" || value.title === "") {
-        return {
-          field: value.field,
-          data: val[value.field],
-          render: val.render
-        }
+      if(value.field !== "") return {
+        title: value.title,
+        field: value.field,
+        data: val[value.field]
       }
 
       return {
+        title: value.title,
         field: value.field,
-        data: val[value.field]
+        data: val[value.field],
+        render: () => <Download />
       }
     })
   })
@@ -65,32 +66,10 @@ export const Layout = ({columns , data }: IProps) => {
     <div className={styles.wrapper}>
       <div className={styles.table}>
         <div className={styles.head}>
-          <div className={styles.head_wrapper}>
-            {
-              columns.map((value , index) => {
-                if(value.render) {
-                  return <p key={index} style={{width: `${columnWidth}%`}}>{value.render()}</p>
-                }
-
-                return <p key={index} style={{width: `${columnWidth}%`}}>{value.title}</p>
-              })
-            }
-          </div>
-        </div>
-        {
-          data[0] ? <div className={styles.body}>
           {
-            passingData.map((value, index, arr) => {
-
-              if(index === arr.length - 1) {
-                return <Card data={value} columnsCount={columns.length} key={index} last={true}/>
-              }
-
-              return <Card data={value} columnsCount={columns.length} key={index}/>
-            })
+            shownData
           }
-          </div> : <p className={styles.message}>There is no Data</p>
-        }
+        </div>
       </div>
       <div className={styles.pagination}>
         <div className={styles.pagination_wrapper}>
