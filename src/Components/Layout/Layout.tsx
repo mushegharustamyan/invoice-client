@@ -19,10 +19,9 @@ export const Layout = ({columns , data}: IProps) => {
 
   const user = useSelector<RootState>(state => state.userReducer) as IUser
 
-  const shownColumns = modifyColumns(user.role , columns)
+  let shownColumns = modifyColumns(user.role , columns)
 
-  const shownData = moidyData(data , shownColumns)
-
+  let shownData = moidyData(data , shownColumns)
 
   const [itemsCount , setItemsCount] = useState(3)
   const [pagesCount, setPagesCount] = useState(0)
@@ -52,8 +51,6 @@ export const Layout = ({columns , data}: IProps) => {
   }
 
   const paginationItems = getPaginationItems(pagesCount)
-
-  console.log(selectedPage)
 
   return <div className={styles.layout}>
     <div className={styles.wrapper}>

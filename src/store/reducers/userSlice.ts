@@ -25,6 +25,7 @@ const userSlice = createSlice({
     },
     refresh: () => {},
     refreshSuccessed: (state , action) => {
+      console.log(action.payload.token ,  action.payload.response.data.role.name)
       state.token = action.payload.token
       state.role = action.payload.response.data.role.name
     }
