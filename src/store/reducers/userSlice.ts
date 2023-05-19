@@ -25,8 +25,8 @@ const userSlice = createSlice({
     },
     refresh: () => {},
     refreshSuccessed: (state , action) => {
-      console.log(action.payload.data)
-      state.role = action.payload.data.role.name
+      state.token = action.payload.token
+      state.role = action.payload.response.data.role.name
     }
   },
 });

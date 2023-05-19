@@ -92,10 +92,6 @@ export const allInvoicesColumns: IRawData[] = [
     title: "Date",
     field: "date",
   },
-  {
-    field: "",
-    title: ""
-  }
 ];
 
 export const matchedInvoicesColumns: IRawData[] = [
@@ -122,10 +118,7 @@ export const matchedInvoicesColumns: IRawData[] = [
     title: "Date",
     field: "date",
   },
-  {
-    field: "",
-    title: ""
-  }
+  
 ];
 
 export const notMatchedInvoicesColumns: IRawData[] = [
@@ -147,10 +140,7 @@ export const notMatchedInvoicesColumns: IRawData[] = [
     title: "Date",
     field: "date",
   },
-  {
-    field: "",
-    title: ""
-  }
+  
 ];
 
 export const underClarficationInvoicesColumns: IRawData[] = [
@@ -172,8 +162,5 @@ export const underClarficationInvoicesColumns: IRawData[] = [
     title: "Date",
     field: "date",
   },
-  {
-    field: "",
-    title: ""
-  }
+  
 ];

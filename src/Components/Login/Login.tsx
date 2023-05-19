@@ -6,10 +6,10 @@ import { signIn } from "../../servieces/auth"
 import { useDispatch, useSelector } from "react-redux"
 import Cookies from "js-cookie"
 // import { useNavigate } from "react-router"
-import { useCustomNavigate } from "../../common/helpers"
 import { login } from "../../store/reducers/userSlice"
 import { RootState } from "../.."
 import { IUser } from "../../utils/types"
+import { useNavigate } from "react-router"
 
 export const Login = () => {
   const dispatch = useDispatch()
@@ -19,7 +19,7 @@ export const Login = () => {
 
   const token = Cookies.get('token')
 
-  const navigate = useCustomNavigate()
+  const navigate = useNavigate()
 
   const changeEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)

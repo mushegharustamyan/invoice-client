@@ -21,5 +21,5 @@ export function* singoutWorker(): Generator<unknown> {
 export function* refreshWorker() : Generator<unknown> {
   const token = Cookies.get('token')
   const response = yield call(() => refresh())
-  yield put(refreshSuccessed(response))
+  yield put(refreshSuccessed({token , response}))
 }

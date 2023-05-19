@@ -7,9 +7,7 @@ import { RootState } from "../..";
 
 interface IProps {
   data: {
-    field: string;
-    data: any;
-    render?: () => JSX.Element
+    value: string | JSX.Element
   }[]
   columnsCount: number
   last?: true 
@@ -18,17 +16,15 @@ interface IProps {
 export const Card:React.FC<IProps> = ({data , columnsCount, last }) => { 
   console.log(data)
   const user = useSelector<RootState>(state => state.userReducer) as IUser
-  let width = 100 / columnsCount + 1
+  let width = 100 / columnsCount + 1 
   return (
     <div className={!last ? styles.card : styles.last} >
       <div className={styles.wrapper}>
           {
             data.map((value , index) => {
-              console.log(value)
-              return <div key={index} style={{width:`${width}%`}}>{value.data}</div>
+              return <div key={index} style={{width:`${width}%`}}>{value.value}</div>
             }) 
           }
-          
       </div>
     </div> 
   )

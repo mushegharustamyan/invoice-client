@@ -1,7 +1,7 @@
 import { useEffect , useState} from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import { IDocument, IRawData } from "../../utils/types"
+import { IDocument, IRawData, IUser } from "../../utils/types"
 
 import { SearchPanel } from "../../Components/SearchPanel/SearchPanel"
 
@@ -10,7 +10,6 @@ import { RootState } from "../.."
 
 import styles from "./styles.module.css"
 import { Layout } from "../../Components/Layout/Layout"
-import { SignOutIcon } from "@fluentui/react-icons-mdl2"
 import { SignOut } from "../../Components/SignOut/SignOut"
 
 interface IProps {

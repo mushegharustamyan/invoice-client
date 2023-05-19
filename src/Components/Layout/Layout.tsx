@@ -1,35 +1,28 @@
 import { useEffect, useState } from "react"
-import { IDocument, IRawData } from "../../utils/types"
+import { IDocument, IRawData, IUser } from "../../utils/types"
 import { Card } from "../Card/Card"
 import { Select } from "../Select/Select"
 import styles from "./styles.module.css"
 import { ChevronLeftIcon, ChevronRightIcon } from "@fluentui/react-icons-mdl2"
 import { Download } from "../Download/Download"
+import { useSelector } from "react-redux"
+import { RootState } from "../.."
+import { modifyColumns, moidyData } from "./adapters"
 
 interface IProps {
   columns: IRawData[]
   data: any[]
 }
 
-export const Layout = ({columns , data }: IProps) => {
+export const Layout = ({columns , data}: IProps) => {
   let columnWidth = 100 / columns.length + 1;
 
-  const shownData = data.map((val) => {
-    return columns.map((value) => {
-      if(value.field !== "") return {
-        title: value.title,
-        field: value.field,
-        data: val[value.field]
-      }
+  const user = useSelector<RootState>(state => state.userReducer) as IUser
 
-      return {
-        title: value.title,
-        field: value.field,
-        data: val[value.field],
-        render: () => <Download />
-      }
-    })
-  })
+  const shownColumns = modifyColumns(user.role , columns)
+
+  const shownData = moidyData(data , shownColumns)
+
 
   const [itemsCount , setItemsCount] = useState(3)
   const [pagesCount, setPagesCount] = useState(0)
@@ -66,10 +59,22 @@ export const Layout = ({columns , data }: IProps) => {
     <div className={styles.wrapper}>
       <div className={styles.table}>
         <div className={styles.head}>
+          <div className={styles.head_wrapper}>
           {
-            shownData
+            shownColumns.map((value) => {
+              console.log(value)
+              return <p style={{width: `${columnWidth}%`}}>{value.title}</p>
+            })
           }
+          </div>
         </div>
+      </div>
+      <div className={styles.body}>
+        {
+          passingData.map((value) => {
+            return <Card data={value} columnsCount={shownColumns.length}/>
+          })
+        }
       </div>
       <div className={styles.pagination}>
         <div className={styles.pagination_wrapper}>

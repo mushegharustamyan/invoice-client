@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Layout } from "../../Components/Layout/Layout"
-import { IRawData, IRole } from "../../utils/types"
+import { IRawData, IRole, IUser } from "../../utils/types"
 import styles from "./styles.module.css"
 import { SignOut } from "../../Components/SignOut/SignOut"
 import { getRoles } from "../../servieces/admin/role"

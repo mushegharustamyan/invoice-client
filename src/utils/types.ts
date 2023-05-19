@@ -27,6 +27,7 @@ export interface IRawData {
   title: string;
   field: string;
   render?: () => JSX.Element;
+  dataRender?: () => JSX.Element
 }
 
 export interface IInvoicesRoutes {
