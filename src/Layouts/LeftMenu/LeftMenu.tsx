@@ -19,8 +19,8 @@ export const LeftMenu = ({navList}: IProps) => {
             <nav className={styles.navigation}>
               <ul>
                 {
-                  navList.map((value) => {
-                    return <Item data={value}/>
+                  navList.map((value , index) => {
+                    return <Item data={value} key={index}/>
                   })
                 }
               </ul>

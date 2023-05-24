@@ -14,7 +14,7 @@ interface IProps {
   data: any[]
 }
 
-export const Layout = ({columns , data}: IProps) => {
+export const Table = ({columns , data}: IProps) => {
   let columnWidth = 100 / columns.length + 1;
 
   const user = useSelector<RootState>(state => state.userReducer) as IUser
@@ -58,9 +58,8 @@ export const Layout = ({columns , data}: IProps) => {
         <div className={styles.head}>
           <div className={styles.head_wrapper}>
           {
-            shownColumns.map((value) => {
-              console.log(value)
-              return <p style={{width: `${columnWidth}%`}}>{value.title}</p>
+            shownColumns.map((value , index) => {
+              return <p style={{width: `${columnWidth}%`}} key={index}>{value.title}</p>
             })
           }
           </div>
@@ -68,8 +67,8 @@ export const Layout = ({columns , data}: IProps) => {
       </div>
       <div className={styles.body}>
         {
-          passingData.map((value) => {
-            return <Card data={value} columnsCount={shownColumns.length}/>
+          passingData.map((value , index) => {
+            return <Card data={value} columnsCount={shownColumns.length} key={index}/>
           })
         }
       </div>
@@ -82,7 +81,7 @@ export const Layout = ({columns , data}: IProps) => {
               {
                 paginationItems.map((value , index , arr) => {
                   if(value <= 2 || value === selectedPage && value !== arr.length) {
-                    return <div className={selectedPage === index + 1 ? styles.selected_page : styles.page} onClick={() => setSelectedPage(value)}>{value}</div>
+                    return <div key={index} className={selectedPage === index + 1 ? styles.selected_page : styles.page} onClick={() => setSelectedPage(value)}>{value}</div>
                   } else if(value <= arr.length){
                     return 
                   }
@@ -92,7 +91,7 @@ export const Layout = ({columns , data}: IProps) => {
               {
                 paginationItems.map((value , index , arr) => {
                   if(value === arr.length && value > 2) {
-                    return <div className={selectedPage === index + 1 ? styles.selected_page : styles.page} onClick={() => setSelectedPage(value)}>{value}</div>
+                    return <div key={index} className={selectedPage === index + 1 ? styles.selected_page : styles.page} onClick={() => setSelectedPage(value)}>{value}</div>
                   } else {
                     return 
                   }

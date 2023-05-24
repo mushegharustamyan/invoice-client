@@ -28,7 +28,6 @@ export const Item = ({data} : Iprops) => {
     <li className={subMenu? `${styles.nested_list} ${styles.border}` : styles.nested_list}>
       {
         subMenu &&
-        // <img className={showSubMenu ?styles.icon : styles.icon_open} alt="dropdown" src={down} onClick={() => handleDropDown()} />
         <ChevronDownIcon className={showSubMenu ?styles.icon : styles.icon_open} style={iconStyles}  onClick={() => handleDropDown()}/>
       }
       <Link to={path}>{title}</Link>

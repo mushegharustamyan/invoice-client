@@ -24,16 +24,16 @@ export const Select = ({options , title, itemsCount, width, selected, action} : 
   return <select className={styles.select} style={{width: `${width}px`}} onChange={(e:React.ChangeEvent<HTMLSelectElement>) => action && action(+e.target.value)}>
     {title && <option>{title}</option>}
     {
-      options && options.map((value) => {
-        return <option value={value}>{value}</option>
+      options && options.map((value , index) => {
+        return <option value={value} key={index}>{value}</option>
       })
     }
     {
       itemsCount && itemsCountArray(itemsCount).map((value, index) => {
         if(selected && selected === index + 1) {
-          return <option value={value} selected>{value}</option>
+          return <option key={index} value={value} selected>{value}</option>
         }
-        return <option value={value}>{value}</option>
+        return <option key={index} value={value}>{value}</option>
       })
     }
   </select>

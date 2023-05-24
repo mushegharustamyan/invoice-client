@@ -13,8 +13,6 @@ export const modifyColumns = (role: string | null , columns: IRawData[]) => {
       break
   }
 
-  console.log(role)
-
   return result
 }
 

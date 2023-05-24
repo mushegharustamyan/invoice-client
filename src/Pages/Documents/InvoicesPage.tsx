@@ -9,7 +9,7 @@ import { getInvoices } from "../../store/reducers/invoiceSlice"
 import { RootState } from "../.."
 
 import styles from "./styles.module.css"
-import { Layout } from "../../Components/Layout/Layout"
+import { Table } from "../../Components/Table/Table"
 import { SignOut } from "../../Components/SignOut/SignOut"
 
 interface IProps {
@@ -41,7 +41,7 @@ export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
         <div className={styles.panel}>
           <SearchPanel />
         </div>
-        <Layout 
+        <Table 
           data={data} 
           columns={columns} 
         />

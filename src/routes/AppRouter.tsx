@@ -21,7 +21,7 @@ export const AppRouter = () => {
                 return (
                   <Route key={index}
                   path={value.path}
-                  element={<InvoicesPage title={value.title} columns={value.columns} filterBy={value.filterBy}/>}
+                  element={<InvoicesPage title={value.title} columns={value.columns} filterBy={value.filterBy} key={index}/>}
                   />
                 )
               })
@@ -34,7 +34,8 @@ export const AppRouter = () => {
                   <Route 
                   key={index}
                   path={value.path}
-                  element={<InvoicesPage title={value.title} columns={value.columns} filterBy={value.filterBy}/>}
+                  element={<InvoicesPage title={value.title} columns={value.columns} filterBy={value.filterBy} key={index
+                  }/>}
                   />
                 )
               })

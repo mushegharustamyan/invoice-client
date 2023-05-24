@@ -14,7 +14,6 @@ interface IProps {
 } 
 
 export const Card:React.FC<IProps> = ({data , columnsCount, last }) => { 
-  console.log(data)
   const user = useSelector<RootState>(state => state.userReducer) as IUser
   let width = 100 / columnsCount + 1 
   return (

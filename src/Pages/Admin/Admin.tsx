@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Layout } from "../../Components/Layout/Layout"
+import { Table } from "../../Components/Table/Table"
 import { IRawData, IRole, IUser } from "../../utils/types"
 import styles from "./styles.module.css"
 import { SignOut } from "../../Components/SignOut/SignOut"
@@ -47,7 +47,7 @@ export const AdminPage = () => {
       <div className={styles.header}>
         <SignOut />
       </div>
-      <Layout columns={columns} data={passingData}/>
+      <Table columns={columns} data={passingData}/>
       <Select options={getRolesNames()} width={150}/>
     </div>
   </div>

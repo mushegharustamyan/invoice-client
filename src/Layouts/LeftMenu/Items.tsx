@@ -8,8 +8,8 @@ interface IProps {
 export const Items = ({data}: IProps) => {
   return <ul className={styles.nested}>
     {
-      data.map((value) => {
-        return <Item data={value}/>
+      data.map((value , index) => {
+        return <Item data={value} key={index}/>
       })
     }
   </ul>
