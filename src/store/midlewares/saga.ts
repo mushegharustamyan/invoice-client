@@ -3,6 +3,7 @@ import { filterInvoicesWorker, invoiceWorker } from "./workers/invoice";
 import { addTicketWorker, ticketWorker } from "./workers/tickets";
 import { refreshWorker, signInWorker, singoutWorker } from "./workers/auth";
 import { rolesWorker } from "./workers/roles";
+import { getADUsersWorker } from "./workers/adUser";
 
 export function* sagaWatcher() {
   yield takeEvery("invoice/getInvoices", invoiceWorker);
@@ -16,4 +17,6 @@ export function* sagaWatcher() {
 
   yield takeEvery("user/refresh", refreshWorker)
   yield takeEvery("roles/getAllRoles", rolesWorker)
+
+  yield takeEvery("ad-users/getAllADUsers", getADUsersWorker)
 }

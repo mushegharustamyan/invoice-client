@@ -12,21 +12,24 @@ import { modifyColumns, moidyData } from "./adapters"
 interface IProps {
   columns: IRawData[]
   data: any[]
+  roleBasedRender: boolean
+  option?: "add" | "modify"
 }
 
-export const Table = ({columns , data}: IProps) => {
+export const Table = ({columns , data , roleBasedRender , option}: IProps) => {
   let columnWidth = 100 / columns.length + 1;
+
+  console.log(option)
 
   const user = useSelector<RootState>(state => state.userReducer) as IUser
 
-  let shownColumns = modifyColumns(user.role , columns)
-
+  let shownColumns = roleBasedRender ? modifyColumns(user.role , columns , option) : columns
   let shownData = moidyData(data , shownColumns)
 
   const [itemsCount , setItemsCount] = useState(3)
   const [pagesCount, setPagesCount] = useState(0)
   const [selectedPage, setSelectedPage] = useState(1)
-  const passingData = shownData.slice((selectedPage - 1) * itemsCount ,selectedPage * itemsCount)
+  let passingData = shownData.slice((selectedPage - 1) * itemsCount ,selectedPage * itemsCount)
 
   useEffect(() => {
     data.length / itemsCount < 1 ? setPagesCount(1) : setPagesCount(Math.ceil(data.length / itemsCount))

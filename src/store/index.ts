@@ -4,6 +4,7 @@ import ticketsReducer from "./reducers/ticketSlice";
 import invoiceFilltersReducer from "./reducers/inVoicesFillterts";
 import userReducer from "./reducers/userSlice";
 import rolesReducer from "./reducers/roleSlice"
+import adUsersReducer from "./reducers/adUserSlice"
 import createSagaMiddleware from "@redux-saga/core";
 import { sagaWatcher } from "./midlewares/saga";
 
@@ -16,7 +17,8 @@ export const setupStore = () => {
       ticketsReducer,
       invoiceFilltersReducer,
       userReducer,
-      rolesReducer
+      rolesReducer,
+      adUsersReducer
     },
     middleware: [saga],
   });

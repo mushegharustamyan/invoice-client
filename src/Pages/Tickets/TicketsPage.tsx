@@ -51,7 +51,8 @@ export const TicketsPage = ({title}: IProps) => {
       }
       <Table 
           data={data} 
-          columns={ticketsColumns} 
+          columns={ticketsColumns}
+          roleBasedRender={true} 
         />
     </div>
   </div>

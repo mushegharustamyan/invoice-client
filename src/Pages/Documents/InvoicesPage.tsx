@@ -43,7 +43,8 @@ export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
         </div>
         <Table 
           data={data} 
-          columns={columns} 
+          columns={columns}
+          roleBasedRender={true} 
         />
       </div>
     </div>

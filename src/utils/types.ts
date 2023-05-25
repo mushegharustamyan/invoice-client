@@ -67,3 +67,11 @@ export interface IRole {
   access_level: number
   name : string
 }
+
+export interface IADUser {
+  SID: number
+  username: string
+  password: string
+  email: string
+  departmentId: string
+}

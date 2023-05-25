@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Table } from "../../Components/Table/Table"
-import { IRawData, IRole, IUser } from "../../utils/types"
+import { IADUser, IRawData, IRole, IUser } from "../../utils/types"
 import styles from "./styles.module.css"
 import { SignOut } from "../../Components/SignOut/SignOut"
 import { getRoles } from "../../servieces/admin/role"
@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAllRoles } from "../../store/reducers/roleSlice"
 import { RootState } from "../.."
 import { Select } from "../../Components/Select/Select"
+import { getADusers } from "../../servieces/admin/ad-users"
+import { getAllADUsers } from "../../store/reducers/adUserSlice"
 
 
 export const AdminPage = () => {
@@ -18,28 +20,23 @@ export const AdminPage = () => {
       title: "Username",
       field: "username"
     },
-  ]
-
-  const data = [
     {
-      username: "username1"
+      title: "Email",
+      field: "email",
+    },
+    {
+      title: "Fullname",
+      field: "fullname"
     }
   ]
 
-  const roles = useSelector<RootState>(state => state.rolesReducer.data) as IRole[]
-  const getRolesNames = () => {
-    return roles.map((value) => {
-      return value.name
-    })
-  }
+  const adUsers = useSelector<RootState>(state => state.adUsersReducer.data) as IADUser[]
 
-  const [itemsCount , setItemsCount] = useState(3)
-  const [pagesCount, setPagesCount] = useState(0)
-  const [selectedPage, setSelectedPage] = useState(1)
-  const passingData = data.slice((selectedPage - 1) * itemsCount ,selectedPage * itemsCount)
+  const [shownTable , setShownTable] = useState("ad")
 
   useEffect(() => {
     dispatch(getAllRoles())
+    dispatch(getAllADUsers())
   } , [])
 
   return <div className={styles.page}>
@@ -47,8 +44,16 @@ export const AdminPage = () => {
       <div className={styles.header}>
         <SignOut />
       </div>
-      <Table columns={columns} data={passingData}/>
-      <Select options={getRolesNames()} width={150}/>
+      <div className={styles.tables}>
+        <p className={shownTable === "ad" ? `${styles.option} ${styles.selected}` : styles.option} onClick={() => setShownTable("ad")}>AD Users</p>
+        <p className={shownTable === "users" ? `${styles.option} ${styles.selected}` : styles.option} onClick={() => setShownTable("users")}>Users</p>
+      </div>
+      {
+        shownTable === "ad" && <Table columns={columns} data={adUsers} roleBasedRender={true} option="add"/>
+      }
+      {
+        shownTable === "users" && <Table columns={columns} data={adUsers} roleBasedRender={true} option="modify"/>
+      }
     </div>
   </div>
 }

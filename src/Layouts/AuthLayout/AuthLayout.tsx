@@ -18,11 +18,6 @@ export const AuthLayout = () => {
   const user = useSelector<RootState>(state => state.userReducer) as IUser
 
   useEffect(() => {
-    console.log(token)
-    if(token) dispatch(refresh())
-  } ,[])
-
-  useEffect(() => {
     if(!token) {
       navigate(null)
     } else {

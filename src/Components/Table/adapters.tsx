@@ -1,12 +1,19 @@
 import { IDocument, IRawData } from "../../utils/types";
+import { AddUser } from "../AddUser/AddUser";
 import { Button } from "../Button/Button";
 import { Download } from "../Download/Download";
+import { ModifyUser } from "../ModifyUser/ModifyUser";
 
-export const modifyColumns = (role: string | null , columns: IRawData[]) => {
+export const modifyColumns = (role: string | null , columns: IRawData[] , option?: "add" | "modify") => {
   const result = [...columns]
   switch(role) {
     case "admin":
-      result.push( {field: "", title: "", dataRender: () => <Button width={150} text="Add User"/>})
+      const dataRender = () => {
+        if (option === "add") return <AddUser />
+        console.log(option)
+        return <ModifyUser />
+      }
+      result.push( {field: "", title: "", dataRender})
       break;
     case "accountant": 
       result.push( {field: "", title: "", dataRender: () => <Download />})
