@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { IDocument, IRawData, IUser } from "../../utils/types"
+import { IAuth, IDocument, IRawData, IUser } from "../../utils/types"
 import { Card } from "../Card/Card"
 import { Select } from "../Select/Select"
 import styles from "./styles.module.css"
@@ -21,12 +21,12 @@ export const Table = ({columns , data , roleBasedRender , option}: IProps) => {
 
   console.log(option)
 
-  const user = useSelector<RootState>(state => state.userReducer) as IUser
+  const user = useSelector<RootState>(state => state.authReducer) as IAuth
 
   let shownColumns = roleBasedRender ? modifyColumns(user.role , columns , option) : columns
   let shownData = moidyData(data , shownColumns)
 
-  const [itemsCount , setItemsCount] = useState(3)
+  const [itemsCount , setItemsCount] = useState(6)
   const [pagesCount, setPagesCount] = useState(0)
   const [selectedPage, setSelectedPage] = useState(1)
   let passingData = shownData.slice((selectedPage - 1) * itemsCount ,selectedPage * itemsCount)

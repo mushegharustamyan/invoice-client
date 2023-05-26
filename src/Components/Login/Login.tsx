@@ -6,7 +6,7 @@ import { signIn } from "../../servieces/auth"
 import { useDispatch, useSelector } from "react-redux"
 import Cookies from "js-cookie"
 // import { useNavigate } from "react-router"
-import { login } from "../../store/reducers/userSlice"
+import { login } from "../../store/reducers/authSlice"
 import { RootState } from "../.."
 import { IUser } from "../../utils/types"
 import { useNavigate } from "react-router"
@@ -29,7 +29,7 @@ export const Login = () => {
     setPassword(e.target.value)
   }
 
-  const user = useSelector<RootState>(state => state.userReducer) as IUser
+  const user = useSelector<RootState>(state => state.authReducer) as IUser
 
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()

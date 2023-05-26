@@ -3,21 +3,37 @@ import { Button } from "../Button/Button"
 import { RootState } from "../.."
 import { IRole } from "../../utils/types"
 import { Select } from "../Select/Select"
-import { DeleteIcon } from "@fluentui/react-icons-mdl2"
+import { DeleteIcon, EditIcon, UserRemoveIcon } from "@fluentui/react-icons-mdl2"
 
 import styles from "./styles.module.css"
+import { getRoles } from "@testing-library/react"
+import { useState } from "react"
+import { deleteUser, editUser } from "../../servieces/admin/user"
 
-export const ModifyUser = () => {
+export const ModifyUser = ({id} : {id: number}) => {
     const roles = useSelector<RootState>(state => state.rolesReducer.data) as IRole[]
+
+    const [selectedRole , setSelectedRole] = useState("")
+
+    const handleEdit = () => {
+        editUser(id , +selectedRole)
+    }
+
+    const handleDelete = () => {
+        deleteUser(id)
+    }
+
     const getRolesNames = () => {
         return roles.map((value) => {
-        return value.name
+        return {id: value.id , value: value.name}
         })
     }
 
     return <div className={styles.container}>
-        <Button text="Change Role" width={150}/>
-        <Select options={getRolesNames()} width={150}/>
-        <DeleteIcon />
+        <div className={styles.edit}>
+            <Select options={[...getRolesNames()]} title="Select Role" width={150} setSelected={setSelectedRole}/>
+            <EditIcon onClick={handleEdit}/>
+        </div>
+        <DeleteIcon onClick={handleDelete}/>
     </div>
 }

@@ -3,7 +3,7 @@ import Cookies from "js-cookie"
 import styles from "./styles.module.css"
 import { useNavigate } from "react-router"
 import { useDispatch } from "react-redux"
-import { logout } from "../../store/reducers/userSlice"
+import { logout } from "../../store/reducers/authSlice"
 
 export const SignOut = () => {
   const navigate = useNavigate()

@@ -8,10 +8,9 @@ export const modifyColumns = (role: string | null , columns: IRawData[] , option
   const result = [...columns]
   switch(role) {
     case "admin":
-      const dataRender = () => {
-        if (option === "add") return <AddUser />
-        console.log(option)
-        return <ModifyUser />
+      const dataRender = (id: number) => {
+        if (option === "add") return <AddUser id={id}/>
+        return <ModifyUser id={id}/>
       }
       result.push( {field: "", title: "", dataRender})
       break;
@@ -27,9 +26,12 @@ export const moidyData = (data: any[] , columns: IRawData[]) => {
   const result = data.map((value) => {
     return columns.map((column) => {
       if(column.field !== "") {
+        if(column.field === "role") {
+          return {value: value[column.field].name}
+        }
         return {value: value[column.field]}
       } else {
-        return {value: column.dataRender && column.dataRender()}
+        return {value: column.dataRender && column.dataRender(value.id)}
       }
     })
   })

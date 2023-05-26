@@ -2,15 +2,17 @@ import React from "react"
 import styles from "./style.module.css"
 
 interface IProps {
-  options?: string[] | number[]
+  options?: {id: number , value: string}[]
+  counts?: number[] 
   title?: string
   itemsCount?: number
   width: number
   selected? : number
   action?: (count: number) => void
+  setSelected?: (role: string) => void
 }
 
-export const Select = ({options , title, itemsCount, width, selected, action} : IProps) => {
+export const Select = ({options , title, itemsCount, width, selected, action , setSelected} : IProps) => {
   const itemsCountArray = (count: number) => {
     const numbers: number[] = []
 
@@ -21,11 +23,11 @@ export const Select = ({options , title, itemsCount, width, selected, action} : 
     return numbers
   }
 
-  return <select className={styles.select} style={{width: `${width}px`}} onChange={(e:React.ChangeEvent<HTMLSelectElement>) => action && action(+e.target.value)}>
+  return <select className={styles.select} style={{width: `${width}px`}} onChange={(e:React.ChangeEvent<HTMLSelectElement>) => setSelected && setSelected(e.target.value) || action && action(+e.target.value)}>
     {title && <option>{title}</option>}
     {
       options && options.map((value , index) => {
-        return <option value={value} key={index}>{value}</option>
+        return <option value={value.id} key={index}>{value.value}</option>
       })
     }
     {

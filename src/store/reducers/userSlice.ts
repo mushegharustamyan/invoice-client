@@ -1,38 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IUser } from "../../utils/types";
-import Cookies from "js-cookie";
 
-const initialState: IUser = {
-  role: null,
-  token: null,
-};
+interface IState {
+    data: IUser []
+}
+
+const initialState: IState = {
+    data: []
+}
 
 const userSlice = createSlice({
-  name: "user",
-  initialState,
-  reducers: {
-    login: (state, action) => {},
-    loginSuccessed: (state, action) => {
-      state.role = action.payload.data.user.role.name;
-      state.token = action.payload.data.token;
-      Cookies.set("token", action.payload.data.token);
-    },
-    logout: () => {},
-    logoutSuccessed: (state) => {
-      state.role = null;
-      state.token = null;
-      Cookies.remove("token");
-    },
-    refresh: () => {},
-    refreshSuccessed: (state , action) => {
-      console.log(action.payload.token ,  action.payload.response.data.role.name)
-      state.token = action.payload.token
-      state.role = action.payload.response.data.role.name
+    name: "users",
+    initialState,
+    reducers: {
+        getAllUsers: () => {},
+        getAllUsersSuccessed: (state , action) => {
+            state.data = [...action.payload]
+        }
     }
-  },
-});
+})
 
-export default userSlice.reducer;
+export default userSlice.reducer
 
-export const { login, loginSuccessed, logout, logoutSuccessed , refresh , refreshSuccessed} =
-  userSlice.actions;
+export const {getAllUsers , getAllUsersSuccessed} = userSlice.actions

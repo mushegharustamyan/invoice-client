@@ -4,8 +4,8 @@ import Cookies from 'js-cookie';
 import { useCustomNavigate } from "../../common/helpers";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../..";
-import { IUser } from "../../utils/types";
-import { refresh } from "../../store/reducers/userSlice";
+import { IAuth, IUser } from "../../utils/types";
+import { refresh } from "../../store/reducers/authSlice";
 
 
 export const AuthLayout = () => {
@@ -15,7 +15,7 @@ export const AuthLayout = () => {
 
   const token = Cookies.get('token')
 
-  const user = useSelector<RootState>(state => state.userReducer) as IUser
+  const user = useSelector<RootState>(state => state.authReducer) as IAuth
 
   useEffect(() => {
     if(!token) {

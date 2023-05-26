@@ -14,7 +14,7 @@ interface IProps {
 } 
 
 export const Card:React.FC<IProps> = ({data , columnsCount, last }) => { 
-  const user = useSelector<RootState>(state => state.userReducer) as IUser
+  const user = useSelector<RootState>(state => state.authReducer) as IUser
   let width = 100 / columnsCount + 1 
   return (
     <div className={!last ? styles.card : styles.last} >

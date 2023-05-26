@@ -27,7 +27,7 @@ export interface IRawData {
   title: string;
   field: string;
   render?: () => JSX.Element;
-  dataRender?: () => JSX.Element
+  dataRender?: (id: number) => JSX.Element
 }
 
 export interface IInvoicesRoutes {
@@ -58,12 +58,13 @@ export interface IChildrenProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
-export interface IUser {
+export interface IAuth {
   role: string | null;
   token: string | null;
 }
 
 export interface IRole {
+  id: number
   access_level: number
   name : string
 }
@@ -74,4 +75,13 @@ export interface IADUser {
   password: string
   email: string
   departmentId: string
+}
+
+export interface IUser {
+  SID: number
+  username: string
+  password: string
+  email: string
+  departmentId: string
+  role: string
 }

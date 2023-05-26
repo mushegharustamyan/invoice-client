@@ -10,12 +10,13 @@ import { RootState } from "../.."
 import { Select } from "../../Components/Select/Select"
 import { getADusers } from "../../servieces/admin/ad-users"
 import { getAllADUsers } from "../../store/reducers/adUserSlice"
+import { getAllUsers } from "../../store/reducers/userSlice"
 
 
 export const AdminPage = () => {
   const dispatch = useDispatch()
 
-  const columns: IRawData[] = [
+  const adUsersColumns: IRawData[] = [
     {
       title: "Username",
       field: "username"
@@ -30,14 +31,38 @@ export const AdminPage = () => {
     }
   ]
 
+  const usersColumns: IRawData[] = [
+    {
+      title: "Username",
+      field: "username"
+    },
+    {
+      title: "Email",
+      field: "email",
+    },
+    {
+      title: "Fullname",
+      field: "fullname"
+    },
+    {
+      title: "Role",
+      field: "role"
+    }
+  ]
+
   const adUsers = useSelector<RootState>(state => state.adUsersReducer.data) as IADUser[]
+  const users = useSelector<RootState>(state => state.useReducer.data) as IUser[]
 
   const [shownTable , setShownTable] = useState("ad")
 
   useEffect(() => {
     dispatch(getAllRoles())
-    dispatch(getAllADUsers())
   } , [])
+
+  useEffect(() => {
+    dispatch(getAllADUsers())
+    dispatch(getAllUsers())
+  } , [shownTable])
 
   return <div className={styles.page}>
     <div className={styles.wrapper}>
@@ -49,10 +74,10 @@ export const AdminPage = () => {
         <p className={shownTable === "users" ? `${styles.option} ${styles.selected}` : styles.option} onClick={() => setShownTable("users")}>Users</p>
       </div>
       {
-        shownTable === "ad" && <Table columns={columns} data={adUsers} roleBasedRender={true} option="add"/>
+        shownTable === "ad" && <Table columns={adUsersColumns} data={adUsers} roleBasedRender={true} option="add"/>
       }
       {
-        shownTable === "users" && <Table columns={columns} data={adUsers} roleBasedRender={true} option="modify"/>
+        shownTable === "users" && <Table columns={usersColumns} data={users} roleBasedRender={true} option="modify"/>
       }
     </div>
   </div>
