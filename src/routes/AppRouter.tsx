@@ -42,7 +42,7 @@ export const AppRouter = () => {
                 )
               })
             }
-            <Route path="/invoices/tickets" element={<TicketsPage title="Tickets"/>} />
+            <Route path="/department/tickets" element={<TicketsPage title="Tickets"/>} />
           </Route>
         </Route>
         <Route path="/admin" element={<AdminPage />}/>
