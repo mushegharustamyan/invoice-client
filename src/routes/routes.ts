@@ -57,17 +57,20 @@ export const departmentInvoicesRoutes: IInvoicesRoutes[] = [
     title: "Imported Invoices",
     columns: allInvoicesColumns,
     filterBy: ["matched", "signed"],
+    showInvoiceActions: false
   },
   {
     path: "/department/approved",
     title: "Approved Invoices",
     columns: matchedInvoicesColumns,
     filterBy: ["signed"],
+    showInvoiceActions: false
   },
   {
     path: "/department/in-progress",
     title: "In Progress Invoices",
     columns: matchedInvoicesColumns,
     filterBy: ["matched"],
+    showInvoiceActions: true
   },
 ];

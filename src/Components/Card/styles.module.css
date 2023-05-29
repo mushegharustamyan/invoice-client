@@ -74,3 +74,10 @@
 .company_name {
   font-size: 14px;
 }
+
+.card_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 10px;
+}

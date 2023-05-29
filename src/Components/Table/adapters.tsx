@@ -3,6 +3,7 @@ import { AddUser } from "../AddUser/AddUser";
 import { Button } from "../Button/Button";
 import { Download } from "../Download/Download";
 import { ModifyUser } from "../ModifyUser/ModifyUser";
+import { EditInvoice } from "../EditInvoice/EditInvoice";
 
 export const modifyColumns = (role: string | null , columns: IRawData[] , option?: "add" | "modify") => {
   const result = [...columns]

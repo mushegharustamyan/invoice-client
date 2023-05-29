@@ -35,6 +35,7 @@ export interface IInvoicesRoutes {
   title: string;
   columns: IRawData[];
   filterBy?: string[];
+  showInvoiceActions?: boolean
 }
 
 export interface INavigation {

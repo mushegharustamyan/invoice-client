@@ -11,13 +11,16 @@ interface IProps {
   }[]
   columnsCount: number
   last?: true 
+  showCheckbox: boolean | undefined
 } 
 
-export const Card:React.FC<IProps> = ({data , columnsCount, last }) => { 
+export const Card:React.FC<IProps> = ({data , columnsCount, last , showCheckbox}) => { 
   const user = useSelector<RootState>(state => state.authReducer) as IUser
   let width = 100 / columnsCount + 1 
-  return (
+  return (<div className={styles.card_wrapper}>
+    {showCheckbox && <input type="checkbox"/>}
     <div className={!last ? styles.card : styles.last} >
+      
       <div className={styles.wrapper}>
           {
             data.map((value , index) => {
@@ -26,5 +29,6 @@ export const Card:React.FC<IProps> = ({data , columnsCount, last }) => {
           }
       </div>
     </div> 
+  </div>
   )
 }

@@ -14,9 +14,10 @@ interface IProps {
   data: any[]
   roleBasedRender: boolean
   option?: "add" | "modify"
+  showInvoiceActions?: boolean
 }
 
-export const Table = ({columns , data , roleBasedRender , option}: IProps) => {
+export const Table = ({columns , data , roleBasedRender , option , showInvoiceActions}: IProps) => {
   let columnWidth = 100 / columns.length + 1;
 
   console.log(option)
@@ -71,7 +72,7 @@ export const Table = ({columns , data , roleBasedRender , option}: IProps) => {
       <div className={styles.body}>
         {
           passingData.map((value , index) => {
-            return <Card data={value} columnsCount={shownColumns.length} key={index}/>
+            return <Card data={value} columnsCount={shownColumns.length} key={index} showCheckbox={showInvoiceActions}/>
           })
         }
       </div>
