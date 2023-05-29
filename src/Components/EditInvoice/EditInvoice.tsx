@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Modal } from "../Modal/Modal"
 import styles from "./styles.module.css"
-import { CheckMarkIcon, ChevronUpIcon, StatusCircleErrorXIcon } from "@fluentui/react-icons-mdl2"
+import { CheckMarkIcon, ChevronUpIcon, ChromeCloseIcon, ClosePaneIcon, StatusCircleErrorXIcon, WarningIcon } from "@fluentui/react-icons-mdl2"
 import { Input } from "../TextInput/TextInput"
 
 export const EditInvoice = () => {
@@ -53,7 +53,19 @@ export const EditInvoice = () => {
                 </div>
             </div> :  showModal ? <Modal action={handleShowModal}>
                 <div className={styles.modal}>
-                    
+                    <div className={styles.modal_wrapper}>
+                        <div className={styles.close}>
+                            <ChromeCloseIcon />
+                        </div>
+                        <WarningIcon />
+                        <p>
+                            Warning: When signing an invoice, be aware of the following responsibilities and cautions to avoid serious financial and legal consequences:
+                        </p>
+                        <div className={`${styles.option} ${styles.sign}`}>
+                            <p>Sign</p>
+                            <CheckMarkIcon />        
+                        </div>
+                    </div>
                 </div>
             </Modal> 
             : 
