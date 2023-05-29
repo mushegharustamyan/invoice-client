@@ -43,7 +43,7 @@ export const DepartmentInvoicesPage = ({title , columns , filterBy , showInvoice
         </div>
         <p className={styles.page_title}>{title}</p>
         <div className={styles.panel}>
-          <SearchPanel />
+          <SearchPanel showFilteIcon={true}/>
         </div>
         <Table 
           data={data} 

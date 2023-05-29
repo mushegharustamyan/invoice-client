@@ -10,7 +10,11 @@ import { RootState } from "../.."
 import { IDocument } from "../../utils/types"
 import { ChevronDownIcon, FilterIcon, SearchIcon } from "@fluentui/react-icons-mdl2"
 
-export const SearchPanel = () => {
+interface IProps {
+  showFilteIcon: boolean
+}
+
+export const SearchPanel = ({showFilteIcon}: IProps) => {
   const dispatch = useDispatch()
 
   const [showFilters , setShowFilters] = useState(false)
@@ -45,10 +49,12 @@ export const SearchPanel = () => {
       <div className={styles.head}>
         <div className={styles.search_line}>
           <Input width={600} text="Search" render={() => <SearchIcon />}/>
-          <div className={styles.filters}>
-            <p>Filters</p>
-            <FilterIcon onClick={() => handleDropDown()} className={styles.icon} style={{color: "#2b579a"}}/>
-          </div>
+          {
+            showFilteIcon && <div className={styles.filters}>
+              <p>Filters</p>
+              <FilterIcon onClick={() => handleDropDown()} className={styles.icon} style={{color: "#2b579a"}}/>
+            </div>
+          }
           <Button width={150} action={searchInvoice} text="Search"/>
         </div>
       </div>

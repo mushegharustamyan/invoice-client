@@ -11,6 +11,7 @@ import { Select } from "../../Components/Select/Select"
 import { getADusers } from "../../servieces/admin/ad-users"
 import { getAllADUsers } from "../../store/reducers/adUserSlice"
 import { getAllUsers } from "../../store/reducers/userSlice"
+import { SearchPanel } from "../../Components/SearchPanel/SearchPanel"
 
 
 export const AdminPage = () => {
@@ -73,6 +74,7 @@ export const AdminPage = () => {
         <p className={shownTable === "ad" ? `${styles.option} ${styles.selected}` : styles.option} onClick={() => setShownTable("ad")}>AD Users</p>
         <p className={shownTable === "users" ? `${styles.option} ${styles.selected}` : styles.option} onClick={() => setShownTable("users")}>Users</p>
       </div>
+      <SearchPanel showFilteIcon={false}/>
       {
         shownTable === "ad" && <Table columns={adUsersColumns} data={adUsers} roleBasedRender={true} option="add"/>
       }

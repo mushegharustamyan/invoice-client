@@ -39,7 +39,7 @@ export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
         </div>
         <p className={styles.page_title}>{title}</p>
         <div className={styles.panel}>
-          <SearchPanel />
+          <SearchPanel showFilteIcon={true}/>
         </div>
         <Table 
           data={data} 
