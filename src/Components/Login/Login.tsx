@@ -14,15 +14,13 @@ import { useNavigate } from "react-router"
 export const Login = () => {
   const dispatch = useDispatch()
 
-  const [email , setEmail] = useState("")
+  const [username , setUsername] = useState("")
   const [password , setPassword] = useState("")
 
   const token = Cookies.get('token')
 
-  const navigate = useNavigate()
-
   const changeEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value)
+    setUsername(e.target.value)
   }
 
   const changePassword = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -33,14 +31,14 @@ export const Login = () => {
 
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    dispatch(login({email , password}))
+    dispatch(login({username , password}))
   }
 
   return (
     <div className={styles.page}>
       <form className={styles.form}>
         <div className={styles.wrapper}>
-          <Input width={350} text="Email" action={changeEmail}/>
+          <Input width={350} text="Username" action={changeEmail}/>
           <Input width={350} text="Password" action={changePassword} type="password"/>
           <Button width={350} text="Sign In" action={handleLogin}/>
         </div>

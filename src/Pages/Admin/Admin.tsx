@@ -72,7 +72,7 @@ export const AdminPage = () => {
       </div>
       <div className={styles.tables}>
         <p className={shownTable === "ad" ? `${styles.option} ${styles.selected}` : styles.option} onClick={() => setShownTable("ad")}>AD Users</p>
-        <p className={shownTable === "users" ? `${styles.option} ${styles.selected}` : styles.option} onClick={() => setShownTable("users")}>Users</p>
+        <p className={shownTable === "users" ? `${styles.option} ${styles.selected}` : styles.option} onClick={() => setShownTable("users")}>Registered Users</p>
       </div>
       <SearchPanel showFilteIcon={false}/>
       {

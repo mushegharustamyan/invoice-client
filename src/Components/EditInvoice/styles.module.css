@@ -38,7 +38,6 @@
 .option {
     width: 150px;
     height: 40px;
-    border: 1px solid #2b579a;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,12 +46,12 @@
 }
 
 .sign {
-    background-color: #2b579a;
+    background-color: green;
     color: #fff;
 }
 
 .reject {
-    background-color: #ff2151;
+    background-color: red;
     color: #fff;
 }
 
@@ -68,8 +67,35 @@
     gap: 10px
 }
 
+.error_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .error {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.error_not_mine {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text_area {
+    width: 320px;
+    height: 200px;
+    color: #2b579a;
+    border: 1px solid #2b579a;
+}
+
+.text_area:focus-visible {
+    outline: none;
+}
+
+.error input {
+    border: 1px solid #2b579a;
 }

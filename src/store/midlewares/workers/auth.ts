@@ -5,12 +5,11 @@ import { loginSuccessed, logoutSuccessed, refreshSuccessed } from "../../reducer
 
 export function* signInWorker(action: {
   type: string;
-  payload: { email: string; password: string };
+  payload: { username: string; password: string };
 }): Generator<unknown> {
   const target = action.payload;
-  console.log(action.payload);
-  const { email, password } = target;
-  const response = yield call(() => signIn(email, password));
+  const { username , password } = target;
+  const response = yield call(() => signIn(username, password));
   yield put(loginSuccessed(response));
 }
 

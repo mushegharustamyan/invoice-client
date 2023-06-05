@@ -2,12 +2,12 @@ import Cookies from "js-cookie";
 import { config } from "process";
 import { client } from "./axios";
 
-export const signIn = async (email: string, password: string) => {
-  if (email === "" || password === "") {
+export const signIn = async (username: string, password: string) => {
+  if (username === "" || password === "") {
     return;
   }
 
-  const response = await client.post("/auth", { email, password });
+  const response = await client.post("/auth", { username, password });
 
   return response;
 };

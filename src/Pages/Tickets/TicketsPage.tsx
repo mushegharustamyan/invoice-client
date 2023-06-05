@@ -45,7 +45,8 @@ export const TicketsPage = ({title}: IProps) => {
       <Button width={150} text="Make" action={handleShowField} render={() => <AddIcon />}/>
       {
         showField && <div className={styles.make}>
-          <Input width={600} placeholder="Write description here" action={handleSetDescription}/>
+          
+          <textarea className={styles.textarea}/>
           <Button text={"Apply"} width={150} action={() => handleAddTicket()}/>
         </div>
       }

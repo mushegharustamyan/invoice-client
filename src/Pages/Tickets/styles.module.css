@@ -23,8 +23,20 @@
 }
 
 .make {
+  width: 100%;
   display: flex;
+  flex-direction: column;
   gap: 40px;
 }
 
+.textarea {
+  width: 60%;
+  height: 200px;
+  color: #2b579a;
+  border: 1px solid #2b579a;
+}
+
+.textarea:focus-visible {
+  outline: none;
+}
 
