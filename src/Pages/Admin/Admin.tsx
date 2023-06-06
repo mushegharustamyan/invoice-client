@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react"
-import { Table } from "../../Components/Table/Table"
-import { IADUser, IRawData, IRole, IUser } from "../../utils/types"
-import styles from "./styles.module.css"
-import { SignOut } from "../../Components/SignOut/SignOut"
-import { getRoles } from "../../servieces/admin/role"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllRoles } from "../../store/reducers/roleSlice"
+
+import { IADUser, IRawData, IRole, IUser } from "../../utils/types"
 import { RootState } from "../.."
-import { Select } from "../../Components/Select/Select"
-import { getADusers } from "../../servieces/admin/ad-users"
-import { getAllADUsers } from "../../store/reducers/adUserSlice"
-import { getAllUsers } from "../../store/reducers/userSlice"
+
+import { Table } from "../../Components/Table/Table"
+import { SignOut } from "../../Components/SignOut/SignOut"
 import { SearchPanel } from "../../Components/SearchPanel/SearchPanel"
 
+import { getAllRoles } from "../../store/reducers/roleSlice"
+import { getAllADUsers } from "../../store/reducers/adUserSlice"
+import { getAllUsers } from "../../store/reducers/userSlice"
+
+import styles from "./styles.module.css"
 
 export const AdminPage = () => {
   const dispatch = useDispatch()
@@ -74,7 +74,7 @@ export const AdminPage = () => {
         <p className={shownTable === "ad" ? `${styles.option} ${styles.selected}` : styles.option} onClick={() => setShownTable("ad")}>AD Users</p>
         <p className={shownTable === "users" ? `${styles.option} ${styles.selected}` : styles.option} onClick={() => setShownTable("users")}>Registered Users</p>
       </div>
-      <SearchPanel showFilteIcon={false}/>
+      <SearchPanel showFilterIcon={false}/>
       {
         shownTable === "ad" && <Table columns={adUsersColumns} data={adUsers} roleBasedRender={true} option="add"/>
       }

@@ -1,9 +1,18 @@
 import { useState } from "react"
-import { Modal } from "../Modal/Modal"
-import styles from "./styles.module.css"
-import { CheckMarkIcon, ChevronUpIcon, ChromeCloseIcon, ClosePaneIcon, StatusCircleErrorXIcon, WarningIcon } from "@fluentui/react-icons-mdl2"
-import { Input } from "../TextInput/TextInput"
 
+import { Modal } from "../Modal/Modal"
+
+import 
+{ 
+    CheckMarkIcon, 
+    ChevronUpIcon, 
+    ChromeCloseIcon, 
+    StatusCircleErrorXIcon,
+    WarningIcon 
+}
+from "@fluentui/react-icons-mdl2"
+
+import styles from "./styles.module.css"
 export const EditInvoice = () => {
     const [showModal , setShowModal] = useState(false)
     const [showOptional , setShowOptional] = useState(false)

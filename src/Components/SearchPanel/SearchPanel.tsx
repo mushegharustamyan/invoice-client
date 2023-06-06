@@ -1,20 +1,24 @@
-import React, { useState } from "react"
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+
+import { IDocument } from "../../utils/types"
+import { RootState } from "../.."
+
 import { Input } from "../TextInput/TextInput"
-import styles from "./styles.module.css"
 import { DatePicker } from "../DatePicker/DatePicker"
 import { Button } from "../Button/Button"
-import { useDispatch, useSelector } from "react-redux"
-import { filterInvoices, getInvoices } from "../../store/reducers/invoiceSlice"
-import { Select } from "../Select/Select"
-import { RootState } from "../.."
-import { IDocument } from "../../utils/types"
-import { ChevronDownIcon, FilterIcon, SearchIcon } from "@fluentui/react-icons-mdl2"
+
+import { filterInvoices } from "../../store/reducers/invoiceSlice"
+
+import { FilterIcon, SearchIcon } from "@fluentui/react-icons-mdl2"
+
+import styles from "./styles.module.css"
 
 interface IProps {
-  showFilteIcon: boolean
+  showFilterIcon: boolean
 }
 
-export const SearchPanel = ({showFilteIcon}: IProps) => {
+export const SearchPanel = ({showFilterIcon}: IProps) => {
   const dispatch = useDispatch()
 
   const [showFilters , setShowFilters] = useState(false)
@@ -29,14 +33,10 @@ export const SearchPanel = ({showFilteIcon}: IProps) => {
     dispatch(filterInvoices(filters))
   }
 
-  const invoiceFilters = useSelector<RootState>(state => state.invoiceFilltersReducer.filterBy)
-
-  console.log(invoiceFilters)
-
   const data = useSelector<RootState>(state => state.invoiceReducer.data) as IDocument[]
   const companies = data.map((value) => {
     return value.company
-  })
+  })  
 
   const optionsSet = new Set()
 
@@ -50,7 +50,7 @@ export const SearchPanel = ({showFilteIcon}: IProps) => {
         <div className={styles.search_line}>
           <Input width={600} text="Search" render={() => <SearchIcon />}/>
           {
-            showFilteIcon && <div className={styles.filters}>
+            showFilterIcon && <div className={styles.filters}>
               <p>Filters</p>
               <FilterIcon onClick={() => handleDropDown()} className={styles.icon} style={{color: "#2b579a"}}/>
             </div>

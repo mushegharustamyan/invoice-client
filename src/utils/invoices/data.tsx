@@ -3,7 +3,6 @@ import { Select } from "../../Components/Select/Select";
 import { getAmounts, getCompanies, getDepartments } from "./service";
 import { statuses } from "./service";
 import { SearchAbleSelect } from "../../Components/SearchAbleSelect/SearchAbleSelect";
-import { Download } from "../../Components/Download/Download";
 
 export const invoices: IDocument[] = [
   {
@@ -14,7 +13,6 @@ export const invoices: IDocument[] = [
     status: "matched",
     department: "Department1",
     date: "2023-02-12",
-
   },
   {
     id: 2,

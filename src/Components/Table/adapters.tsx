@@ -23,7 +23,7 @@ export const modifyColumns = (role: string | null , columns: IRawData[] , option
   return result
 }
 
-export const moidyData = (data: any[] , columns: IRawData[]) => {
+export const modifyData = (data: any[] , columns: IRawData[]) => {
   const result = data.map((value) => {
     return columns.map((column) => {
       if(column.field !== "") {

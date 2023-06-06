@@ -16,7 +16,6 @@ export const useCustomNavigate = () => {
         navigate("/department")
         break
       default:
-        console.log("no user")
         navigate("/");
       }
     };

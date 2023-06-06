@@ -3,8 +3,6 @@ import { client } from "../axios"
 export const getUsers = async () => {
     const response = await client.get("http://localhost:5001/admin/users")
 
-    console.log(response.data)
-
     return response.data
 }
 

@@ -1,9 +1,11 @@
-import styles from "./style.module.css"
-import { DateInput } from "../DateInput/DateInput";
-import React from "react";
 import { useDispatch } from "react-redux";
+
+import { DateInput } from "../DateInput/DateInput";
 import { resetDates} from "../../store/reducers/inVoicesFillterts";
+
 import { ResetIcon } from "@fluentui/react-icons-mdl2";
+
+import styles from "./style.module.css"
 
 
 export const DatePicker = () => {
@@ -17,7 +19,6 @@ export const DatePicker = () => {
     <div className={styles.date}>
       <DateInput field="startDate"/>
       <DateInput field="endDate"/>
-      {/* <input type="reset" value="Reset"  className={styles.reset} onClick={() => handleResetDates()}/> */}
       <button type="reset" className={styles.reset}><ResetIcon /></button>
     </div>
   )

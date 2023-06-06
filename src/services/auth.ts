@@ -1,5 +1,4 @@
 import Cookies from "js-cookie";
-import { config } from "process";
 import { client } from "./axios";
 
 export const signIn = async (username: string, password: string) => {

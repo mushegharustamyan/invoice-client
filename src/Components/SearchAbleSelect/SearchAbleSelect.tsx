@@ -1,11 +1,14 @@
-import React, { LegacyRef, useEffect, useRef, useState } from "react"
-import styles from "./style.module.css"
-import down from "../../assets/img/down-icon-blue.png"
+import React, { useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+
+import { RootState } from "../.."
+
 import { filterInvoices } from "../../store/reducers/invoiceSlice"
 import { changeFilterBy } from "../../store/reducers/inVoicesFillterts"
-import { RootState } from "../.."
+
 import { ChevronDownIcon } from "@fluentui/react-icons-mdl2"
+
+import styles from "./style.module.css"
 
 interface IProps {
   title: string
@@ -13,14 +16,16 @@ interface IProps {
 }
 
 export const SearchAbleSelect = ({title , options} : IProps) => {
+  const dispatch = useDispatch()
   const [showOptions , setShowOptions] = useState(false)
-
+  const [localOptions , setLocalOptions] = useState([...options]) 
+  
   const defaultOptions =  [...options]
 
-  const [localOptions , setLocalOptions] = useState([...options]) 
-
+  const filters = useSelector<RootState>(state => state.invoiceFilltersReducer)
+  
   const ref = useRef<HTMLInputElement | null>(null)
-
+  
   const handleShowOptions = (e: React.MouseEvent) => {
     setShowOptions(!showOptions)
     
@@ -40,10 +45,6 @@ export const SearchAbleSelect = ({title , options} : IProps) => {
       setLocalOptions(defaultOptions)
     }    
   }
-
-  const filters = useSelector<RootState>(state => state.invoiceFilltersReducer)
-
-  const dispatch = useDispatch()
 
   const searchInvoices = (field: string , value: string) => {
     dispatch(changeFilterBy({field, value}))

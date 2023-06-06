@@ -1,4 +1,3 @@
-import { MouseEvent } from "react"
 import { IChildrenProps } from "../../utils/types"
 import styles from "./styles.module.css"
 

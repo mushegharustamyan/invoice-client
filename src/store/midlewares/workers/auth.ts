@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import { put, call } from "redux-saga/effects";
-import { refresh, signIn } from "../../../servieces/auth";
+import { refresh, signIn } from "../../../services/auth";
 import { loginSuccessed, logoutSuccessed, refreshSuccessed } from "../../reducers/authSlice";
 
 export function* signInWorker(action: {

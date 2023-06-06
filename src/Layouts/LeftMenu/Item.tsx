@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom"
-import { INavigation } from "../../utils/types"
-import styles from "./styles.module.css"
 import { useState } from "react"
-import down from "../../assets/img/down-sign.png"
+
+import { INavigation } from "../../utils/types"
+
 import { Items } from "./Items"
+
 import { ChevronDownIcon } from "@fluentui/react-icons-mdl2"
+
+import styles from "./styles.module.css"
 
 
 interface Iprops {

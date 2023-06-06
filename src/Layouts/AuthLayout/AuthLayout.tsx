@@ -1,12 +1,13 @@
 import { Outlet } from "react-router";
 import { useEffect } from "react";
-import Cookies from 'js-cookie';
-import { useCustomNavigate } from "../../common/helpers";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../..";
-import { IAuth, IUser } from "../../utils/types";
-import { refresh } from "../../store/reducers/authSlice";
 
+import { useCustomNavigate } from "../../common/helpers";
+
+import { IAuth, IUser } from "../../utils/types";
+import { RootState } from "../..";
+
+import Cookies from 'js-cookie';
 
 export const AuthLayout = () => {
   const dispatch = useDispatch()

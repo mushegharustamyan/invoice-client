@@ -1,8 +1,10 @@
 import { Outlet, useNavigate } from "react-router"
-import styles from "./styles.module.css"
+
 import { INavigation } from "../../utils/types"
+
 import { Item } from "./Item"
-import { SignOutIcon } from "@fluentui/react-icons-mdl2"
+
+import styles from "./styles.module.css"
 
 interface IProps {
   navList: INavigation[] 

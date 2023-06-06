@@ -1,7 +1,5 @@
-import { SearchIcon } from "@fluentui/react-icons-mdl2"
 import styles from "./styles.module.css"
-import React, { useState } from "react"
-import { render } from "@testing-library/react"
+import React from "react"
 
 interface IProps {
   text?: string

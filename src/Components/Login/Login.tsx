@@ -1,23 +1,17 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+
 import { Button } from "../Button/Button"
 import { Input } from "../TextInput/TextInput"
-import styles from "./styles.module.css"
-import { signIn } from "../../servieces/auth"
-import { useDispatch, useSelector } from "react-redux"
-import Cookies from "js-cookie"
-// import { useNavigate } from "react-router"
 import { login } from "../../store/reducers/authSlice"
-import { RootState } from "../.."
-import { IUser } from "../../utils/types"
-import { useNavigate } from "react-router"
+
+import styles from "./styles.module.css"
 
 export const Login = () => {
   const dispatch = useDispatch()
 
   const [username , setUsername] = useState("")
   const [password , setPassword] = useState("")
-
-  const token = Cookies.get('token')
 
   const changeEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value)
@@ -26,8 +20,6 @@ export const Login = () => {
   const changePassword = (e:React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value)
   }
-
-  const user = useSelector<RootState>(state => state.authReducer) as IUser
 
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()

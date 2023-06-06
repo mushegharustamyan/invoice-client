@@ -1,14 +1,18 @@
 import { BrowserRouter , Routes , Route } from "react-router-dom";
-import { LeftMenu } from "../Layouts/LeftMenu/LeftMenu";
+
 import { InvoicesPage } from "../Pages/AccountantInvoices/InvoicesPage";
-import { invoicesRoutes , departmentInvoicesRoutes } from "./routes";
 import { TicketsPage } from "../Pages/Tickets/TicketsPage";
-import { navList } from "../Pages/AccountantInvoices/navList";
-import { ticketsNavList } from "../Pages/Tickets/navList";
-import { Login } from "../Components/Login/Login";
-import { AuthLayout } from "../Layouts/AuthLayout/AuthLayout";
 import { AdminPage } from "../Pages/Admin/Admin";
 import { DepartmentInvoicesPage } from "../Pages/DepartmentInvoices/DepartmentInvoices";
+import { Login } from "../Components/Login/Login";
+
+import { navList } from "../Pages/AccountantInvoices/navList";
+import { LeftMenu } from "../Layouts/LeftMenu/LeftMenu";
+import { ticketsNavList } from "../Pages/Tickets/navList";
+
+import { invoicesRoutes , departmentInvoicesRoutes } from "./routes";
+
+import { AuthLayout } from "../Layouts/AuthLayout/AuthLayout";
 
 export const AppRouter = () => {
   return (
@@ -31,7 +35,6 @@ export const AppRouter = () => {
           <Route element={<LeftMenu navList={ticketsNavList}/>}>
             {
               departmentInvoicesRoutes.map((value, index) => {
-                console.log(value.showInvoiceActions)
                 return (
                   <Route 
                   key={index}

@@ -1,14 +1,15 @@
 import { useSelector } from "react-redux"
-import { Button } from "../Button/Button"
-import { RootState } from "../.."
+import { useState } from "react"
+
 import { IRole } from "../../utils/types"
+import { RootState } from "../.."
+
 import { Select } from "../Select/Select"
-import { DeleteIcon, EditIcon, UserRemoveIcon } from "@fluentui/react-icons-mdl2"
+import { deleteUser, editUser } from "../../services/admin/user"
+
+import { DeleteIcon, EditIcon} from "@fluentui/react-icons-mdl2"
 
 import styles from "./styles.module.css"
-import { getRoles } from "@testing-library/react"
-import { useState } from "react"
-import { deleteUser, editUser } from "../../servieces/admin/user"
 
 export const ModifyUser = ({id} : {id: number}) => {
     const roles = useSelector<RootState>(state => state.rolesReducer.data) as IRole[]

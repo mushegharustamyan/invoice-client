@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react"
-import { IAuth, IDocument, IRawData, IUser } from "../../utils/types"
+import { useSelector } from "react-redux"
+
+import { IAuth, IRawData } from "../../utils/types"
+import { RootState } from "../.."
+
 import { Card } from "../Card/Card"
 import { Select } from "../Select/Select"
-import styles from "./styles.module.css"
+
+import { modifyColumns, modifyData } from "./adapters"
+
 import { ChevronLeftIcon, ChevronRightIcon } from "@fluentui/react-icons-mdl2"
-import { Download } from "../Download/Download"
-import { useSelector } from "react-redux"
-import { RootState } from "../.."
-import { modifyColumns, moidyData } from "./adapters"
+
+import styles from "./styles.module.css"
 
 interface IProps {
   columns: IRawData[]
@@ -18,16 +22,14 @@ interface IProps {
 }
 
 export const Table = ({columns , data , roleBasedRender , option , showInvoiceActions}: IProps) => {
+  
+  const user = useSelector<RootState>(state => state.authReducer) as IAuth
   let columnWidth = 100 / columns.length + 1;
 
-  console.log(option)
-
-  const user = useSelector<RootState>(state => state.authReducer) as IAuth
-
   let shownColumns = roleBasedRender ? modifyColumns(user.role , columns , option) : columns
-  let shownData = moidyData(data , shownColumns)
+  let shownData = modifyData(data , shownColumns)
 
-  const [itemsCount , setItemsCount] = useState(6)
+  const [itemsCount , setItemsCount] = useState(4)
   const [pagesCount, setPagesCount] = useState(0)
   const [selectedPage, setSelectedPage] = useState(1)
   let passingData = shownData.slice((selectedPage - 1) * itemsCount ,selectedPage * itemsCount)
