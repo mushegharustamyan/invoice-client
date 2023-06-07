@@ -64,16 +64,17 @@ export const EditInvoice = () => {
                     <div className={styles.error}>
                         <input id="not_mine" type="radio" name="option"/>
                         <label htmlFor="not_mine">Not Mine</label>
+                        <ChevronUpIcon onClick={() => closeOptional()}/>
                     </div>
-                    <ChevronUpIcon onClick={() => closeOptional()}/>
                 </div>
                 <div className={styles.error}>
                     <input id="error" type="radio" onClick={() => hanldeShowErrorInput()} name="option"/>
                     <label htmlFor="error">Error</label>
                 </div>
                 <textarea className={styles.text_area}/>
-                <Button width={180} text="Send" action={() => handleShowRejectModal()}/>
-                
+                <div className={styles.send}>
+                    <Button width={250} text="Send Back Invoice" action={() => handleShowRejectModal()}/>
+                </div>
             </div>   
         }
         {

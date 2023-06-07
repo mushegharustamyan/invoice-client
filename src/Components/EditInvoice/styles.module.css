@@ -86,7 +86,7 @@
 }
 
 .text_area {
-    width: 380px;
+    width: 600px;
     height: 200px;
     color: #2b579a;
     border: 1px solid #2b579a;
@@ -98,4 +98,8 @@
 
 .error input {
     border: 1px solid #2b579a;
+}
+
+.send {
+    align-self: flex-end;
 }

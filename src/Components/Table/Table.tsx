@@ -65,7 +65,8 @@ export const Table = ({columns , data , roleBasedRender , option , showInvoiceAc
           <div className={styles.head_wrapper}>
           {
             shownColumns.map((value , index) => {
-              return <p style={{width: `${columnWidth}%`}} key={index}>{value.title}</p>
+              // return <p style={{width: `${columnWidth}%`}} key={index}>{value.title}</p>
+              return value.render ? <p style={{width: `${columnWidth}%`}} key={index}>{value.render()}</p> : <p style={{width: `${columnWidth}%`}} key={index}>{value.title}</p>
             })
           }
           </div>
