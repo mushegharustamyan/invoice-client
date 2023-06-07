@@ -29,7 +29,11 @@ export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
     dispatch(getInvoices({action:{ payload: {fields: filterBy}}}))
   } , [title])
 
-  let data = useSelector<RootState>(state => state.invoiceReducer.data) as IDocument[]
+  const data = useSelector<RootState>(state => state.invoiceReducer.data) as IDocument[]
+
+  const invoiceFillters = useSelector<RootState>(state => state.invoiceFilltersReducer)
+
+  console.log(invoiceFillters)
 
   return (
     <div className={styles.cards}>

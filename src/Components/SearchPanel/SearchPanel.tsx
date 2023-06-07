@@ -13,6 +13,7 @@ import { filterInvoices } from "../../store/reducers/invoiceSlice"
 import { FilterIcon, SearchIcon } from "@fluentui/react-icons-mdl2"
 
 import styles from "./styles.module.css"
+import { AmountRange } from "../AmountRange/AmountRange"
 
 interface IProps {
   showFilterIcon: boolean
@@ -59,12 +60,15 @@ export const SearchPanel = ({showFilterIcon}: IProps) => {
         </div>
       </div>
       {
-      showFilters? 
-        <div className={styles.filters_container}>
-          <form className={styles.dates}>
-            <DatePicker />
-          </form> 
-        </div> 
+      showFilters? <> 
+          <div className={styles.filters_container}>
+            <form className={styles.dates}>
+              <DatePicker />
+            </form> 
+            <AmountRange />
+          </div> 
+          
+        </>
         : null
       }
     </div>

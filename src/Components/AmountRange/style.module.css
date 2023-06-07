@@ -1,0 +1,49 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 220px;
+    color: #2b579a;
+}
+
+.input {
+    width: 150px;
+    height: 40px;
+    border: none;
+    background-color: #fff;
+    color: #2b579a;
+    font-size: 20px;
+    border-bottom: 1px solid #2b579a;
+}
+
+.input:focus-visible {
+    outline: none;
+}
+
+.reset {
+    width: 50px;
+    height: 40px;
+    border: none;
+    background-color: #fff;
+    color: #2b579a;
+    font-size: 20px;
+    border-bottom: 1px solid #2b579a;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.label {
+    color: #2b579a;
+    font-weight: 500;
+    text-decoration: underline;
+}

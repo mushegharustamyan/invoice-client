@@ -1,5 +1,6 @@
 .date {
   display: flex;
+  flex-direction: column;
   gap: 15px;
 }
 
@@ -12,4 +13,25 @@
   font-size: 20px;
   border-bottom: 1px solid #2b579a;
   cursor: pointer;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+  color: #2b579a;
+}
+
+.box {
+  width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  color: #2b579a;
+  font-weight: 500;
+  text-decoration: underline;
 }

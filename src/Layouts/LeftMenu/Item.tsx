@@ -29,11 +29,11 @@ export const Item = ({data} : Iprops) => {
 
   return <>
     <li className={subMenu? `${styles.nested_list} ${styles.border}` : styles.nested_list}>
+      <Link to={path}>{title}</Link>
       {
         subMenu &&
         <ChevronDownIcon className={showSubMenu ?styles.icon : styles.icon_open} style={iconStyles}  onClick={() => handleDropDown()}/>
       }
-      <Link to={path}>{title}</Link>
     </li>
     {
       showSubMenu && subMenu && <Items data={subMenu} />

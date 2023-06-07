@@ -13,10 +13,13 @@ import
 from "@fluentui/react-icons-mdl2"
 
 import styles from "./styles.module.css"
+import { Button } from "../Button/Button"
+
 export const EditInvoice = () => {
     const [showModal , setShowModal] = useState(false)
     const [showOptional , setShowOptional] = useState(false)
     const [showErrorInput , setShowErrorInput] = useState(false)
+    const [showRejectModal , setShowRejectModal] = useState(false)
 
     const handleShowModal = (e:React.MouseEvent) => {
         e.stopPropagation()
@@ -37,6 +40,10 @@ export const EditInvoice = () => {
 
     const hanldeShowErrorInput = () => {
         setShowErrorInput(!showErrorInput)
+    }
+
+    const handleShowRejectModal = () => {
+        setShowRejectModal(!showRejectModal)
     }
 
     return <div className={styles.container}>
@@ -65,27 +72,47 @@ export const EditInvoice = () => {
                     <label htmlFor="error">Error</label>
                 </div>
                 <textarea className={styles.text_area}/>
+                <Button width={180} text="Send" action={() => handleShowRejectModal()}/>
                 
             </div>   
         }
         {
-                showModal && <Modal action={handleShowModal}>
-                <div className={styles.modal}>
-                    <div className={styles.modal_wrapper}>
-                            <div className={styles.close}>
-                                <ChromeCloseIcon />
-                            </div>
-                            <WarningIcon />
-                            <p>
-                                Warning: When signing an invoice, be aware of the following responsibilities and cautions to avoid serious financial and legal consequences:
-                            </p>
-                            <div className={`${styles.option} ${styles.sign}`}>
-                                <p>Sign</p>
-                                <CheckMarkIcon />        
-                            </div>
+            showModal && <Modal action={handleShowModal}>
+            <div className={styles.modal}>
+                <div className={styles.modal_wrapper}>
+                        <div className={styles.close}>
+                            <ChromeCloseIcon />
+                        </div>
+                        <WarningIcon />
+                        <p>
+                            Warning: When signing an invoice, be aware of the following responsibilities and cautions to avoid serious financial and legal consequences:
+                        </p>
+                        <div className={`${styles.option} ${styles.sign}`}>
+                            <p>Sign</p>
+                            <CheckMarkIcon />        
                         </div>
                     </div>
-                </Modal> 
-            }
+                </div>
+            </Modal> 
+        }
+        {
+            showRejectModal && <Modal action={handleShowRejectModal}>
+            <div className={styles.modal}>
+                <div className={styles.modal_wrapper}>
+                        <div className={styles.close}>
+                            <ChromeCloseIcon />
+                        </div>
+                        <WarningIcon />
+                        <p>
+                            Warning: When rejecting an invoice, be aware of the following responsibilities and cautions to avoid serious financial and legal consequences:
+                        </p>
+                        <div className={`${styles.option} ${styles.reject}`}>
+                            <p>Reject</p>
+                            <StatusCircleErrorXIcon />
+                        </div>
+                    </div>
+                </div>
+            </Modal> 
+        }
     </div>
 }

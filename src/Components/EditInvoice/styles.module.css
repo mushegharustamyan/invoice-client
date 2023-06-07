@@ -36,7 +36,7 @@
 }
 
 .option {
-    width: 150px;
+    width: 180px;
     height: 40px;
     display: flex;
     align-items: center;
@@ -58,7 +58,7 @@
 .options {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
 }
 
 .up {
@@ -86,7 +86,7 @@
 }
 
 .text_area {
-    width: 320px;
+    width: 380px;
     height: 200px;
     color: #2b579a;
     border: 1px solid #2b579a;

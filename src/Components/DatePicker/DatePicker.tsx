@@ -17,9 +17,18 @@ export const DatePicker = () => {
 
   return (
     <div className={styles.date}>
-      <DateInput field="startDate"/>
-      <DateInput field="endDate"/>
-      <button type="reset" className={styles.reset}><ResetIcon /></button>
+      <p className={styles.label}>Select Dates</p>
+      <div className={styles.box}>
+        <div className={styles.container}>
+          <label>From:</label>
+          <DateInput field="startDate"/>
+        </div>
+        <button type="reset" className={styles.reset} onClick={() => handleResetDates()}><ResetIcon /></button>
+      </div>
+      <div className={styles.container}>
+        <label>To:</label>
+        <DateInput field="endDate"/>
+      </div>
     </div>
   )
 };
