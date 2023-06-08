@@ -49,7 +49,12 @@ export const SearchPanel = ({showFilterIcon}: IProps) => {
     <div className={styles.panel}>
       <div className={styles.head}>
         <div className={styles.search_line}>
-          <Input width={600} text="Search" render={() => <SearchIcon />}/>
+          <Input width={600} text=
+          {
+            <div className={styles.search}>
+              <p>Search</p> 
+              <SearchIcon />
+            </div>} />
           {
             showFilterIcon && <div className={styles.filters}>
               <p>Filters</p>

@@ -86,3 +86,9 @@
   letter-spacing: 3px;
   border-bottom: 2px solid #2b579a;
 }
+
+.search {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
