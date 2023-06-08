@@ -26,7 +26,7 @@ export interface ITicket {
 export interface IRawData {
   title: string;
   field: string;
-  render?: () => JSX.Element;
+  render?: (ref? : unknown) => JSX.Element;
   dataRender?: (id: number) => JSX.Element
 }
 

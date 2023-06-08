@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { ReactComponentElement, useEffect, useReducer, useState } from "react"
 import { useSelector } from "react-redux"
 
 import { IAuth, IRawData } from "../../utils/types"
@@ -12,6 +12,7 @@ import { modifyColumns, modifyData } from "./adapters"
 import { ChevronLeftIcon, ChevronRightIcon } from "@fluentui/react-icons-mdl2"
 
 import styles from "./styles.module.css"
+import { ColumnLabel } from "../ColumnLabel/ColumnLabel"
 
 interface IProps {
   columns: IRawData[]
@@ -56,6 +57,10 @@ export const Table = ({columns , data , roleBasedRender , option , showInvoiceAc
     return arr
   }
 
+  const handleClickOutside = (e:MouseEvent) => {
+    
+  }
+
   const paginationItems = getPaginationItems(pagesCount)
 
   return <div className={styles.layout}>
@@ -65,8 +70,11 @@ export const Table = ({columns , data , roleBasedRender , option , showInvoiceAc
           <div className={styles.head_wrapper}>
           {
             shownColumns.map((value , index) => {
-              // return <p style={{width: `${columnWidth}%`}} key={index}>{value.title}</p>
-              return value.render ? <p style={{width: `${columnWidth}%`}} key={index}>{value.render()}</p> : <p style={{width: `${columnWidth}%`}} key={index}>{value.title}</p>
+              return value.render ? <div style={{width: `${columnWidth}%`}} key={index} className={styles.column}>
+                <ColumnLabel>
+                  <>{value.render()}</>
+                </ColumnLabel>
+              </div> : <div style={{width: `${columnWidth}%`}} key={index} className={styles.column}>{value.title}</div>
             })
           }
           </div>

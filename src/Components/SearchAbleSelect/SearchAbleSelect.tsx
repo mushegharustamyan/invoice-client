@@ -1,9 +1,6 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect ,useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import { RootState } from "../.."
-
-import { filterInvoices } from "../../store/reducers/invoiceSlice"
 import { changeFilterBy } from "../../store/reducers/inVoicesFillterts"
 
 import { ChevronDownIcon } from "@fluentui/react-icons-mdl2"
@@ -17,19 +14,20 @@ interface IProps {
 
 export const SearchAbleSelect = ({title , options} : IProps) => {
   const dispatch = useDispatch()
-  const [showOptions , setShowOptions] = useState(false)
   const [localOptions , setLocalOptions] = useState([...options]) 
-  
+  const [showOptions , setShowOptions] = useState(false)
+
   const defaultOptions =  [...options]
 
-  const filters = useSelector<RootState>(state => state.invoiceFilltersReducer)
-  
-  const ref = useRef<HTMLInputElement | null>(null)
-  
-  const handleShowOptions = (e: React.MouseEvent) => {
-    setShowOptions(!showOptions)
-    
-    console.log(ref.current?.contains(e.target as Node))
+  const hanldeHideOptions = () => {
+    setShowOptions(false)
+    document.removeEventListener("click" ,hanldeHideOptions)
+  }
+
+  const handleShowOptions = (e:React.MouseEvent) => {
+    e.stopPropagation()
+    setShowOptions(true)
+    document.body.addEventListener('click', hanldeHideOptions)
   }
 
   const filterOptions = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -46,22 +44,17 @@ export const SearchAbleSelect = ({title , options} : IProps) => {
     }    
   }
 
-  const searchInvoices = (field: string , value: string) => {
-    dispatch(changeFilterBy({field, value}))
-    dispatch(filterInvoices(filters))
-  }
-
   return <div className={styles.select}>
-      <div onClick={(e) => handleShowOptions(e)} className={styles.head}>
-        <input type="text" onChange={(e) => filterOptions(e)} className={styles.input} placeholder={title} ref={ref}/>
-        <ChevronDownIcon onClick={(e) => handleShowOptions(e)} className={showOptions ? styles.icon : styles.icon_open} style={{color: "#2b579a"}}/>
+      <div className={styles.head} onClick={(e) => handleShowOptions(e)}>
+        <input type="text" onChange={(e) => filterOptions(e)} className={styles.input} placeholder={title}/>
+        <ChevronDownIcon className={showOptions ? styles.icon : styles.icon_open} style={{color: "#2b579a"}}/>
       </div>
       {
         showOptions && <div className={styles.options}>
           <div className={styles.wrapper}>
             <div className={styles.options_list}>
               {
-                localOptions.map((value) => <p className={styles.option_item} onClick={() => searchInvoices(title , value)}>{value}</p>)
+                localOptions.map((value) => <p className={styles.option_item}>{value}</p>)
               }
             </div>
           </div>  

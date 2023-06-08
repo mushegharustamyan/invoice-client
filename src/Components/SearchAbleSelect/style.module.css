@@ -1,5 +1,5 @@
 .select {
-  width: 90%;
+  width: 60%;
 }
 
 .options {
@@ -31,8 +31,10 @@
 .head {
   display: flex;
   align-items: center;
+  height: 40px;
   gap: 10px;
-  /* border-bottom: 1px solid #2b579a; */
+  border-bottom: 1px solid #2b579a;
+  padding: 5px;
 }
 
 .icon {
@@ -60,7 +62,7 @@
 }
 
 .input::placeholder {
-  color: #2b579a;
+  color: #5b7fb6;
   font-size: 16px;
 }
 

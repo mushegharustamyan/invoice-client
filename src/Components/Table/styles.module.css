@@ -93,3 +93,9 @@
   background-color: #2b579a;
   color: #fff;
 }
+
+.column {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
