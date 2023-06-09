@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 const initialState: IAuth = {
   role: null,
   token: null,
+  fullname: null
 };
 
 const authSlice = createSlice({
@@ -15,18 +16,21 @@ const authSlice = createSlice({
     loginSuccessed: (state, action) => {
       state.role = action.payload.data.user.role.name;
       state.token = action.payload.data.token;
+      state.fullname = action.payload.data.user.fullName
       Cookies.set("token", action.payload.data.token);
     },
     logout: () => {},
     logoutSuccessed: (state) => {
       state.role = null;
       state.token = null;
+      state.fullname = null
       Cookies.remove("token");
     },
     refresh: () => {},
     refreshSuccessed: (state , action) => {
       state.token = action.payload.token
       state.role = action.payload.response.data.role.name
+      state.fullname = action.payload.response.data.fullname
     }
   },
 });

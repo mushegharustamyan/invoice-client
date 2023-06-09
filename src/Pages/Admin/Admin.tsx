@@ -13,6 +13,7 @@ import { getAllADUsers } from "../../store/reducers/adUserSlice"
 import { getAllUsers } from "../../store/reducers/userSlice"
 
 import styles from "./styles.module.css"
+import { Header } from "../../Components/Header/Header"
 
 export const AdminPage = () => {
   const dispatch = useDispatch()
@@ -68,7 +69,7 @@ export const AdminPage = () => {
   return <div className={styles.page}>
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <SignOut />
+        <Header />
       </div>
       <div className={styles.tables}>
         <p className={shownTable === "ad" ? `${styles.option} ${styles.selected}` : styles.option} onClick={() => setShownTable("ad")}>AD Users</p>

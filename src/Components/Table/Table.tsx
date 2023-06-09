@@ -12,7 +12,7 @@ import { modifyColumns, modifyData } from "./adapters"
 import { ChevronLeftIcon, ChevronRightIcon } from "@fluentui/react-icons-mdl2"
 
 import styles from "./styles.module.css"
-import { ColumnLabel } from "../ColumnLabel/ColumnLabel"
+import { Columns } from "./Columns"
 
 interface IProps {
   columns: IRawData[]
@@ -68,15 +68,7 @@ export const Table = ({columns , data , roleBasedRender , option , showInvoiceAc
       <div className={styles.table}>
         <div className={styles.head}>
           <div className={styles.head_wrapper}>
-          {
-            shownColumns.map((value , index) => {
-              return value.render ? <div style={{width: `${columnWidth}%`}} key={index} className={styles.column}>
-                <ColumnLabel>
-                  <>{value.render()}</>
-                </ColumnLabel>
-              </div> : <div style={{width: `${columnWidth}%`}} key={index} className={styles.column}>{value.title}</div>
-            })
-          }
+            <Columns width={columnWidth} columns={shownColumns}/>
           </div>
         </div>
       </div>

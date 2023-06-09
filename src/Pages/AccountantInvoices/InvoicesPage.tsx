@@ -11,6 +11,7 @@ import { Table } from "../../Components/Table/Table"
 import { getInvoices } from "../../store/reducers/invoiceSlice"
 
 import styles from "./styles.module.css"
+import { Header } from "../../Components/Header/Header"
 
 interface IProps {
   title: string
@@ -39,7 +40,7 @@ export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
     <div className={styles.cards}>
       <div className={styles.wrapper}>
         <div className={styles.signout}>
-          <SignOut />
+          <Header />
         </div>
         <p className={styles.page_title}>{title}</p>
         <div className={styles.panel}>

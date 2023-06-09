@@ -62,6 +62,7 @@ export interface IChildrenProps {
 export interface IAuth {
   role: string | null;
   token: string | null;
+  fullname: string | null
 }
 
 export interface IRole {

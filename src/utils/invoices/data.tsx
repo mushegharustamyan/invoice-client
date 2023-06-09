@@ -1,5 +1,4 @@
 import { IDocument, IRawData } from "../types";
-import { Select } from "../../Components/Select/Select";
 import { getAmounts, getCompanies, getDepartments } from "./service";
 import { statuses } from "./service";
 import { SearchAbleSelect } from "../../Components/SearchAbleSelect/SearchAbleSelect";
