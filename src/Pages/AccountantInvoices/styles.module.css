@@ -1,8 +1,10 @@
 .cards {
   width: 100%;
-  padding-left: 2.5%;
+  height: fit-content;
   padding-bottom: 40px;
   overflow-y: scroll;
+  display: flex;
+  justify-content: center;
 }
 
 .page_title {
@@ -12,7 +14,7 @@
 
 .wrapper {
   margin-top: 50px;
-  width: 90%;
+  width: 95%;
   height: fit-content;
   display: flex;
   align-items: flex-start;

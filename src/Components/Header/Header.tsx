@@ -17,14 +17,15 @@ export const Header = () => {
     return <header className={styles.container}>
        <div className={styles.wrapper}>
             <Logo />
-            <div className={styles.user}>
-                <div className={styles.user_icon}>
-                    <ContactIcon />
+            <div className={styles.actions}>
+                <div className={styles.user}>
+                    <div className={styles.user_icon}>
+                        <ContactIcon />
+                    </div>
+                    <p>{user.fullname}</p>
                 </div>
-                <p>{user.fullname}</p>
-
+                <SignOut />
             </div>
-            <SignOut />
        </div>
     </header>
 }
