@@ -12,6 +12,8 @@ import { Logo } from "../Logo/Logo"
 export const Header = () => {
     const user = useSelector<RootState>(state => state.authReducer) as IAuth
 
+    console.log(user)
+
     return <div className={styles.container}>
         <Logo />
         <div className={styles.user}>

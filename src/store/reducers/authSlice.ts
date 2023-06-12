@@ -16,7 +16,7 @@ const authSlice = createSlice({
     loginSuccessed: (state, action) => {
       state.role = action.payload.data.user.role.name;
       state.token = action.payload.data.token;
-      state.fullname = action.payload.data.user.fullName
+      state.fullname = action.payload.data.user.fullname
       Cookies.set("token", action.payload.data.token);
     },
     logout: () => {},
