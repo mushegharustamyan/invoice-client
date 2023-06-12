@@ -29,7 +29,6 @@ export const LeftMenu = ({navList}: IProps) => {
             </nav>
           </div>
         </div>
-        <Outlet />
       </div>
   )
 }

@@ -14,15 +14,17 @@ export const Header = () => {
 
     console.log(user)
 
-    return <div className={styles.container}>
-        <Logo />
-        <div className={styles.user}>
-            <div className={styles.user_icon}>
-                <ContactIcon />
-            </div>
-            <p>{user.fullname}</p>
+    return <header className={styles.container}>
+       <div className={styles.wrapper}>
+            <Logo />
+            <div className={styles.user}>
+                <div className={styles.user_icon}>
+                    <ContactIcon />
+                </div>
+                <p>{user.fullname}</p>
 
-        </div>
-        <SignOut />
-    </div>
+            </div>
+            <SignOut />
+       </div>
+    </header>
 }

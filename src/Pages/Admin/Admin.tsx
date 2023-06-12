@@ -68,9 +68,6 @@ export const AdminPage = () => {
 
   return <div className={styles.page}>
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <Header />
-      </div>
       <div className={styles.tables}>
         <p className={shownTable === "ad" ? `${styles.option} ${styles.selected}` : styles.option} onClick={() => setShownTable("ad")}>AD Users</p>
         <p className={shownTable === "users" ? `${styles.option} ${styles.selected}` : styles.option} onClick={() => setShownTable("users")}>Registered Users</p>

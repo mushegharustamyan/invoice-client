@@ -36,9 +36,6 @@ export const DepartmentInvoicesPage = ({title , columns , filterBy , showInvoice
   return (
     <div className={styles.cards}>
       <div className={styles.wrapper}>
-        <div className={styles.signout}>
-          <SignOut />
-        </div>
         <p className={styles.page_title}>{title}</p>
         <div className={styles.panel}>
           <SearchPanel showFilterIcon={true}/>

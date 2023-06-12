@@ -1,10 +1,9 @@
 .page {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #dfdfdf;
 }
 
 .form {
@@ -15,7 +14,6 @@
   justify-content: center;
   flex-direction: column;
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.20);
-  background-color: #fff;
   transition: 0.5s;
 }
 

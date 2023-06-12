@@ -7,20 +7,20 @@ import { DepartmentInvoicesPage } from "../Pages/DepartmentInvoices/DepartmentIn
 import { Login } from "../Components/Login/Login";
 
 import { navList } from "../Pages/AccountantInvoices/navList";
-import { LeftMenu } from "../Layouts/LeftMenu/LeftMenu";
 import { ticketsNavList } from "../Pages/Tickets/navList";
 
 import { invoicesRoutes , departmentInvoicesRoutes } from "./routes";
 
 import { AuthLayout } from "../Layouts/AuthLayout/AuthLayout";
+import { MainLayout } from "../Layouts/MainLayout/MainLayout";
 
 export const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<AuthLayout />}>
-          <Route element={<Login />} path="/"/>
-          <Route element={<LeftMenu navList={navList}/>}>
+          <Route element={<MainLayout navList={navList}/>}>
+            <Route element={<Login />} path="/"/>
             {
               invoicesRoutes.map((value , index) => {
                 return (
@@ -32,7 +32,7 @@ export const AppRouter = () => {
               })
             }
           </Route>
-          <Route element={<LeftMenu navList={ticketsNavList}/>}>
+          <Route element={<MainLayout navList={ticketsNavList}/>}>
             {
               departmentInvoicesRoutes.map((value, index) => {
                 return (
@@ -48,7 +48,9 @@ export const AppRouter = () => {
             <Route path="/department/tickets" element={<TicketsPage title="Tickets"/>} />
           </Route>
         </Route>
-        <Route path="/admin" element={<AdminPage />}/>
+        <Route element={<MainLayout />}>
+          <Route path="/admin" element={<AdminPage />}/>
+        </Route>
       </Routes>
     </BrowserRouter>
   )

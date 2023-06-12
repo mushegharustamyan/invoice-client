@@ -4,9 +4,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+  background-color: #dfdfdf;
   color: #2b579a;
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid #b1b1b1;
 }
 
 .last {

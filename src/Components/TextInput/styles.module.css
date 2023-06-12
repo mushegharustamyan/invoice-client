@@ -8,7 +8,7 @@
   color: #2b579a;
   gap: 15px;
   transition:all 0.5s ease;
-  background-color: #fff;
+  background-color: #dfdfdf;
 }
 
 .input {
@@ -16,6 +16,7 @@
   border: none;
   font-size: 16px;
   color: #2b579a;
+  background-color: #dfdfdf;
 }
 
 .input:focus-visible {
