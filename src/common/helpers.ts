@@ -20,3 +20,18 @@ export const useCustomNavigate = () => {
       }
     };
 };
+
+export const amountFormating = (amount: number) => {
+  let result = ""
+
+  const amountSymbols = String(amount).split("")
+
+  for(let i = amountSymbols.length - 1 ; i >= 0 ; i--) {
+    result += amountSymbols[amountSymbols.length - 1 - i]
+    if(i % 3 === 0) {
+      result += "."
+    }
+  }
+
+  return result + "00"
+}

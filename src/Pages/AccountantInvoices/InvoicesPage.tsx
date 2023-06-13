@@ -32,8 +32,6 @@ export const InvoicesPage = ({title , columns , filterBy}: IProps) => {
 
   const invoiceFillters = useSelector<RootState>(state => state.invoiceFilltersReducer)
 
-  console.log(invoiceFillters)
-
   return (
     <div className={styles.cards}>
       <div className={styles.wrapper}>

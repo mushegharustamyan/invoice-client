@@ -4,6 +4,7 @@ import { Button } from "../Button/Button";
 import { Download } from "../Download/Download";
 import { ModifyUser } from "../ModifyUser/ModifyUser";
 import { EditInvoice } from "../EditInvoice/EditInvoice";
+import { amountFormating } from "../../common/helpers";
 
 export const modifyColumns = (role: string | null , columns: IRawData[] , option?: "add" | "modify") => {
   const result = [...columns]
@@ -29,6 +30,9 @@ export const modifyData = (data: any[] , columns: IRawData[]) => {
       if(column.field !== "") {
         if(column.field === "role") {
           return {value: value[column.field].name}
+        }
+        if(column.field === "amount") {
+          return {value: amountFormating(value[column.field])}
         }
         return {value: value[column.field]}
       } else {
