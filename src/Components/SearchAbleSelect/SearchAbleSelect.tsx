@@ -11,20 +11,16 @@ interface IProps {
   id: string
 }
 
-export const SearchAbleSelect = ({title , options , id} : IProps) => {
+export const SearchAbleSelect = ({title , options , id } : IProps) => {
   const dispatch = useDispatch()
   const [localOptions , setLocalOptions] = useState([...options]) 
   const [showOptions , setShowOptions] = useState(false)
 
   const defaultOptions =  [...options]
 
-  const selectRef = useRef<HTMLDivElement>(null);
-
   const hanldeHideOptions = (e: MouseEvent) => {
-    if (selectRef.current && !selectRef.current.contains(e.target as Node)) {
-      setShowOptions(false);
-      document.removeEventListener('click', hanldeHideOptions);
-    }
+    setShowOptions(false);
+    document.removeEventListener('click', hanldeHideOptions);
   };
 
   const handleShowOptions = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -55,7 +51,7 @@ export const SearchAbleSelect = ({title , options , id} : IProps) => {
   }, []);
 
   return (
-    <div className={styles.select} ref={selectRef}>
+    <div className={styles.select}>
       <div className={styles.head} onClick={handleShowOptions}>
         <input
           type="text"
