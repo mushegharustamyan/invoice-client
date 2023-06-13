@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   color: #2b579a;
-  border-bottom: 1px solid #b1b1b1;
+  border-bottom: 1px solid #dfdfdf;
 }
 
 .last {
@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px
+  gap: 30px;
 }
 
 .details {
@@ -78,5 +78,4 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding-left: 10px;
 }

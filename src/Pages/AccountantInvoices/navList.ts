@@ -20,7 +20,7 @@ export const navList: INavigation[] = [
             permissions: ["admin"],
           },
           {
-            title: "Untder Clarification",
+            title: "Under Clarification",
             path: "/invoices/under-clarification",
             permissions: ["admin"],
           },

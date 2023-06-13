@@ -9,3 +9,7 @@ export const hasLeftMenu = (path : string) => {
 export const hasHeader = (path: string) => {
     return path === "/" ? false : true
 }
+
+export const hasLogo = (path: string) => {
+    return path === "/admin" ? true : false
+}

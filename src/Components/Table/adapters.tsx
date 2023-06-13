@@ -32,7 +32,7 @@ export const modifyData = (data: any[] , columns: IRawData[]) => {
           return {value: value[column.field].name}
         }
         if(column.field === "amount") {
-          return {value: amountFormating(value[column.field])}
+          return {value: amountFormating(value[column.field]), align: "center"}
         }
         return {value: value[column.field]}
       } else {

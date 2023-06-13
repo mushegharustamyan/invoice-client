@@ -4,7 +4,7 @@ import { LeftMenu } from "../LeftMenu/LeftMenu"
 import { INavigation } from "../../utils/types"
 import { Header } from "../../Components/Header/Header"
 import { Footer } from "../../Components/Footer/Footer"
-import { hasHeader, hasLeftMenu } from "./helper"
+import { hasHeader, hasLeftMenu, hasLogo } from "./helper"
 
 interface IProps {
     navList? : INavigation[]
@@ -19,7 +19,7 @@ export const MainLayout = ({navList} : IProps) => {
                 <LeftMenu navList={navList} />
             </div>}
             <div className={hasLeftMenu(path) ? styles.container : styles.container_stretched}>
-                {hasHeader(path) && <Header />}
+                {hasHeader(path) && <Header hasLogo={hasLogo(path)}/>}
                 <Outlet />
                 <div className={styles.footer}>
                     <Footer />

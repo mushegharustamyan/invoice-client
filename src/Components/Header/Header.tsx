@@ -6,18 +6,20 @@ import { IAuth } from "../../utils/types"
 import { SignOut } from "../SignOut/SignOut"
 
 import styles from "./styles.module.css"
-import { ContactIcon, UserFollowedIcon } from "@fluentui/react-icons-mdl2"
+import { ContactIcon } from "@fluentui/react-icons-mdl2"
 import { Logo } from "../Logo/Logo"
 
-export const Header = () => {
+interface IProps {
+    hasLogo: boolean
+}
+
+export const Header = ({hasLogo} : IProps) => {
     const user = useSelector<RootState>(state => state.authReducer) as IAuth
 
-    console.log(user)
-
     return <header className={styles.container}>
-       <div className={styles.wrapper}>
-            <Logo />
-            <div className={styles.actions}>
+       <div className={styles.wrapper} style={{justifyContent: `${hasLogo ? "" : "flex-end"}`}}>
+            {hasLogo && <Logo width={50}/>}
+            <div className={styles.actions} >
                 <div className={styles.user}>
                     <div className={styles.user_icon}>
                         <ContactIcon />

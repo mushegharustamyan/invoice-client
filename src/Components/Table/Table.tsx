@@ -25,10 +25,12 @@ interface IProps {
 export const Table = ({columns , data , roleBasedRender , option , showInvoiceActions}: IProps) => {
   
   const user = useSelector<RootState>(state => state.authReducer) as IAuth
-  let columnWidth = 100 / columns.length + 1;
+  
 
   let shownColumns = roleBasedRender ? modifyColumns(user.role , columns , option) : columns
   let shownData = modifyData(data , shownColumns)
+
+  let columnWidth = 100 / shownColumns.length + 1;
 
   const [itemsCount , setItemsCount] = useState(4)
   const [pagesCount, setPagesCount] = useState(0)
@@ -57,10 +59,6 @@ export const Table = ({columns , data , roleBasedRender , option , showInvoiceAc
     return arr
   }
 
-  const handleClickOutside = (e:MouseEvent) => {
-    
-  }
-
   const paginationItems = getPaginationItems(pagesCount)
 
   return <div className={styles.layout}>
@@ -75,7 +73,7 @@ export const Table = ({columns , data , roleBasedRender , option , showInvoiceAc
       <div className={styles.body}>
         {
           passingData.map((value , index) => {
-            return <Card data={value} columnsCount={shownColumns.length} key={index} showCheckbox={showInvoiceActions}/>
+            return <Card data={value} key={index} showCheckbox={showInvoiceActions} width={columnWidth}/>
           })
         }
       </div>

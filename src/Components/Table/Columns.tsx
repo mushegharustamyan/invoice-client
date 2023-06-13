@@ -11,7 +11,7 @@ export const Columns = ({columns , width} : IProps) => {
     return <>
         {
             columns.map((value , index) => {
-                return value.render ? <div style={{width: `${width}%`}} key={index} className={styles.column}>
+                return value.render ? <div style={{width: `${width}%` , justifyContent: `${value.field === "amount" ? "flex-end" : "flex-start"}`}} key={index} className={styles.column}>
                     {value.render()}
                     {
                         value.field !== "status" && <SortIcon />
