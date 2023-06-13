@@ -16,10 +16,10 @@ export const MainLayout = ({navList} : IProps) => {
 
     return <div className={styles.layout}>
             {hasLeftMenu(path) && !!navList && <div className={styles.menu}>
-                <LeftMenu navList={navList} />
+                <LeftMenu navList={navList} path={path}/>
             </div>}
             <div className={hasLeftMenu(path) ? styles.container : styles.container_stretched}>
-                {hasHeader(path) && <Header hasLogo={hasLogo(path)}/>}
+                {hasHeader(path) && <Header hasLogo={hasLogo(path)} path={path}/>}
                 <Outlet />
                 <div className={styles.footer}>
                     <Footer />

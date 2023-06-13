@@ -9,9 +9,10 @@ import { Logo } from "../../Components/Logo/Logo"
 
 interface IProps {
   navList: INavigation[] 
+  path: string
 }
 
-export const LeftMenu = ({navList}: IProps) => {
+export const LeftMenu = ({navList , path}: IProps) => {
 
   const navigate = useNavigate()
 
@@ -19,7 +20,7 @@ export const LeftMenu = ({navList}: IProps) => {
       <div className={styles.layout}>
         <div className={styles.menu}>
           <div className={styles.wrapper}>
-          <Logo width={100}/>
+          <Logo width={100} path={path}/>
             <nav className={styles.navigation}>
               <ul>
                 {

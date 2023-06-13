@@ -11,14 +11,15 @@ import { Logo } from "../Logo/Logo"
 
 interface IProps {
     hasLogo: boolean
+    path: string
 }
 
-export const Header = ({hasLogo} : IProps) => {
+export const Header = ({hasLogo , path} : IProps) => {
     const user = useSelector<RootState>(state => state.authReducer) as IAuth
 
     return <header className={styles.container}>
        <div className={styles.wrapper} style={{justifyContent: `${hasLogo ? "" : "flex-end"}`}}>
-            {hasLogo && <Logo width={50}/>}
+            {hasLogo && <Logo width={100} path={path}/>}
             <div className={styles.actions} >
                 <div className={styles.user}>
                     <div className={styles.user_icon}>

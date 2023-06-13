@@ -1,7 +1,5 @@
-import React, { useEffect ,useState } from "react"
+import React, { useEffect ,useState, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
-
-import { changeFilterBy } from "../../store/reducers/inVoicesFillterts"
 
 import { ChevronDownIcon } from "@fluentui/react-icons-mdl2"
 
@@ -10,55 +8,79 @@ import styles from "./style.module.css"
 interface IProps {
   title: string
   options: string[]
+  id: string
 }
 
-export const SearchAbleSelect = ({title , options} : IProps) => {
+export const SearchAbleSelect = ({title , options , id} : IProps) => {
   const dispatch = useDispatch()
   const [localOptions , setLocalOptions] = useState([...options]) 
   const [showOptions , setShowOptions] = useState(false)
 
   const defaultOptions =  [...options]
 
-  const hanldeHideOptions = () => {
-    setShowOptions(false)
-    document.removeEventListener("click" ,hanldeHideOptions)
-  }
+  const selectRef = useRef<HTMLDivElement>(null);
 
-  const handleShowOptions = (e:React.MouseEvent) => {
-    e.stopPropagation()
-    setShowOptions(true)
-    document.body.addEventListener('click', hanldeHideOptions)
-  }
+  const hanldeHideOptions = (e: MouseEvent) => {
+    if (selectRef.current && !selectRef.current.contains(e.target as Node)) {
+      setShowOptions(false);
+      document.removeEventListener('click', hanldeHideOptions);
+    }
+  };
 
-  const filterOptions = (e:React.ChangeEvent<HTMLInputElement>) => {
-    let newOptions: string[] = localOptions
+  const handleShowOptions = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    setShowOptions(true);
+    document.body.addEventListener('click', hanldeHideOptions);
+    e.currentTarget.addEventListener('click', hanldeHideOptions);
+  };
 
-    if (e.target.value !== "") {
-      newOptions = newOptions.filter((value) => {
-        return `${value}`.toLocaleLowerCase().includes(e.target.value.toLowerCase())
-      })
+  const filterOptions = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let newOptions: string[] = localOptions;
 
-      setLocalOptions(newOptions)
+    if (e.target.value !== '') {
+      newOptions = newOptions.filter((value) =>
+        `${value}`.toLocaleLowerCase().includes(e.target.value.toLowerCase())
+      );
+
+      setLocalOptions(newOptions);
     } else {
-      setLocalOptions(defaultOptions)
-    }    
-  }
+      setLocalOptions(defaultOptions);
+    }
+  };
 
-  return <div className={styles.select}>
-      <div className={styles.head} onClick={(e) => handleShowOptions(e)}>
-        <input type="text" onChange={(e) => filterOptions(e)} className={styles.input} placeholder={title}/>
-        <ChevronDownIcon className={showOptions ? styles.icon : styles.icon_open} style={{color: "#2b579a"}}/>
+  useEffect(() => {
+    return () => {
+      document.removeEventListener('click', hanldeHideOptions);
+    };
+  }, []);
+
+  return (
+    <div className={styles.select} ref={selectRef}>
+      <div className={styles.head} onClick={handleShowOptions}>
+        <input
+          type="text"
+          onChange={filterOptions}
+          className={styles.input}
+          placeholder={title}
+          id={id}
+        />
+        <ChevronDownIcon
+          className={showOptions ? styles.icon : styles.icon_open}
+          style={{ color: '#2b579a' }}
+        />
       </div>
-      {
-        showOptions && <div className={styles.options}>
+      {showOptions && (
+        <div className={styles.options}>
           <div className={styles.wrapper}>
             <div className={styles.options_list}>
-              {
-                localOptions.map((value) => <p className={styles.option_item}>{value}</p>)
-              }
+              {localOptions.map((value) => (
+                <p className={styles.option_item}>{value}</p>
+              ))}
             </div>
-          </div>  
+          </div>
         </div>
-      }
-  </div>
+      )}
+    </div>
+  );
+
 }

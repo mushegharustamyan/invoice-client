@@ -20,4 +20,14 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
+
+.footer {
+    margin-top: auto;
+}
+
+/* .content {
+    width: 100%;
+    overflow-y: scroll;
+} */
