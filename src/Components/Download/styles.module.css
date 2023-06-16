@@ -1,4 +1,10 @@
 .container {
     display: flex;
     gap: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.container:hover {
+    letter-spacing: 2px;
 }

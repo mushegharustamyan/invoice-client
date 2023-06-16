@@ -26,6 +26,7 @@
   height: 40px;
   padding: 0px 10px 0 10px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .icon {
@@ -52,11 +53,6 @@
 .filters:hover {
   background-color: #2b579a;
   color: #fff;
-}
-
-.dates {
-  display: flex;
-  gap: 15px;
 }
 
 .date_cell {

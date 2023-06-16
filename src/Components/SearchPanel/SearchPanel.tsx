@@ -57,13 +57,13 @@ export const SearchPanel = ({showFilterIcon}: IProps) => {
           <Input width={600} text=
           {
             <div className={styles.search}>
-              <p>Search</p> 
               <SearchIcon />
-            </div>} />
+            </div>
+          } placeholder="Search"/>
           {
-            showFilterIcon && <div className={styles.filters} onMouseEnter={() => handleActiveIcon()} onMouseLeave={() => handleActiveIcon()}>
+            showFilterIcon && <div className={styles.filters} onMouseEnter={() => handleActiveIcon()} onMouseLeave={() => handleActiveIcon()} onClick={() => handleDropDown()} >
               <p>Filters</p>
-              <FilterIcon onClick={() => handleDropDown()} className={styles.icon} style={{color: `${!activeIcon ? "#2b579a" : "#fff"}`}}/>
+              <FilterIcon className={styles.icon} style={{color: `${!activeIcon ? "#2b579a" : "#fff"}`}}/>
             </div>
           }
           <Button width={150} action={searchInvoice} text="Search"/>
@@ -72,12 +72,9 @@ export const SearchPanel = ({showFilterIcon}: IProps) => {
       {
       showFilters? <> 
           <div className={styles.filters_container}>
-            <form className={styles.dates}>
-              <DatePicker />
-            </form> 
+            <DatePicker />
             <AmountRange />
           </div> 
-          
         </>
         : null
       }

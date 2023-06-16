@@ -33,6 +33,7 @@
   flex-direction: column;
   gap: 10px;
   list-style: none;
+
 }
 
 .navigation ul li {
@@ -42,6 +43,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0px 10px 0 10px;
+  transition: 0.3s;
 }
 
 .navigation li:hover {
