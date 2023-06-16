@@ -1,5 +1,6 @@
 .select {
   width: 95%;
+  cursor: pointer;
 }
 
 .options {
@@ -9,23 +10,29 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
+  background-color: #fff;
   box-shadow: 0px 10px 20px 1px rgba(0, 0, 0, 0.10);
+  padding: 10px;
+  border: 1px solid #dfdfdf;
 }
 
 .wrapper {
-  width: 90%;
+width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  gap: 10px;
 }
 
-.options_list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background-color: #fff;
-  margin-bottom: 10px;
+.option_item {
+  height: 30px;
+  cursor: pointer;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.option_item:hover {
+  background-color: #2b579a;
+  color: #fff;
 }
 
 .head {
@@ -58,6 +65,8 @@
   height: 30px;
   border: none;
   margin: 10px 0 10px 0;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .input::placeholder {
@@ -65,10 +74,11 @@
   font-size: 16px;
 }
 
+.input:hover {
+  letter-spacing: 2px;
+}
+
 .input:focus-visible {
   outline: none;
 }
 
-.option_item:hover {
-  background-color: #f3f4f6;
-}

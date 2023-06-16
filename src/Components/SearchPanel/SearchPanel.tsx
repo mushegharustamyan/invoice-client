@@ -23,6 +23,11 @@ export const SearchPanel = ({showFilterIcon}: IProps) => {
   const dispatch = useDispatch()
 
   const [showFilters , setShowFilters] = useState(false)
+  const [activeIcon , setActiveIcon] = useState(false)
+
+  const handleActiveIcon = () => {
+    setActiveIcon(!activeIcon)
+  }
 
   const handleDropDown = () => {
     setShowFilters(!showFilters)
@@ -56,9 +61,9 @@ export const SearchPanel = ({showFilterIcon}: IProps) => {
               <SearchIcon />
             </div>} />
           {
-            showFilterIcon && <div className={styles.filters}>
+            showFilterIcon && <div className={styles.filters} onMouseEnter={() => handleActiveIcon()} onMouseLeave={() => handleActiveIcon()}>
               <p>Filters</p>
-              <FilterIcon onClick={() => handleDropDown()} className={styles.icon} style={{color: "#2b579a"}}/>
+              <FilterIcon onClick={() => handleDropDown()} className={styles.icon} style={{color: `${!activeIcon ? "#2b579a" : "#fff"}`}}/>
             </div>
           }
           <Button width={150} action={searchInvoice} text="Search"/>

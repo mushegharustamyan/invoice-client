@@ -11,7 +11,7 @@ interface IProps {
   id: string
 }
 
-export const SearchAbleSelect = ({title , options , id } : IProps) => {
+export const SearchAbleSelect = ({title , options } : IProps) => {
   const dispatch = useDispatch()
   const [localOptions , setLocalOptions] = useState([...options]) 
   const [showOptions , setShowOptions] = useState(false)
@@ -27,7 +27,6 @@ export const SearchAbleSelect = ({title , options , id } : IProps) => {
     e.stopPropagation();
     setShowOptions(true);
     document.body.addEventListener('click', hanldeHideOptions);
-    e.currentTarget.addEventListener('click', hanldeHideOptions);
   };
 
   const filterOptions = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +57,6 @@ export const SearchAbleSelect = ({title , options , id } : IProps) => {
           onChange={filterOptions}
           className={styles.input}
           placeholder={title}
-          id={id}
         />
         <ChevronDownIcon
           className={showOptions ? styles.icon : styles.icon_open}
@@ -68,11 +66,9 @@ export const SearchAbleSelect = ({title , options , id } : IProps) => {
       {showOptions && (
         <div className={styles.options}>
           <div className={styles.wrapper}>
-            <div className={styles.options_list}>
               {localOptions.map((value) => (
                 <p className={styles.option_item}>{value}</p>
               ))}
-            </div>
           </div>
         </div>
       )}
