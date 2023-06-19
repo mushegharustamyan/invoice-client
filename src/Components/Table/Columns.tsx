@@ -12,8 +12,6 @@ export const Columns = ({columns , width} : IProps) => {
     const [showColumns , setShownColumns] = useState(columns)
 
     const hanldeHideOptions = (e: MouseEvent) => {
-        console.log("click outside")
-
         const data = Object.entries(columns)
 
         const result = data.map((value , index) => {
@@ -32,8 +30,6 @@ export const Columns = ({columns , width} : IProps) => {
 
         const data = Object.entries(columns)
 
-        console.log("click inside")
-
         const result = data.map((value , index) => {
             if(value[1].field === id) {
                 value[1].isOpen = true
@@ -50,7 +46,6 @@ export const Columns = ({columns , width} : IProps) => {
     }
 
     useEffect(() => {
-        console.log("removing event listener")
         document.body.removeEventListener("click" , hanldeHideOptions)
     } , [])
 
