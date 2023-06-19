@@ -1,5 +1,5 @@
 import React, { useEffect ,useState, useRef } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 
 import { ChevronDownIcon } from "@fluentui/react-icons-mdl2"
 
@@ -9,25 +9,15 @@ interface IProps {
   title: string
   options: string[]
   id: string
+  isOpen?: boolean 
+  handleOpen: (e: React.MouseEvent , id: string) => void
 }
 
-export const SearchAbleSelect = ({title , options } : IProps) => {
+export const SearchAbleSelect = ({title , options , handleOpen , id , isOpen} : IProps) => {
   const dispatch = useDispatch()
   const [localOptions , setLocalOptions] = useState([...options]) 
-  const [showOptions , setShowOptions] = useState(false)
 
   const defaultOptions =  [...options]
-
-  const hanldeHideOptions = (e: MouseEvent) => {
-    setShowOptions(false);
-    document.removeEventListener('click', hanldeHideOptions);
-  };
-
-  const handleShowOptions = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-    setShowOptions(true);
-    document.body.addEventListener('click', hanldeHideOptions);
-  };
 
   const filterOptions = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newOptions: string[] = localOptions;
@@ -43,15 +33,9 @@ export const SearchAbleSelect = ({title , options } : IProps) => {
     }
   };
 
-  useEffect(() => {
-    return () => {
-      document.removeEventListener('click', hanldeHideOptions);
-    };
-  }, []);
-
   return (
     <div className={styles.select}>
-      <div className={styles.head} onClick={handleShowOptions}>
+      <div className={styles.head} onClick={(e: React.MouseEvent<Element, MouseEvent>) => handleOpen(e , id)}>
         <input
           type="text"
           onChange={filterOptions}
@@ -59,11 +43,11 @@ export const SearchAbleSelect = ({title , options } : IProps) => {
           placeholder={title}
         />
         <ChevronDownIcon
-          className={showOptions ? styles.icon : styles.icon_open}
+          className={isOpen ? styles.icon : styles.icon_open}
           style={{ color: '#2b579a' }}
         />
       </div>
-      {showOptions && (
+      {isOpen && (
         <div className={styles.options}>
           <div className={styles.wrapper}>
               {localOptions.map((value) => (

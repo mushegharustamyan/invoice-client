@@ -1,6 +1,5 @@
 import { IDocument, IRawData } from "../types";
-import { getAmounts, getCompanies, getDepartments } from "./service";
-import { statuses } from "./service";
+import { getAmounts, getCompanies, getDepartments, statuses } from "./service";
 import { SearchAbleSelect } from "../../Components/SearchAbleSelect/SearchAbleSelect";
 
 export const invoices: IDocument[] = [
@@ -64,30 +63,68 @@ export const allInvoicesColumns: IRawData[] = [
   {
     title: "Invoice Code",
     field: "invoiceCode",
+    isOpen: false,
   },
   {
     title: "Amount",
     field: "amount",
-    render: () => <SearchAbleSelect options={getAmounts() as string[]} title="Amount" id="amount"/> 
+    isOpen: false,
+    render: (handleOpen: (e: React.MouseEvent<Element, MouseEvent> , id: string) => void, isOpen?: boolean, ref?: unknown) => (
+      <SearchAbleSelect
+        options={getAmounts() as string[]}
+        title="Amount"
+        id="amount"
+        isOpen={isOpen}
+        handleOpen={handleOpen}
+      />
+    )
   },
   {
     title: "Company",
     field: "company",
-    render: () => <SearchAbleSelect options={getCompanies() as string[]} title="Company" id="company"/>
+    isOpen: false,
+    render: (handleOpen: (e: React.MouseEvent<Element, MouseEvent> , id: string) => void, isOpen?: boolean, ref?: unknown) => (
+      <SearchAbleSelect
+        options={getCompanies() as string[]}
+        title="Company"
+        id="company"
+        isOpen={isOpen}
+        handleOpen={handleOpen}
+      />
+    )
   },
   {
     title: "Status",
     field: "status",
-    render: () => <SearchAbleSelect options={statuses} title="Status" id="status"/>
+    isOpen: false,
+    render: (handleOpen: (e: React.MouseEvent<Element, MouseEvent> , id: string) => void, isOpen?: boolean, ref?: unknown) => (
+      <SearchAbleSelect
+        options={statuses as string[]}
+        title="Status"
+        id="status"
+        isOpen={isOpen}
+        handleOpen={handleOpen}
+      />
+    )
   },
   {
     title: "Department",
     field: "department",
-    render: () => <SearchAbleSelect options={getDepartments() as string[]} title="Department" id="department"/>
+    isOpen: false,
+    render: (handleOpen: (e: React.MouseEvent<Element, MouseEvent> , id: string) => void, isOpen?: boolean, ref?: unknown) => (
+      <SearchAbleSelect
+        options={getDepartments() as string[]}
+        title="Department"
+        id="department"
+        isOpen={isOpen}
+        handleOpen={handleOpen}
+      />
+    )
   },
   {
     title: "Date",
     field: "date",
+    isOpen: false,
   },
 ];
 
@@ -95,25 +132,54 @@ export const matchedInvoicesColumns: IRawData[] = [
   {
     title: "Invoice Code",
     field: "invoiceCode",
+    isOpen: false,
   },
   {
     title: "Amount",
     field: "amount",
-    render: () => <SearchAbleSelect options={getAmounts() as string[]} title="Amount" id="amount"/>
+    isOpen: false,
+    render: (handleOpen: (e: React.MouseEvent<Element, MouseEvent> , id: string) => void, isOpen?: boolean, ref?: unknown) => (
+      <SearchAbleSelect
+        options={getAmounts() as string[]}
+        title="Amount"
+        id="amount"
+        isOpen={isOpen}
+        handleOpen={handleOpen}
+      />
+    )
   },
   {
     title: "Company",
     field: "company",
-    render: () => <SearchAbleSelect options={getCompanies() as string[]} title="Company" id="company"/>
+    isOpen: false,
+    render: (handleOpen: (e: React.MouseEvent<Element, MouseEvent> , id: string) => void, isOpen?: boolean, ref?: unknown) => (
+      <SearchAbleSelect
+        options={getCompanies() as string[]}
+        title="Company"
+        id="company"
+        isOpen={isOpen}
+        handleOpen={handleOpen}
+      />
+    )
   },
   {
     title: "Department",
     field: "department",
-    render: () => <SearchAbleSelect options={getDepartments() as string[]} title="Department" id="department"/>
+    isOpen: false,
+    render: (handleOpen: (e: React.MouseEvent<Element, MouseEvent> , id: string) => void, isOpen?: boolean, ref?: unknown) => (
+      <SearchAbleSelect
+        options={getDepartments() as string[]}
+        title="Department"
+        id="department"
+        isOpen={isOpen}
+        handleOpen={handleOpen}
+      />
+    )
   },
   {
     title: "Date",
     field: "date",
+    isOpen: false,
   },
   
 ];
@@ -122,20 +188,40 @@ export const notMatchedInvoicesColumns: IRawData[] = [
   {
     title: "Invoice Code",
     field: "invoiceCode",
+    isOpen: false,
   },
   {
     title: "Amount",
     field: "amount",
-    render: () => <SearchAbleSelect options={getAmounts() as string[]} title="Amount" id="amount"/>
+    isOpen: false,
+    render: (handleOpen: (e: React.MouseEvent<Element, MouseEvent> , id: string) => void, isOpen?: boolean, ref?: unknown) => (
+      <SearchAbleSelect
+        options={getAmounts() as string[]}
+        title="Amount"
+        id="amount"
+        isOpen={isOpen}
+        handleOpen={handleOpen}
+      />
+    )
   },
   {
     title: "Company",
     field: "company",
-    render: () => <SearchAbleSelect options={getCompanies() as string[]} title="Company" id="company"/>
+    isOpen: false,
+    render: (handleOpen: (e: React.MouseEvent<Element, MouseEvent> , id: string) => void, isOpen?: boolean, ref?: unknown) => (
+      <SearchAbleSelect
+        options={getCompanies() as string[]}
+        title="Company"
+        id="company"
+        isOpen={isOpen}
+        handleOpen={handleOpen}
+      />
+    )
   },
   {
     title: "Date",
     field: "date",
+    isOpen: false,
   },
   
 ];
@@ -144,20 +230,40 @@ export const underClarficationInvoicesColumns: IRawData[] = [
   {
     title: "Invoice Code",
     field: "invoiceCode",
+    isOpen: false,
   },
   {
     title: "Amount",
     field: "amount",
-    render: () => <SearchAbleSelect options={getAmounts() as string[]} title="Amount" id="amount"/>
+    isOpen: false,
+    render: (handleOpen: (e: React.MouseEvent<Element, MouseEvent> , id: string) => void, isOpen?: boolean, ref?: unknown) => (
+      <SearchAbleSelect
+        options={getAmounts() as string[]}
+        title="Amount"
+        id="amount"
+        isOpen={isOpen}
+        handleOpen={handleOpen}
+      />
+    )
   },
   {
     title: "Company",
     field: "company",
-    render: () => <SearchAbleSelect options={getCompanies() as string[]} title="Company" id="company"/>
+    isOpen: false,
+    render: (handleOpen: (e: React.MouseEvent<Element, MouseEvent> , id: string) => void, isOpen?: boolean, ref?: unknown) => (
+      <SearchAbleSelect
+        options={getCompanies() as string[]}
+        title="Company"
+        id="company"
+        isOpen={isOpen}
+        handleOpen={handleOpen}
+      />
+    )
   },
   {
     title: "Date",
     field: "date",
+    isOpen: false,
   },
   
 ];

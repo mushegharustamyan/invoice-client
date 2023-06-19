@@ -26,8 +26,9 @@ export interface ITicket {
 export interface IRawData {
   title: string;
   field: string;
-  render?: (ref? : unknown) => JSX.Element;
+  render?: (handleOpen: (e: React.MouseEvent<Element, MouseEvent> , id: string) => void, isOpen: boolean, ref?: unknown) => JSX.Element;
   dataRender?: (id: number) => JSX.Element
+  isOpen?: boolean
 }
 
 export interface IInvoicesRoutes {
