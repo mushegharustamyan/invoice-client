@@ -19,7 +19,7 @@ export const Card:React.FC<IProps> = ({data , last , showCheckbox , width}) => {
         <div className={styles.wrapper}>
             {
               data.map((value , index) => {
-                return <div key={index} style={{width:`${width}%` , textAlign: `${value.align ? "right" : "left"}`}}>{value.value}</div>
+                return <div key={index} style={{width:`${width}%` , textAlign: `${value.align ? "right" : "left"}`}} className={styles.row}>{value.value}</div>
               }) 
             }
         </div>

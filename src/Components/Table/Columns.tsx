@@ -55,7 +55,7 @@ export const Columns = ({columns , width} : IProps) => {
                 return value.render ? <div style={{width: `${width}%` , justifyContent: `${value.field === "amount" ? "flex-end" : "flex-start"}`}} key={index} className={styles.column}>
                     {value.render(handleOpen , value.isOpen || false)}
                     {
-                        value.field !== "status" && <SortIcon />
+                        value.field !== "status" && <SortIcon  style={{ color: '#2b579a' }}/>
                     }
                 </div> : <div style={{width: `${width}%`}} key={index} className={styles.column}>{value.title}</div>
             })

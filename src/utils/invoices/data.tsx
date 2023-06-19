@@ -61,7 +61,7 @@ export const invoices: IDocument[] = [
 
 export const allInvoicesColumns: IRawData[] = [
   {
-    title: "Invoice Code",
+    title: "Invoice Number",
     field: "invoiceCode",
     isOpen: false,
   },
@@ -130,7 +130,7 @@ export const allInvoicesColumns: IRawData[] = [
 
 export const matchedInvoicesColumns: IRawData[] = [
   {
-    title: "Invoice Code",
+    title: "Invoice Number",
     field: "invoiceCode",
     isOpen: false,
   },
@@ -186,7 +186,7 @@ export const matchedInvoicesColumns: IRawData[] = [
 
 export const notMatchedInvoicesColumns: IRawData[] = [
   {
-    title: "Invoice Code",
+    title: "Invoice Number",
     field: "invoiceCode",
     isOpen: false,
   },
@@ -228,7 +228,7 @@ export const notMatchedInvoicesColumns: IRawData[] = [
 
 export const underClarficationInvoicesColumns: IRawData[] = [
   {
-    title: "Invoice Code",
+    title: "Invoice Number",
     field: "invoiceCode",
     isOpen: false,
   },

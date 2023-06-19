@@ -14,12 +14,10 @@
   height: 40px;
   border: none;
   font-size: 16px;
-  color: #2b579a;
   transition:0.3s;
 }
 
 .input::placeholder {
-  color: #5b7fb6;
   font-size: 16px;
 }
 
